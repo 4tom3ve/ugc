@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>4tom3ve — Beleza Sem Falsidade</title>
+<title>4tom3ve — Beauty Without Fakeness</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -30,7 +30,107 @@
     overflow-x: hidden;
   }
 
-  /* CURSOR */
+  /* ─── LANGUAGE BAR ─── */
+  #lang-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    background: rgba(10,4,4,0.97);
+    backdrop-filter: blur(10px);
+    border-bottom: 0.5px solid rgba(192,57,43,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0;
+    padding: 0 2rem;
+    height: 36px;
+  }
+
+  .lang-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-right: 1.2rem;
+  }
+
+  .lang-btn {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    padding: 0 0.9rem;
+    height: 100%;
+    transition: color 0.25s, background 0.25s;
+    position: relative;
+  }
+  .lang-btn + .lang-btn { border-left: 0.5px solid rgba(255,255,255,0.08); }
+  .lang-btn:hover { color: var(--white); }
+  .lang-btn.active {
+    color: var(--red);
+    background: rgba(192,57,43,0.08);
+  }
+
+  /* ─── TRANSLATION OVERLAY ─── */
+  #translate-overlay {
+    position: fixed;
+    inset: 0;
+    background: #0D0D0D;
+    z-index: 9000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  #translate-overlay.show { opacity: 1; pointer-events: all; }
+
+  #translate-overlay .tl-line {
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+
+  #translate-overlay .tl-count {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(5rem, 15vw, 9rem);
+    font-weight: 300;
+    color: var(--red);
+    line-height: 1;
+    transition: opacity 0.18s ease;
+  }
+
+  #translate-overlay .tl-lang {
+    font-size: 0.7rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .tl-bar {
+    width: 200px;
+    height: 1px;
+    background: rgba(192,57,43,0.2);
+    overflow: hidden;
+    margin-top: 0.5rem;
+  }
+  .tl-bar-fill {
+    height: 100%;
+    background: var(--red);
+    width: 0%;
+    transition: width 3s linear;
+  }
+  .tl-bar-fill.go { width: 100%; }
+
+  /* ─── CURSOR ─── */
   #cursor {
     position: fixed;
     width: 10px; height: 10px;
@@ -58,7 +158,7 @@
     transition: left 0.08s ease, top 0.08s ease;
   }
 
-  /* CANVAS BG */
+  /* ─── CANVAS ─── */
   #bg-canvas {
     position: fixed;
     top: 0; left: 0;
@@ -67,16 +167,16 @@
     pointer-events: none;
   }
 
-  /* NAV */
+  /* ─── NAV ─── */
   nav {
     position: fixed;
-    top: 0; left: 0; right: 0;
+    top: 36px; left: 0; right: 0;
     z-index: 100;
-    padding: 1.5rem 3rem;
+    padding: 1.4rem 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(13,13,13,0.85);
+    background: rgba(13,13,13,0.88);
     backdrop-filter: blur(12px);
     border-bottom: 0.5px solid rgba(192,57,43,0.2);
   }
@@ -93,13 +193,13 @@
 
   .nav-links {
     display: flex;
-    gap: 2.5rem;
+    gap: 2.2rem;
     list-style: none;
   }
   .nav-links a {
     color: rgba(255,255,255,0.6);
     text-decoration: none;
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     transition: color 0.3s;
@@ -121,29 +221,26 @@
     border: 1px solid var(--red);
     color: var(--red);
     padding: 0.5rem 1.4rem;
-    font-size: 0.75rem;
+    font-size: 0.73rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     text-decoration: none;
     transition: all 0.3s;
     font-family: 'DM Sans', sans-serif;
   }
-  .nav-cta:hover {
-    background: var(--red);
-    color: var(--white);
-  }
+  .nav-cta:hover { background: var(--red); color: var(--white); }
 
-  /* SECTIONS */
+  /* ─── SECTIONS ─── */
   section { position: relative; z-index: 1; }
 
-  /* HERO */
+  /* ─── HERO ─── */
   #hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 6rem 2rem 4rem;
+    padding: 9rem 2rem 4rem;
     position: relative;
     overflow: hidden;
   }
@@ -184,7 +281,6 @@
     opacity: 0;
     animation: fadeUp 1s ease forwards 0.5s;
   }
-
   .hero-title .num { color: var(--red); }
 
   .hero-tagline {
@@ -218,6 +314,7 @@
     transition: all 0.3s;
     display: inline-block;
     font-family: 'DM Sans', sans-serif;
+    border: 1px solid var(--red);
   }
   .btn-primary:hover { background: #a33025; transform: translateY(-2px); }
 
@@ -235,6 +332,23 @@
     font-family: 'DM Sans', sans-serif;
   }
   .btn-outline:hover { border-color: var(--red); color: var(--white); }
+
+  .btn-wpp {
+    background: #25D366;
+    color: #fff;
+    padding: 0.85rem 2.5rem;
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'DM Sans', sans-serif;
+    border: 1px solid #25D366;
+  }
+  .btn-wpp:hover { background: #1db954; transform: translateY(-2px); }
 
   .hero-scroll {
     position: absolute;
@@ -272,7 +386,7 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* MANIFESTO */
+  /* ─── MANIFESTO ─── */
   #manifesto {
     padding: 8rem 3rem;
     max-width: 900px;
@@ -280,7 +394,6 @@
     text-align: center;
     border-top: 0.5px solid rgba(192,57,43,0.2);
   }
-
   .manifesto-text {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(1.4rem, 3vw, 2.2rem);
@@ -289,12 +402,7 @@
     line-height: 1.6;
     color: rgba(255,255,255,0.85);
   }
-
-  .manifesto-text em {
-    font-style: normal;
-    color: var(--red);
-  }
-
+  .manifesto-text em { font-style: normal; color: var(--red); }
   .manifesto-sig {
     margin-top: 2.5rem;
     font-size: 0.7rem;
@@ -303,7 +411,7 @@
     color: rgba(255,255,255,0.3);
   }
 
-  /* SOBRE */
+  /* ─── SOBRE ─── */
   #sobre {
     padding: 6rem 3rem;
     display: grid;
@@ -314,11 +422,7 @@
     align-items: center;
     border-top: 0.5px solid rgba(255,255,255,0.06);
   }
-
-  .sobre-visual {
-    position: relative;
-  }
-
+  .sobre-visual { position: relative; }
   .sobre-avatar {
     width: 100%;
     aspect-ratio: 3/4;
@@ -330,83 +434,42 @@
     overflow: hidden;
     position: relative;
   }
-
-  .sobre-avatar-inner {
-    text-align: center;
-    padding: 2rem;
-  }
-
-  .sobre-heart-big {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 1.5rem;
-  }
-
+  .sobre-avatar-inner { text-align: center; padding: 2rem; }
+  .sobre-heart-big { width: 120px; height: 120px; margin: 0 auto 1.5rem; }
   .sobre-avatar-name {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2.5rem;
-    font-weight: 300;
-    color: var(--white);
-    letter-spacing: 0.05em;
+    font-size: 2.5rem; font-weight: 300;
+    color: var(--white); letter-spacing: 0.05em;
   }
-
   .sobre-avatar-sub {
-    font-size: 0.7rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-top: 0.5rem;
+    font-size: 0.7rem; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--red); margin-top: 0.5rem;
   }
-
   .sobre-badge {
     position: absolute;
-    bottom: -1.5rem;
-    right: -1.5rem;
-    background: var(--red);
-    color: var(--white);
+    bottom: -1.5rem; right: -1.5rem;
+    background: var(--red); color: var(--white);
     padding: 1rem 1.5rem;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    text-align: center;
-    line-height: 1.6;
+    font-size: 0.7rem; letter-spacing: 0.2em;
+    text-transform: uppercase; text-align: center; line-height: 1.6;
   }
-
   .sobre-content h2 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 3rem;
-    font-weight: 300;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
+    font-size: 3rem; font-weight: 300; line-height: 1.1; margin-bottom: 1.5rem;
   }
-
   .sobre-content h2 span { color: var(--red); }
-
   .sobre-content p {
-    color: rgba(255,255,255,0.6);
-    line-height: 1.8;
-    margin-bottom: 1.2rem;
-    font-size: 0.95rem;
-    font-weight: 300;
+    color: rgba(255,255,255,0.6); line-height: 1.8;
+    margin-bottom: 1.2rem; font-size: 0.95rem; font-weight: 300;
   }
-
-  .sobre-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    margin-top: 2rem;
-  }
-
+  .sobre-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem; }
   .tag {
     border: 0.5px solid rgba(192,57,43,0.4);
-    color: var(--red);
-    padding: 0.35rem 0.9rem;
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
+    color: var(--red); padding: 0.35rem 0.9rem;
+    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
   }
 
-  /* MARQUEE */
+  /* ─── MARQUEE ─── */
   .marquee-section {
     padding: 2rem 0;
     overflow: hidden;
@@ -414,591 +477,591 @@
     border-bottom: 0.5px solid rgba(192,57,43,0.15);
     background: rgba(192,57,43,0.04);
   }
-
   .marquee-track {
     display: flex;
     animation: marquee-scroll 20s linear infinite;
-    white-space: nowrap;
-    gap: 3rem;
+    white-space: nowrap; gap: 3rem;
   }
-
   .marquee-item {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    font-weight: 300;
-    font-style: italic;
+    font-size: 1.1rem; font-weight: 300; font-style: italic;
     color: rgba(255,255,255,0.4);
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    gap: 3rem;
+    flex-shrink: 0; display: flex; align-items: center; gap: 3rem;
   }
-
   .marquee-dot {
-    display: inline-block;
-    width: 4px;
-    height: 4px;
-    background: var(--red);
-    border-radius: 50%;
+    display: inline-block; width: 4px; height: 4px;
+    background: var(--red); border-radius: 50%;
   }
-
   @keyframes marquee-scroll {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
   }
 
-  /* SERVICOS */
-  #servicos {
-    padding: 8rem 3rem;
-    max-width: 1200px;
-    margin: 0 auto;
+  /* ─── SECTION COMMON ─── */
+  .section-header { text-align: center; margin-bottom: 5rem; }
+  .section-eyebrow {
+    font-size: 0.65rem; letter-spacing: 0.4em;
+    text-transform: uppercase; color: var(--red); margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; line-height: 1.1;
+  }
+  .section-title span { color: var(--red); font-style: italic; }
+
+  /* ─── UGC SERVICES ─── */
+  #servicos { padding: 8rem 3rem; max-width: 1200px; margin: 0 auto; }
+  .servicos-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 1px; background: rgba(192,57,43,0.15);
+    border: 1px solid rgba(192,57,43,0.15);
+  }
+  .servico-card {
+    background: var(--black); padding: 3rem;
+    transition: background 0.4s; position: relative; overflow: hidden;
+  }
+  .servico-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: var(--red);
+    transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease;
+  }
+  .servico-card:hover { background: rgba(192,57,43,0.05); }
+  .servico-card:hover::before { transform: scaleX(1); }
+  .servico-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem; font-weight: 300;
+    color: rgba(192,57,43,0.12); line-height: 1; margin-bottom: 1rem;
+  }
+  .servico-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-weight: 400; margin-bottom: 1rem;
+  }
+  .servico-desc {
+    color: rgba(255,255,255,0.5); font-size: 0.88rem;
+    line-height: 1.7; font-weight: 300; margin-bottom: 1.5rem;
+  }
+  .servico-preco {
+    font-size: 0.75rem; letter-spacing: 0.15em;
+    color: var(--red); text-transform: uppercase;
   }
 
-  .section-header {
+  /* ─── SOCIAL MEDIA SERVICES ─── */
+  #social-media {
+    padding: 8rem 3rem;
+    background: linear-gradient(180deg, rgba(192,57,43,0.04) 0%, transparent 100%);
+    border-top: 0.5px solid rgba(192,57,43,0.2);
+  }
+  .social-inner { max-width: 1200px; margin: 0 auto; }
+
+  .social-intro {
+    max-width: 700px;
+    margin: 0 auto 4rem;
     text-align: center;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .social-services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
     margin-bottom: 5rem;
   }
 
-  .section-eyebrow {
-    font-size: 0.65rem;
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
+  .social-card {
+    border: 0.5px solid rgba(192,57,43,0.25);
+    padding: 2.5rem;
+    background: rgba(192,57,43,0.03);
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+    overflow: hidden;
+  }
+  .social-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--red), transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .social-card:hover { border-color: rgba(192,57,43,0.6); transform: translateY(-4px); }
+  .social-card:hover::after { transform: scaleX(1); }
+
+  .social-icon {
+    width: 44px; height: 44px;
+    margin-bottom: 1.5rem;
     color: var(--red);
+  }
+  .social-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 400;
+    margin-bottom: 0.6rem;
+  }
+  .social-card-sub {
+    font-size: 0.75rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--red);
     margin-bottom: 1rem;
   }
-
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 300;
-    line-height: 1.1;
+  .social-card-desc {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.85rem; line-height: 1.7; font-weight: 300;
   }
 
-  .section-title span { color: var(--red); font-style: italic; }
+  /* ─── SOCIAL MEDIA PLANS ─── */
+  .plans-title {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    margin-bottom: 0.8rem;
+  }
+  .plans-title span { color: var(--red); font-style: italic; }
+  .plans-sub {
+    text-align: center;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.85rem;
+    margin-bottom: 3rem;
+    letter-spacing: 0.05em;
+  }
 
-  .servicos-grid {
+  .plans-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1px;
     background: rgba(192,57,43,0.15);
     border: 1px solid rgba(192,57,43,0.15);
   }
 
-  .servico-card {
+  .plan-card {
+    background: var(--black);
+    padding: 3rem 2.5rem;
+    position: relative;
+    transition: background 0.3s;
+  }
+  .plan-card.featured {
+    background: rgba(192,57,43,0.08);
+  }
+  .plan-card:hover { background: rgba(192,57,43,0.06); }
+  .plan-card.featured:hover { background: rgba(192,57,43,0.12); }
+
+  .plan-badge {
+    position: absolute;
+    top: -1px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--red);
+    color: var(--white);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.3rem 1.2rem;
+    white-space: nowrap;
+  }
+
+  .plan-name {
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.8rem;
+    margin-top: 0.5rem;
+  }
+
+  .plan-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 300;
+    margin-bottom: 0.5rem;
+  }
+
+  .plan-price {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    margin: 1.5rem 0;
+    padding: 1.2rem 0;
+    border-top: 0.5px solid rgba(192,57,43,0.2);
+    border-bottom: 0.5px solid rgba(192,57,43,0.2);
+  }
+  .plan-price .currency {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+  }
+  .plan-price .amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.2rem; font-weight: 300; line-height: 1;
+  }
+  .plan-price .period {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .plan-features {
+    list-style: none;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+  .plan-features li {
+    font-size: 0.83rem;
+    color: rgba(255,255,255,0.55);
+    display: flex; align-items: flex-start; gap: 0.6rem;
+    font-weight: 300; line-height: 1.4;
+  }
+  .plan-features li::before {
+    content: '✓';
+    color: var(--red);
+    font-size: 0.75rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+  .plan-features li.dimmed { color: rgba(255,255,255,0.25); }
+  .plan-features li.dimmed::before { color: rgba(255,255,255,0.15); content: '—'; }
+
+  .btn-plan-wpp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.85rem 1rem;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.7);
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  .btn-plan-wpp:hover,
+  .plan-card.featured .btn-plan-wpp {
+    background: #25D366;
+    border-color: #25D366;
+    color: #fff;
+  }
+  .plan-card.featured .btn-plan-wpp:hover { background: #1db954; border-color: #1db954; }
+
+  .wpp-icon {
+    width: 16px; height: 16px; flex-shrink: 0;
+  }
+
+  /* AI AGENT SECTION */
+  .agent-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(192,57,43,0.15);
+    border: 1px solid rgba(192,57,43,0.15);
+    margin-top: 1.5rem;
+  }
+  .agent-card {
     background: var(--black);
     padding: 3rem;
-    transition: background 0.4s;
     position: relative;
-    overflow: hidden;
+    transition: background 0.3s;
   }
-
-  .servico-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--red);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s ease;
+  .agent-card:hover { background: rgba(192,57,43,0.05); }
+  .agent-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
   }
-
-  .servico-card:hover { background: rgba(192,57,43,0.05); }
-  .servico-card:hover::before { transform: scaleX(1); }
-
-  .servico-num {
+  .agent-icon {
+    width: 48px; height: 48px;
+    background: rgba(192,57,43,0.12);
+    border: 0.5px solid rgba(192,57,43,0.3);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .agent-icon svg { width: 22px; height: 22px; color: var(--red); }
+  .agent-label { font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--red); }
+  .agent-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 4rem;
-    font-weight: 300;
-    color: rgba(192,57,43,0.12);
-    line-height: 1;
-    margin-bottom: 1rem;
+    font-size: 1.7rem; font-weight: 400;
   }
-
-  .servico-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem;
-    font-weight: 400;
-    margin-bottom: 1rem;
-  }
-
-  .servico-desc {
+  .agent-desc {
     color: rgba(255,255,255,0.5);
-    font-size: 0.88rem;
-    line-height: 1.7;
-    font-weight: 300;
+    font-size: 0.85rem; line-height: 1.7; font-weight: 300;
+    margin-bottom: 1.5rem;
+  }
+  .agent-price {
+    font-size: 0.75rem; color: var(--red);
+    letter-spacing: 0.15em; text-transform: uppercase;
     margin-bottom: 1.5rem;
   }
 
-  .servico-preco {
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    color: var(--red);
-    text-transform: uppercase;
+  /* ─── CREATIFY BADGE ─── */
+  .creatify-ref {
+    text-align: center;
+    padding: 2.5rem 2rem;
+    border: 0.5px solid rgba(192,57,43,0.2);
+    margin-top: 3rem;
+    background: rgba(192,57,43,0.03);
   }
+  .creatify-ref p {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.8rem;
+  }
+  .creatify-ref a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--red);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    border-bottom: 0.5px solid rgba(192,57,43,0.3);
+    padding-bottom: 0.2rem;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .creatify-ref a:hover { color: var(--white); border-color: var(--white); }
 
-  /* PRODUTOS DIGITAIS */
+  /* ─── PRODUTOS DIGITAIS ─── */
   #produtos {
     padding: 8rem 3rem;
     background: rgba(255,255,255,0.02);
     border-top: 0.5px solid rgba(255,255,255,0.06);
   }
-
-  .produtos-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
+  .produtos-inner { max-width: 1200px; margin: 0 auto; }
   .produtos-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin-top: 4rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 4rem;
   }
-
   .produto-card {
-    border: 1px solid rgba(192,57,43,0.25);
-    padding: 3rem;
-    position: relative;
-    transition: border-color 0.3s, transform 0.3s;
+    border: 1px solid rgba(192,57,43,0.25); padding: 3rem;
+    position: relative; transition: border-color 0.3s, transform 0.3s;
     background: rgba(192,57,43,0.03);
   }
-
-  .produto-card:hover {
-    border-color: var(--red);
-    transform: translateY(-4px);
-  }
-
+  .produto-card:hover { border-color: var(--red); transform: translateY(-4px); }
   .produto-badge {
     position: absolute;
     top: -1px; right: 2rem;
-    background: var(--red);
-    color: var(--white);
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 0.3rem 0.8rem;
+    background: var(--red); color: var(--white);
+    font-size: 0.65rem; letter-spacing: 0.15em;
+    text-transform: uppercase; padding: 0.3rem 0.8rem;
   }
-
-  .produto-icon {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 1.5rem;
-    color: var(--red);
-  }
-
+  .produto-icon { width: 48px; height: 48px; margin-bottom: 1.5rem; color: var(--red); }
   .produto-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    font-weight: 400;
-    margin-bottom: 0.5rem;
+    font-size: 1.6rem; font-weight: 400; margin-bottom: 0.5rem;
   }
-
   .produto-sub {
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.4);
-    margin-bottom: 1.2rem;
-    font-weight: 300;
+    font-size: 0.8rem; color: rgba(255,255,255,0.4);
+    margin-bottom: 1.2rem; font-weight: 300;
   }
-
   .produto-preco-box {
-    display: flex;
-    align-items: baseline;
-    gap: 0.5rem;
-    margin: 1.5rem 0;
+    display: flex; align-items: baseline; gap: 0.5rem; margin: 1.5rem 0;
   }
-
   .produto-preco-original {
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.3);
-    text-decoration: line-through;
+    font-size: 0.85rem; color: rgba(255,255,255,0.3); text-decoration: line-through;
   }
-
   .produto-preco {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2.5rem;
-    font-weight: 300;
-    color: var(--white);
+    font-size: 2.5rem; font-weight: 300; color: var(--white);
   }
-
   .produto-preco-label {
-    font-size: 0.7rem;
-    color: var(--red);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+    font-size: 0.7rem; color: var(--red);
+    text-transform: uppercase; letter-spacing: 0.1em;
   }
-
   .produto-features {
-    list-style: none;
-    margin-bottom: 2rem;
+    list-style: none; margin-bottom: 2rem;
   }
-
   .produto-features li {
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.55);
+    font-size: 0.85rem; color: rgba(255,255,255,0.55);
     padding: 0.4rem 0;
     border-bottom: 0.5px solid rgba(255,255,255,0.05);
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-weight: 300;
+    display: flex; align-items: center; gap: 0.6rem; font-weight: 300;
   }
-
   .produto-features li::before {
-    content: '';
-    width: 5px;
-    height: 1px;
-    background: var(--red);
-    flex-shrink: 0;
+    content: ''; width: 5px; height: 1px;
+    background: var(--red); flex-shrink: 0;
   }
 
-  /* FUNIL/PROCESSO */
-  #processo {
-    padding: 8rem 3rem;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  .processo-steps {
-    margin-top: 4rem;
-    position: relative;
-  }
-
+  /* ─── PROCESSO ─── */
+  #processo { padding: 8rem 3rem; max-width: 900px; margin: 0 auto; }
+  .processo-steps { margin-top: 4rem; position: relative; }
   .processo-line {
-    position: absolute;
-    left: 2rem;
-    top: 2.5rem;
-    bottom: 2.5rem;
-    width: 1px;
+    position: absolute; left: 2rem;
+    top: 2.5rem; bottom: 2.5rem; width: 1px;
     background: linear-gradient(to bottom, var(--red), rgba(192,57,43,0.1));
   }
-
   .processo-step {
-    display: flex;
-    gap: 2.5rem;
-    margin-bottom: 3rem;
-    align-items: flex-start;
-    padding-left: 1rem;
+    display: flex; gap: 2.5rem;
+    margin-bottom: 3rem; align-items: flex-start; padding-left: 1rem;
   }
-
   .step-num {
     flex-shrink: 0;
-    width: 4rem;
-    height: 4rem;
+    width: 4rem; height: 4rem;
     border: 1px solid var(--red);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
-    font-weight: 300;
-    color: var(--red);
-    background: var(--black);
-    position: relative;
-    z-index: 1;
+    font-size: 1.4rem; font-weight: 300; color: var(--red);
+    background: var(--black); position: relative; z-index: 1;
   }
-
   .step-content h3 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
-    font-weight: 400;
-    margin-bottom: 0.5rem;
-    padding-top: 0.6rem;
+    font-size: 1.5rem; font-weight: 400; margin-bottom: 0.5rem; padding-top: 0.6rem;
   }
-
   .step-content p {
-    font-size: 0.88rem;
-    color: rgba(255,255,255,0.5);
-    line-height: 1.7;
-    font-weight: 300;
+    font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.7; font-weight: 300;
   }
 
-  /* PLANO 90 DIAS */
+  /* ─── PLANO 90 DIAS ─── */
   #plano {
     padding: 8rem 3rem;
     background: rgba(255,255,255,0.02);
     border-top: 0.5px solid rgba(255,255,255,0.06);
   }
-
-  .plano-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
+  .plano-inner { max-width: 1200px; margin: 0 auto; }
   .plano-meses {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-top: 4rem;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 4rem;
   }
-
   .mes-card {
-    border: 0.5px solid rgba(192,57,43,0.2);
-    padding: 2.5rem;
-    position: relative;
+    border: 0.5px solid rgba(192,57,43,0.2); padding: 2.5rem; position: relative;
   }
-
   .mes-label {
-    font-size: 0.65rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 1rem;
+    font-size: 0.65rem; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--red); margin-bottom: 1rem;
   }
-
   .mes-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    font-weight: 300;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 0.5px solid rgba(192,57,43,0.2);
+    font-size: 1.6rem; font-weight: 300; margin-bottom: 1.5rem;
+    padding-bottom: 1rem; border-bottom: 0.5px solid rgba(192,57,43,0.2);
   }
-
   .mes-items {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
+    list-style: none; display: flex; flex-direction: column; gap: 0.7rem;
   }
-
   .mes-items li {
-    font-size: 0.82rem;
-    color: rgba(255,255,255,0.55);
-    line-height: 1.5;
-    display: flex;
-    gap: 0.6rem;
-    font-weight: 300;
+    font-size: 0.82rem; color: rgba(255,255,255,0.55);
+    line-height: 1.5; display: flex; gap: 0.6rem; font-weight: 300;
   }
-
   .mes-items li::before {
-    content: '→';
-    color: var(--red);
-    flex-shrink: 0;
-    font-size: 0.75rem;
-    margin-top: 0.1rem;
+    content: '→'; color: var(--red); flex-shrink: 0;
+    font-size: 0.75rem; margin-top: 0.1rem;
   }
-
   .mes-meta {
-    margin-top: 1.5rem;
-    padding-top: 1rem;
+    margin-top: 1.5rem; padding-top: 1rem;
     border-top: 0.5px solid rgba(255,255,255,0.06);
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.3);
-    font-style: italic;
+    font-size: 0.75rem; color: rgba(255,255,255,0.3); font-style: italic;
   }
 
-  /* CONTATO */
-  #contato {
-    padding: 8rem 3rem;
-    max-width: 700px;
-    margin: 0 auto;
-    text-align: center;
+  /* ─── STATS ─── */
+  .stats-bar {
+    padding: 4rem 3rem; max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    border: 0.5px solid rgba(192,57,43,0.2);
+  }
+  .stat {
+    text-align: center; padding: 2rem;
+    border-right: 0.5px solid rgba(192,57,43,0.15);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem; font-weight: 300; color: var(--red); line-height: 1; margin-bottom: 0.5rem;
+  }
+  .stat-label {
+    font-size: 0.7rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: rgba(255,255,255,0.35);
   }
 
+  /* ─── CONTATO ─── */
+  #contato { padding: 8rem 3rem; max-width: 700px; margin: 0 auto; text-align: center; }
   .contato-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 300;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
+    font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; line-height: 1.1; margin-bottom: 1.5rem;
   }
-
   .contato-title span { color: var(--red); font-style: italic; }
-
   .contato-sub {
-    color: rgba(255,255,255,0.5);
-    font-size: 0.95rem;
-    line-height: 1.7;
-    font-weight: 300;
-    margin-bottom: 3rem;
+    color: rgba(255,255,255,0.5); font-size: 0.95rem;
+    line-height: 1.7; font-weight: 300; margin-bottom: 3rem;
   }
-
-  .contato-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    text-align: left;
-  }
-
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-
+  .contato-form { display: flex; flex-direction: column; gap: 1rem; text-align: left; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
   .form-group label {
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
+    font-size: 0.7rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: rgba(255,255,255,0.4);
   }
-
   .form-group input,
   .form-group select,
   .form-group textarea {
     background: rgba(255,255,255,0.04);
     border: 0.5px solid rgba(255,255,255,0.12);
-    color: var(--white);
-    padding: 0.85rem 1rem;
-    font-size: 0.9rem;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    outline: none;
-    transition: border-color 0.3s;
+    color: var(--white); padding: 0.85rem 1rem;
+    font-size: 0.9rem; font-family: 'DM Sans', sans-serif;
+    font-weight: 300; outline: none; transition: border-color 0.3s;
   }
-
   .form-group input:focus,
   .form-group select:focus,
-  .form-group textarea:focus {
-    border-color: var(--red);
-  }
-
+  .form-group textarea:focus { border-color: var(--red); }
   .form-group select option { background: #1a0505; color: var(--white); }
-
   .form-group textarea { min-height: 120px; resize: vertical; }
-
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
   .btn-submit {
-    background: var(--red);
-    color: var(--white);
-    border: none;
-    padding: 1rem 3rem;
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    cursor: none;
-    transition: all 0.3s;
-    font-family: 'DM Sans', sans-serif;
-    margin-top: 1rem;
-    align-self: flex-start;
+    background: var(--red); color: var(--white); border: none;
+    padding: 1rem 3rem; font-size: 0.8rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    cursor: pointer; transition: all 0.3s;
+    font-family: 'DM Sans', sans-serif; margin-top: 1rem; align-self: flex-start;
   }
-
   .btn-submit:hover { background: #a33025; transform: translateY(-2px); }
 
-  /* FOOTER */
+  /* ─── FOOTER ─── */
   footer {
     padding: 4rem 3rem 2rem;
     border-top: 0.5px solid rgba(192,57,43,0.2);
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 3rem;
-    max-width: 1400px;
-    margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3rem;
+    max-width: 1400px; margin: 0 auto;
   }
-
   .footer-brand .logo {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem;
-    font-weight: 300;
-    letter-spacing: 0.1em;
-    margin-bottom: 0.8rem;
+    font-size: 1.8rem; font-weight: 300; letter-spacing: 0.1em; margin-bottom: 0.8rem;
   }
-
   .footer-brand .logo span { color: var(--red); }
-
   .footer-brand p {
-    font-size: 0.82rem;
-    color: rgba(255,255,255,0.35);
-    font-weight: 300;
-    line-height: 1.6;
-    font-style: italic;
-    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.82rem; color: rgba(255,255,255,0.35); font-weight: 300;
+    line-height: 1.6; font-style: italic; font-family: 'Cormorant Garamond', serif;
   }
-
   .footer-links h4 {
-    font-size: 0.65rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 1.2rem;
+    font-size: 0.65rem; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--red); margin-bottom: 1.2rem;
   }
-
-  .footer-links ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-  }
-
+  .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
   .footer-links a {
-    color: rgba(255,255,255,0.45);
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 300;
-    transition: color 0.2s;
+    color: rgba(255,255,255,0.45); text-decoration: none;
+    font-size: 0.85rem; font-weight: 300; transition: color 0.2s;
   }
-
   .footer-links a:hover { color: var(--white); }
-
   .footer-bottom {
-    grid-column: 1 / -1;
-    padding-top: 2rem;
+    grid-column: 1 / -1; padding-top: 2rem;
     border-top: 0.5px solid rgba(255,255,255,0.06);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex; justify-content: space-between; align-items: center;
   }
-
-  .footer-bottom p {
-    font-size: 0.72rem;
-    color: rgba(255,255,255,0.2);
-    letter-spacing: 0.1em;
-  }
-
-  .footer-social {
-    display: flex;
-    gap: 1.5rem;
-  }
-
+  .footer-bottom p { font-size: 0.72rem; color: rgba(255,255,255,0.2); letter-spacing: 0.1em; }
+  .footer-social { display: flex; gap: 1.5rem; }
   .footer-social a {
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.3);
-    text-decoration: none;
-    transition: color 0.2s;
+    font-size: 0.7rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: rgba(255,255,255,0.3);
+    text-decoration: none; transition: color 0.2s;
   }
-
   .footer-social a:hover { color: var(--red); }
 
-  /* STATS */
-  .stats-bar {
-    padding: 4rem 3rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    border: 0.5px solid rgba(192,57,43,0.2);
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1000px) {
+    .social-services-grid { grid-template-columns: 1fr 1fr; }
+    .plans-grid { grid-template-columns: 1fr; }
+    .agent-row { grid-template-columns: 1fr; }
   }
-
-  .stat {
-    text-align: center;
-    padding: 2rem;
-    border-right: 0.5px solid rgba(192,57,43,0.15);
-  }
-
-  .stat:last-child { border-right: none; }
-
-  .stat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3rem;
-    font-weight: 300;
-    color: var(--red);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-  }
-
-  .stat-label {
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
-  }
-
-  /* RESPONSIVE */
   @media (max-width: 900px) {
     nav { padding: 1.2rem 1.5rem; }
     .nav-links { display: none; }
@@ -1010,69 +1073,80 @@
     .stat { border-right: none; border-bottom: 0.5px solid rgba(192,57,43,0.15); }
     footer { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
+    .social-services-grid { grid-template-columns: 1fr; }
+    #lang-bar { padding: 0 1rem; }
+    .lang-label { display: none; }
   }
 
-  /* SCROLL REVEAL */
+  /* ─── SCROLL REVEAL ─── */
   .reveal {
-    opacity: 0;
-    transform: translateY(40px);
+    opacity: 0; transform: translateY(40px);
     transition: opacity 0.8s ease, transform 0.8s ease;
   }
-
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
 
+<!-- TRANSLATION OVERLAY -->
+<div id="translate-overlay">
+  <p class="tl-line" id="tl-text">Translating the site</p>
+  <div class="tl-count" id="tl-count">3</div>
+  <p class="tl-lang" id="tl-lang-name">English</p>
+  <div class="tl-bar"><div class="tl-bar-fill" id="tl-bar-fill"></div></div>
+</div>
+
+<!-- CURSOR -->
 <div id="cursor"></div>
 <div id="cursor-trail"></div>
 <canvas id="bg-canvas"></canvas>
+
+<!-- LANGUAGE BAR -->
+<div id="lang-bar">
+  <span class="lang-label">Language</span>
+  <button class="lang-btn active" onclick="switchLang('en')" id="btn-en">EN</button>
+  <button class="lang-btn" onclick="switchLang('pt')" id="btn-pt">PT · BR</button>
+  <button class="lang-btn" onclick="switchLang('es')" id="btn-es">ES</button>
+</div>
 
 <!-- NAV -->
 <nav>
   <a href="#hero" class="nav-logo"><span>4</span>tom<span>3</span>ve</a>
   <ul class="nav-links">
-    <li><a href="#sobre">Sobre</a></li>
-    <li><a href="#servicos">Serviços</a></li>
-    <li><a href="#produtos">Produtos</a></li>
-    <li><a href="#plano">Plano</a></li>
-    <li><a href="#contato">Marcas</a></li>
+    <li><a href="#sobre" data-i18n="nav_about">About</a></li>
+    <li><a href="#servicos" data-i18n="nav_ugc">UGC Services</a></li>
+    <li><a href="#social-media" data-i18n="nav_social">Social Media</a></li>
+    <li><a href="#produtos" data-i18n="nav_products">Products</a></li>
+    <li><a href="#plano" data-i18n="nav_plan">90-Day Plan</a></li>
   </ul>
-  <a href="#contato" class="nav-cta">Contratar UGC</a>
+  <a href="#contato" class="nav-cta" data-i18n="nav_cta">Hire UGC</a>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
-  <svg class="hero-heart" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M100 170 C100 170 20 120 20 65 C20 40 40 25 65 30 C80 33 100 50 100 50 C100 50 120 33 135 30 C160 25 180 40 180 65 C180 120 100 170 100 170Z" stroke="#C0392B" stroke-width="1" fill="rgba(192,57,43,0.08)"/>
-    <path d="M100 155 C100 155 35 110 35 65 C35 45 50 35 70 38 C84 41 100 58 100 58 C100 58 116 41 130 38 C150 35 165 45 165 65 C165 110 100 155 100 155Z" stroke="#C0392B" stroke-width="0.5" fill="none" opacity="0.4"/>
+  <svg class="hero-heart" viewBox="0 0 200 200" fill="none">
+    <path d="M100 170C100 170 20 120 20 65C20 40 40 25 65 30C80 33 100 50 100 50C100 50 120 33 135 30C160 25 180 40 180 65C180 120 100 170 100 170Z" stroke="#C0392B" stroke-width="1" fill="rgba(192,57,43,0.08)"/>
+    <path d="M100 155C100 155 35 110 35 65C35 45 50 35 70 38C84 41 100 58 100 58C100 58 116 41 130 38C150 35 165 45 165 65C165 110 100 155 100 155Z" stroke="#C0392B" stroke-width="0.5" fill="none" opacity="0.4"/>
   </svg>
-
   <div>
-    <p class="hero-eyebrow">UGC Creator · Beleza &amp; Lifestyle · Brasil</p>
-    <h1 class="hero-title">
-      <span class="num">4</span>tom<span class="num">3</span>ve
-    </h1>
-    <p class="hero-tagline">"Beleza sem falsidade."</p>
+    <p class="hero-eyebrow" data-i18n="hero_eyebrow">UGC Creator · Beauty &amp; Lifestyle · Brazil</p>
+    <h1 class="hero-title"><span class="num">4</span>tom<span class="num">3</span>ve</h1>
+    <p class="hero-tagline" data-i18n="hero_tagline">"Beauty without fakeness."</p>
     <div class="hero-ctas">
-      <a href="#servicos" class="btn-primary">Ver Portfólio</a>
-      <a href="#contato" class="btn-outline">Para Marcas</a>
+      <a href="#servicos" class="btn-primary" data-i18n="hero_btn1">View Portfolio</a>
+      <a href="#contato" class="btn-outline" data-i18n="hero_btn2">For Brands</a>
     </div>
   </div>
-
   <div class="hero-scroll">
-    <span>scroll</span>
+    <span data-i18n="scroll">scroll</span>
     <div class="scroll-line"></div>
   </div>
 </section>
 
 <!-- MANIFESTO -->
 <section id="manifesto" class="reveal">
-  <p class="manifesto-text">
-    "Eu não crio conteúdo para <em>parecer</em>. Crio para <em>ser</em>. Desde o cosplay aprendi que identidade não se performa — se encarna. Minha marca não é uma estratégia. É quem eu sou. E marcas que entendem isso são as únicas que merecem o meu conteúdo."
+  <p class="manifesto-text" data-i18n="manifesto_text">
+    "I don't create content to <em>seem</em>. I create to <em>be</em>. Since cosplay, I learned that identity isn't performed — it's embodied. My brand isn't a strategy. It's who I am. And brands that understand this are the only ones that deserve my content."
   </p>
   <p class="manifesto-sig">— Evelyn Oliveira · @4tom3ve</p>
 </section>
@@ -1081,16 +1155,16 @@
 <div class="marquee-section">
   <div class="marquee-track">
     <span class="marquee-item">UGC Creator <span class="marquee-dot"></span></span>
-    <span class="marquee-item">Beleza com Alma <span class="marquee-dot"></span></span>
-    <span class="marquee-item">Autenticidade <span class="marquee-dot"></span></span>
-    <span class="marquee-item">Identidade Real <span class="marquee-dot"></span></span>
-    <span class="marquee-item">Conteúdo que Marcas Querem <span class="marquee-dot"></span></span>
+    <span class="marquee-item" data-i18n="mq1">Beauty with Soul <span class="marquee-dot"></span></span>
+    <span class="marquee-item" data-i18n="mq2">Authenticity <span class="marquee-dot"></span></span>
+    <span class="marquee-item" data-i18n="mq3">Real Identity <span class="marquee-dot"></span></span>
+    <span class="marquee-item" data-i18n="mq4">Content Brands Want <span class="marquee-dot"></span></span>
     <span class="marquee-item">4tom3ve Universe <span class="marquee-dot"></span></span>
     <span class="marquee-item">UGC Creator <span class="marquee-dot"></span></span>
-    <span class="marquee-item">Beleza com Alma <span class="marquee-dot"></span></span>
-    <span class="marquee-item">Autenticidade <span class="marquee-dot"></span></span>
-    <span class="marquee-item">Identidade Real <span class="marquee-dot"></span></span>
-    <span class="marquee-item">Conteúdo que Marcas Querem <span class="marquee-dot"></span></span>
+    <span class="marquee-item" data-i18n="mq1">Beauty with Soul <span class="marquee-dot"></span></span>
+    <span class="marquee-item" data-i18n="mq2">Authenticity <span class="marquee-dot"></span></span>
+    <span class="marquee-item" data-i18n="mq3">Real Identity <span class="marquee-dot"></span></span>
+    <span class="marquee-item" data-i18n="mq4">Content Brands Want <span class="marquee-dot"></span></span>
     <span class="marquee-item">4tom3ve Universe <span class="marquee-dot"></span></span>
   </div>
 </div>
@@ -1102,29 +1176,25 @@
       <div class="sobre-avatar-inner">
         <svg class="sobre-heart-big" viewBox="0 0 120 120" fill="none">
           <path d="M60 100C60 100 10 70 10 38C10 22 22 14 38 17C47 19 60 32 60 32C60 32 73 19 82 17C98 14 110 22 110 38C110 70 60 100 60 100Z" stroke="#C0392B" stroke-width="1.5" fill="rgba(192,57,43,0.12)"/>
-          <path d="M60 88C60 88 22 65 22 40C22 28 32 22 44 24.5C52 26.5 60 38 60 38C60 38 68 26.5 76 24.5C88 22 98 28 98 40C98 65 60 88 60 88Z" stroke="#C0392B" stroke-width="0.5" fill="none" opacity="0.5"/>
         </svg>
         <p class="sobre-avatar-name">Eve</p>
         <p class="sobre-avatar-sub">Evelyn Oliveira</p>
       </div>
     </div>
-    <div class="sobre-badge">
-      UGC Creator<br>
-      desde o cosplay
-    </div>
+    <div class="sobre-badge" data-i18n="sobre_badge">UGC Creator<br>since cosplay</div>
   </div>
   <div class="sobre-content reveal">
-    <h2>Identidade que<br><span>não se copia</span></h2>
-    <p>4tom3ve não nasceu de estratégia de marketing. Nasceu do cosplay — de uma identidade genuína construída ao longo de anos. Isso é incopiável.</p>
-    <p>Eve enxerga pessoas. Captura beleza real. Cria conteúdo que marcas querem usar porque parece real — porque é.</p>
-    <p>Não é influencer com IA. Não é beleza genérica sem alma. É uma criadora com história, com estética própria, com presença insubstituível.</p>
+    <h2 data-i18n="sobre_title">Identity that<br><span>can't be copied</span></h2>
+    <p data-i18n="sobre_p1">4tom3ve wasn't born from a marketing strategy. It was born from cosplay — a genuine identity built over years. That's uncopyable.</p>
+    <p data-i18n="sobre_p2">Eve sees people. Captures real beauty. Creates content brands want to use because it feels real — because it is.</p>
+    <p data-i18n="sobre_p3">Not an influencer with AI. Not generic beauty without soul. A creator with history, her own aesthetic, irreplaceable presence.</p>
     <div class="sobre-tags">
-      <span class="tag">Autenticidade</span>
-      <span class="tag">Criatividade</span>
-      <span class="tag">Beleza Editorial</span>
+      <span class="tag" data-i18n="tag1">Authenticity</span>
+      <span class="tag" data-i18n="tag2">Creativity</span>
+      <span class="tag" data-i18n="tag3">Editorial Beauty</span>
       <span class="tag">Lifestyle</span>
-      <span class="tag">UGC Profissional</span>
-      <span class="tag">Cosplay Roots</span>
+      <span class="tag" data-i18n="tag5">Professional UGC</span>
+      <span class="tag" data-i18n="tag6">Cosplay Roots</span>
     </div>
   </div>
 </section>
@@ -1134,56 +1204,252 @@
   <div class="stats-bar reveal">
     <div class="stat">
       <div class="stat-num">3+</div>
-      <div class="stat-label">Anos de identidade</div>
+      <div class="stat-label" data-i18n="stat1">Years of identity</div>
     </div>
     <div class="stat">
       <div class="stat-num">R$800</div>
-      <div class="stat-label">Médio por contrato</div>
+      <div class="stat-label" data-i18n="stat2">Avg. per contract</div>
     </div>
     <div class="stat">
       <div class="stat-num">100%</div>
-      <div class="stat-label">Conteúdo autoral</div>
+      <div class="stat-label" data-i18n="stat3">Original content</div>
     </div>
     <div class="stat">
       <div class="stat-num">3</div>
-      <div class="stat-label">Pilares de conteúdo</div>
+      <div class="stat-label" data-i18n="stat4">Content pillars</div>
     </div>
   </div>
 </div>
 
-<!-- SERVICOS -->
+<!-- UGC SERVICES -->
 <section id="servicos" style="padding:2rem 3rem 8rem;">
   <div style="max-width:1200px;margin:0 auto;">
     <div class="section-header reveal">
-      <p class="section-eyebrow">Para Marcas</p>
-      <h2 class="section-title">Serviços <span>UGC</span></h2>
+      <p class="section-eyebrow" data-i18n="ugc_eyebrow">For Brands</p>
+      <h2 class="section-title" data-i18n="ugc_title">UGC <span>Services</span></h2>
     </div>
     <div class="servicos-grid reveal">
       <div class="servico-card">
         <div class="servico-num">01</div>
-        <h3 class="servico-title">UGC Vídeo</h3>
-        <p class="servico-desc">Vídeos autênticos de produto, skincare, moda ou lifestyle no estilo editorial 4tom3ve. Entregue em formato otimizado para Reels, TikTok e Ads.</p>
-        <p class="servico-preco">A partir de R$ 500</p>
+        <h3 class="servico-title" data-i18n="ugc1_title">UGC Video</h3>
+        <p class="servico-desc" data-i18n="ugc1_desc">Authentic product, skincare, fashion, or lifestyle videos in the 4tom3ve editorial style. Delivered in formats optimized for Reels, TikTok, and Ads.</p>
+        <p class="servico-preco" data-i18n="ugc1_price">From R$ 500</p>
       </div>
       <div class="servico-card">
         <div class="servico-num">02</div>
-        <h3 class="servico-title">UGC Foto</h3>
-        <p class="servico-desc">Fotos editoriais de produto com identidade visual forte. Iluminação, composição e estética 4tom3ve — conteúdo que converte porque parece real.</p>
-        <p class="servico-preco">A partir de R$ 350</p>
+        <h3 class="servico-title" data-i18n="ugc2_title">UGC Photo</h3>
+        <p class="servico-desc" data-i18n="ugc2_desc">Editorial product photos with a strong visual identity. 4tom3ve lighting, composition, and aesthetic — content that converts because it feels real.</p>
+        <p class="servico-preco" data-i18n="ugc2_price">From R$ 350</p>
       </div>
       <div class="servico-card">
         <div class="servico-num">03</div>
-        <h3 class="servico-title">Pack Mensal</h3>
-        <p class="servico-desc">Retainer fixo mensal com entregas recorrentes. Ideal para marcas que querem consistência e identidade. Inclui vídeos, fotos e Stories.</p>
-        <p class="servico-preco">A partir de R$ 1.800/mês</p>
+        <h3 class="servico-title" data-i18n="ugc3_title">Monthly Pack</h3>
+        <p class="servico-desc" data-i18n="ugc3_desc">Fixed monthly retainer with recurring deliveries. Ideal for brands that want consistency and identity. Includes videos, photos, and Stories.</p>
+        <p class="servico-preco" data-i18n="ugc3_price">From R$ 1,800/month</p>
       </div>
       <div class="servico-card">
         <div class="servico-num">04</div>
-        <h3 class="servico-title">UGC Stories</h3>
-        <p class="servico-desc">Sequências de Stories com storytelling natural, sem roteiro engessado. Tom direto, personalidade real, resultado que a audiência confia.</p>
-        <p class="servico-preco">A partir de R$ 280</p>
+        <h3 class="servico-title" data-i18n="ugc4_title">UGC Stories</h3>
+        <p class="servico-desc" data-i18n="ugc4_desc">Story sequences with natural storytelling, no rigid script. Direct tone, real personality, results that audiences trust.</p>
+        <p class="servico-preco" data-i18n="ugc4_price">From R$ 280</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     SOCIAL MEDIA SERVICES — NEW SECTION
+═══════════════════════════════════════════════════ -->
+<section id="social-media">
+  <div class="social-inner">
+    <div class="section-header reveal">
+      <p class="section-eyebrow" data-i18n="sm_eyebrow">Full Digital Presence</p>
+      <h2 class="section-title" data-i18n="sm_title">Social Media <span>Management</span></h2>
+    </div>
+    <p class="social-intro reveal" data-i18n="sm_intro">
+      Beyond UGC creation, Evelyn offers complete social media management — from strategy and content production to automated scheduling and AI-powered customer service. Everything so your brand never goes silent.
+    </p>
+
+    <!-- 3 Service Pillars -->
+    <div class="social-services-grid reveal">
+      <div class="social-card">
+        <svg class="social-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4">
+          <rect x="4" y="4" width="36" height="36" rx="4"/>
+          <circle cx="22" cy="18" r="5"/>
+          <path d="M10 36c0-6.627 5.373-12 12-12s12 5.373 12 12"/>
+        </svg>
+        <h3 class="social-card-title" data-i18n="sm1_title">Profile Management</h3>
+        <p class="social-card-sub" data-i18n="sm1_sub">Instagram · TikTok · YouTube</p>
+        <p class="social-card-desc" data-i18n="sm1_desc">Complete management of your social profiles: content strategy, caption writing, hashtag research, engagement, DM replies, and performance reporting every month.</p>
+      </div>
+      <div class="social-card">
+        <svg class="social-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4">
+          <rect x="4" y="6" width="36" height="32" rx="3"/>
+          <line x1="4" y1="14" x2="40" y2="14"/>
+          <line x1="14" y1="6" x2="14" y2="14"/>
+          <line x1="30" y1="6" x2="30" y2="14"/>
+          <rect x="10" y="20" width="6" height="6" rx="1"/>
+          <rect x="19" y="20" width="6" height="6" rx="1"/>
+          <rect x="28" y="20" width="6" height="6" rx="1"/>
+          <rect x="10" y="29" width="6" height="3" rx="1"/>
+          <rect x="19" y="29" width="6" height="3" rx="1"/>
+        </svg>
+        <h3 class="social-card-title" data-i18n="sm2_title">Scheduling Agent</h3>
+        <p class="social-card-sub" data-i18n="sm2_sub">Automated · Smart · Consistent</p>
+        <p class="social-card-desc" data-i18n="sm2_desc">AI-powered post scheduling at the best times for your audience. Never miss a posting day. Includes a 30-day content calendar, auto-posting, and analytics to optimize reach.</p>
+      </div>
+      <div class="social-card">
+        <svg class="social-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M38 8H6a2 2 0 0 0-2 2v24a2 2 0 0 0 2 2h10l6 6 6-6h10a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/>
+          <line x1="14" y1="18" x2="30" y2="18"/>
+          <line x1="14" y1="24" x2="24" y2="24"/>
+        </svg>
+        <h3 class="social-card-title" data-i18n="sm3_title">AI Attendant</h3>
+        <p class="social-card-sub" data-i18n="sm3_sub">WhatsApp · DMs · Comments</p>
+        <p class="social-card-desc" data-i18n="sm3_desc">Intelligent AI agent that responds to customers 24/7 on WhatsApp and social DMs, qualifies leads, answers FAQs, handles objections, and routes hot leads to you.</p>
+      </div>
+    </div>
+
+    <!-- PLANS -->
+    <h3 class="plans-title reveal" data-i18n="plans_title">Choose Your <span>Social Media Plan</span></h3>
+    <p class="plans-sub reveal" data-i18n="plans_sub">All plans include onboarding · monthly report · dedicated WhatsApp support</p>
+
+    <div class="plans-grid reveal">
+      <!-- STARTER -->
+      <div class="plan-card">
+        <p class="plan-name" data-i18n="plan1_name">Starter</p>
+        <h4 class="plan-title" data-i18n="plan1_title">Presence</h4>
+        <div class="plan-price">
+          <span class="currency">R$</span>
+          <span class="amount">997</span>
+          <span class="period" data-i18n="per_month">/month</span>
+        </div>
+        <ul class="plan-features">
+          <li data-i18n="p1f1">12 posts/month (feed + stories)</li>
+          <li data-i18n="p1f2">Content strategy + calendar</li>
+          <li data-i18n="p1f3">Caption writing + hashtags</li>
+          <li data-i18n="p1f4">1 platform (Instagram or TikTok)</li>
+          <li data-i18n="p1f5">Monthly performance report</li>
+          <li class="dimmed" data-i18n="p1f6">Scheduling agent</li>
+          <li class="dimmed" data-i18n="p1f7">AI attendant (WhatsApp)</li>
+          <li class="dimmed" data-i18n="p1f8">Paid ads management</li>
+        </ul>
+        <a href="https://wa.me/5500000000000?text=Ol%C3%A1%21+Quero+saber+mais+sobre+o+Plano+Presence+de+Social+Media!" target="_blank" class="btn-plan-wpp">
+          <svg class="wpp-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <span data-i18n="btn_hire_wpp">Hire via WhatsApp</span>
+        </a>
+      </div>
+
+      <!-- GROWTH — FEATURED -->
+      <div class="plan-card featured">
+        <div class="plan-badge" data-i18n="most_popular">Most Popular</div>
+        <p class="plan-name" data-i18n="plan2_name">Growth</p>
+        <h4 class="plan-title" data-i18n="plan2_title">Authority</h4>
+        <div class="plan-price">
+          <span class="currency">R$</span>
+          <span class="amount">1.997</span>
+          <span class="period" data-i18n="per_month">/month</span>
+        </div>
+        <ul class="plan-features">
+          <li data-i18n="p2f1">24 posts/month (feed + stories + reels)</li>
+          <li data-i18n="p2f2">Full strategy + 30-day calendar</li>
+          <li data-i18n="p2f3">2 platforms (Instagram + TikTok)</li>
+          <li data-i18n="p2f4">Smart scheduling agent</li>
+          <li data-i18n="p2f5">Engagement + community management</li>
+          <li data-i18n="p2f6">Bi-weekly performance report</li>
+          <li data-i18n="p2f7">Basic AI attendant (WhatsApp)</li>
+          <li class="dimmed" data-i18n="p2f8">Paid ads management</li>
+        </ul>
+        <a href="https://wa.me/5500000000000?text=Ol%C3%A1%21+Quero+o+Plano+Authority+de+Social+Media!" target="_blank" class="btn-plan-wpp">
+          <svg class="wpp-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <span data-i18n="btn_hire_wpp">Hire via WhatsApp</span>
+        </a>
+      </div>
+
+      <!-- PREMIUM -->
+      <div class="plan-card">
+        <p class="plan-name" data-i18n="plan3_name">Premium</p>
+        <h4 class="plan-title" data-i18n="plan3_title">Domination</h4>
+        <div class="plan-price">
+          <span class="currency">R$</span>
+          <span class="amount">3.497</span>
+          <span class="period" data-i18n="per_month">/month</span>
+        </div>
+        <ul class="plan-features">
+          <li data-i18n="p3f1">36+ posts/month (all formats)</li>
+          <li data-i18n="p3f2">3 platforms + YouTube Shorts</li>
+          <li data-i18n="p3f3">Full scheduling automation</li>
+          <li data-i18n="p3f4">Advanced AI attendant 24/7</li>
+          <li data-i18n="p3f5">Lead qualification + CRM</li>
+          <li data-i18n="p3f6">Meta Ads management (up to R$2k budget)</li>
+          <li data-i18n="p3f7">Weekly performance report + strategy call</li>
+          <li data-i18n="p3f8">Priority access to UGC content</li>
+        </ul>
+        <a href="https://wa.me/5500000000000?text=Ol%C3%A1%21+Quero+o+Plano+Domination+de+Social+Media!" target="_blank" class="btn-plan-wpp">
+          <svg class="wpp-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <span data-i18n="btn_hire_wpp">Hire via WhatsApp</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- AI AGENTS ROW -->
+    <h3 class="plans-title reveal" style="margin-top:5rem;" data-i18n="agent_title">Standalone <span>AI Agent Add-ons</span></h3>
+    <p class="plans-sub reveal" data-i18n="agent_sub">Buy separately or add to any plan</p>
+
+    <div class="agent-row reveal">
+      <div class="agent-card">
+        <div class="agent-header">
+          <div class="agent-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="4" width="18" height="18" rx="2"/>
+              <line x1="3" y1="9" x2="21" y2="9"/>
+              <line x1="9" y1="4" x2="9" y2="9"/>
+              <line x1="15" y1="4" x2="15" y2="9"/>
+              <rect x="7" y="13" width="4" height="4" rx="0.5"/>
+            </svg>
+          </div>
+          <div>
+            <p class="agent-label" data-i18n="agent1_label">AI Scheduling</p>
+            <h4 class="agent-title" data-i18n="agent1_title">Scheduling Agent</h4>
+          </div>
+        </div>
+        <p class="agent-desc" data-i18n="agent1_desc">Automatic scheduling on Instagram, TikTok, and YouTube at the highest-engagement times. Integrates with your existing content calendar. Set it once — it posts for you every day.</p>
+        <p class="agent-price" data-i18n="agent1_price">From R$ 397/month</p>
+        <a href="https://wa.me/5500000000000?text=Quero+o+Agente+de+Agendamento!" target="_blank" class="btn-plan-wpp" style="display:inline-flex;width:auto;padding:0.75rem 1.5rem;">
+          <svg class="wpp-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <span data-i18n="btn_hire_wpp">Hire via WhatsApp</span>
+        </a>
+      </div>
+      <div class="agent-card">
+        <div class="agent-header">
+          <div class="agent-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              <circle cx="9" cy="10" r="1" fill="currentColor"/>
+              <circle cx="12" cy="10" r="1" fill="currentColor"/>
+              <circle cx="15" cy="10" r="1" fill="currentColor"/>
+            </svg>
+          </div>
+          <div>
+            <p class="agent-label" data-i18n="agent2_label">AI Customer Service</p>
+            <h4 class="agent-title" data-i18n="agent2_title">AI Attendant</h4>
+          </div>
+        </div>
+        <p class="agent-desc" data-i18n="agent2_desc">AI agent trained on your brand's voice that handles DMs and WhatsApp messages 24/7. Answers FAQs, handles objections, qualifies leads, and alerts you when a deal is ready to close.</p>
+        <p class="agent-price" data-i18n="agent2_price">From R$ 597/month</p>
+        <a href="https://wa.me/5500000000000?text=Quero+o+Atendente+com+IA!" target="_blank" class="btn-plan-wpp" style="display:inline-flex;width:auto;padding:0.75rem 1.5rem;">
+          <svg class="wpp-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <span data-i18n="btn_hire_wpp">Hire via WhatsApp</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- CREATIFY REFERENCE -->
+    <div class="creatify-ref reveal">
+      <p data-i18n="creatify_text">Evelyn is also a certified creator on Brazil's largest UGC platform</p>
+      <a href="https://creatify.com.br/" target="_blank" rel="noopener">creatify.com.br ↗</a>
+    </div>
+
   </div>
 </section>
 
@@ -1191,59 +1457,58 @@
 <section id="produtos">
   <div class="produtos-inner">
     <div class="section-header reveal">
-      <p class="section-eyebrow">Para Criadores</p>
-      <h2 class="section-title">Produtos <span>Digitais</span></h2>
+      <p class="section-eyebrow" data-i18n="prod_eyebrow">For Creators</p>
+      <h2 class="section-title" data-i18n="prod_title">Digital <span>Products</span></h2>
     </div>
     <div class="produtos-grid">
       <div class="produto-card reveal">
-        <span class="produto-badge">Lançamento</span>
+        <span class="produto-badge" data-i18n="prod1_badge">Launch</span>
         <svg class="produto-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
           <rect x="8" y="4" width="32" height="40" rx="2"/>
           <line x1="16" y1="16" x2="32" y2="16"/>
           <line x1="16" y1="24" x2="32" y2="24"/>
           <line x1="16" y1="32" x2="24" y2="32"/>
         </svg>
-        <h3 class="produto-title">E-book UGC</h3>
-        <p class="produto-sub">Como Criar Conteúdo de Beleza que Marcas Querem Pagar</p>
+        <h3 class="produto-title" data-i18n="prod1_title">UGC E-book</h3>
+        <p class="produto-sub" data-i18n="prod1_sub">How to Create Beauty Content Brands Want to Pay For</p>
         <ul class="produto-features">
-          <li>O que é UGC e por que marcas pagam</li>
-          <li>Equipamento mínimo que funciona</li>
-          <li>Como montar seu portfólio do zero</li>
-          <li>Como abordar marcas e fechar contrato</li>
-          <li>Precificação e negociação</li>
-          <li>+ Bonus: template de email para marcas</li>
+          <li data-i18n="prod1_f1">What UGC is and why brands pay for it</li>
+          <li data-i18n="prod1_f2">Minimum equipment that actually works</li>
+          <li data-i18n="prod1_f3">How to build your portfolio from zero</li>
+          <li data-i18n="prod1_f4">How to approach brands and close contracts</li>
+          <li data-i18n="prod1_f5">Pricing and negotiation</li>
+          <li data-i18n="prod1_f6">+ Bonus: email template for brands</li>
         </ul>
         <div class="produto-preco-box">
           <span class="produto-preco-original">R$ 19</span>
           <span class="produto-preco">R$ 9</span>
-          <span class="produto-preco-label">lançamento</span>
+          <span class="produto-preco-label" data-i18n="launch">launch</span>
         </div>
-        <a href="#contato" class="btn-primary">Quero o E-book</a>
+        <a href="#contato" class="btn-primary" data-i18n="prod1_btn">Get the E-book</a>
       </div>
-
       <div class="produto-card reveal">
-        <span class="produto-badge">Mentoria 1:1</span>
+        <span class="produto-badge" data-i18n="prod2_badge">1:1 Mentorship</span>
         <svg class="produto-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
           <circle cx="24" cy="16" r="8"/>
           <path d="M8 40c0-8.837 7.163-16 16-16s16 7.163 16 16"/>
           <path d="M32 8 l4 4 -8 8"/>
         </svg>
-        <h3 class="produto-title">Mentoria 4tom3ve Method</h3>
-        <p class="produto-sub">Identidade de criadora + primeiros contratos UGC</p>
+        <h3 class="produto-title" data-i18n="prod2_title">4tom3ve Method</h3>
+        <p class="produto-sub" data-i18n="prod2_sub">Creator identity + first UGC contracts</p>
         <ul class="produto-features">
-          <li>4 encontros de 60 min via videochamada</li>
-          <li>Semana 1: Identidade — o que te diferencia</li>
-          <li>Semana 2: Portfólio e estética de marca</li>
-          <li>Semana 3: Pitch para marcas e precificação</li>
-          <li>Semana 4: Primeiro contrato e expansão</li>
-          <li>+ E-book + acesso ao grupo de criadores</li>
+          <li data-i18n="prod2_f1">4 sessions of 60 min via video call</li>
+          <li data-i18n="prod2_f2">Week 1: Identity — what makes you different</li>
+          <li data-i18n="prod2_f3">Week 2: Portfolio and brand aesthetic</li>
+          <li data-i18n="prod2_f4">Week 3: Brand pitch and pricing</li>
+          <li data-i18n="prod2_f5">Week 4: First contract and expansion</li>
+          <li data-i18n="prod2_f6">+ E-book + creators community access</li>
         </ul>
         <div class="produto-preco-box">
           <span class="produto-preco-original">R$ 597</span>
           <span class="produto-preco">R$ 397</span>
-          <span class="produto-preco-label">early bird</span>
+          <span class="produto-preco-label" data-i18n="early_bird">early bird</span>
         </div>
-        <a href="#contato" class="btn-primary">Quero a Mentoria</a>
+        <a href="#contato" class="btn-primary" data-i18n="prod2_btn">Get the Mentorship</a>
       </div>
     </div>
   </div>
@@ -1252,37 +1517,37 @@
 <!-- PROCESSO -->
 <section id="processo">
   <div class="section-header reveal">
-    <p class="section-eyebrow">Como Funciona</p>
-    <h2 class="section-title">Do brief à <span>entrega</span></h2>
+    <p class="section-eyebrow" data-i18n="proc_eyebrow">How It Works</p>
+    <h2 class="section-title" data-i18n="proc_title">From brief to <span>delivery</span></h2>
   </div>
   <div class="processo-steps reveal">
     <div class="processo-line"></div>
     <div class="processo-step">
       <div class="step-num">01</div>
       <div class="step-content">
-        <h3>Proposta &amp; Alinhamento</h3>
-        <p>Marca entra em contato via email ou DM. Eve avalia o briefing, entende a identidade da marca e apresenta proposta com valores e formatos.</p>
+        <h3 data-i18n="step1_title">Proposal &amp; Alignment</h3>
+        <p data-i18n="step1_desc">Brand reaches out via email or DM. Eve evaluates the brief, understands the brand's identity, and presents a proposal with rates and formats.</p>
       </div>
     </div>
     <div class="processo-step">
       <div class="step-num">02</div>
       <div class="step-content">
-        <h3>Recebimento &amp; Conceito</h3>
-        <p>Produto enviado pela marca. Eve cria o conceito visual — o que será criado, como será filmado, qual a narrativa. Tudo planejado antes de gravar.</p>
+        <h3 data-i18n="step2_title">Receive &amp; Concept</h3>
+        <p data-i18n="step2_desc">Product sent by the brand. Eve creates the visual concept — what will be created, how it will be filmed, what the narrative is. Everything planned before shooting.</p>
       </div>
     </div>
     <div class="processo-step">
       <div class="step-num">03</div>
       <div class="step-content">
-        <h3>Criação &amp; Edição</h3>
-        <p>Gravação e edição com estética 4tom3ve. Iluminação, composição e tom de voz únicos. Cada detalhe pensado para converter sem parecer forçado.</p>
+        <h3 data-i18n="step3_title">Creation &amp; Editing</h3>
+        <p data-i18n="step3_desc">Recording and editing with 4tom3ve aesthetic. Unique lighting, composition, and voice. Every detail designed to convert without feeling forced.</p>
       </div>
     </div>
     <div class="processo-step">
       <div class="step-num">04</div>
       <div class="step-content">
-        <h3>Entrega &amp; Aprovação</h3>
-        <p>Entrega antes do prazo, em formato pronto para uso em Reels, Ads e Stories. Revisão inclusa. Parceria mensal disponível.</p>
+        <h3 data-i18n="step4_title">Delivery &amp; Approval</h3>
+        <p data-i18n="step4_desc">Delivered before deadline, ready for Reels, Ads, and Stories. Revision included. Monthly partnership available.</p>
       </div>
     </div>
   </div>
@@ -1292,48 +1557,48 @@
 <section id="plano">
   <div class="plano-inner">
     <div class="section-header reveal">
-      <p class="section-eyebrow">Crescimento</p>
-      <h2 class="section-title">Plano <span>90 Dias</span></h2>
+      <p class="section-eyebrow" data-i18n="plan90_eyebrow">Growth</p>
+      <h2 class="section-title" data-i18n="plan90_title"><span>90-Day</span> Plan</h2>
     </div>
     <div class="plano-meses">
       <div class="mes-card reveal">
-        <p class="mes-label">Mês 01</p>
-        <h3 class="mes-title">Fundação</h3>
+        <p class="mes-label" data-i18n="m1_label">Month 01</p>
+        <h3 class="mes-title" data-i18n="m1_title">Foundation</h3>
         <ul class="mes-items">
-          <li>Identidade visual completa finalizada</li>
-          <li>Portfólio online com 6–9 UGCs</li>
-          <li>E-book publicado na Hotmart</li>
-          <li>Email para 20 marcas BR</li>
-          <li>3 Reels/semana com os 3 pilares</li>
-          <li>BIO configurada e Linktree ativo</li>
+          <li data-i18n="m1_1">Complete visual identity finalized</li>
+          <li data-i18n="m1_2">Online portfolio with 6–9 UGCs</li>
+          <li data-i18n="m1_3">E-book published on Hotmart</li>
+          <li data-i18n="m1_4">Email outreach to 20 BR brands</li>
+          <li data-i18n="m1_5">3 Reels/week with the 3 pillars</li>
+          <li data-i18n="m1_6">BIO configured and Linktree active</li>
         </ul>
-        <p class="mes-meta">Meta: 500 seguidores · 10 vendas e-book · 1 contrato</p>
+        <p class="mes-meta" data-i18n="m1_meta">Goal: 500 followers · 10 e-book sales · 1 contract</p>
       </div>
       <div class="mes-card reveal">
-        <p class="mes-label">Mês 02</p>
-        <h3 class="mes-title">Crescimento</h3>
+        <p class="mes-label" data-i18n="m2_label">Month 02</p>
+        <h3 class="mes-title" data-i18n="m2_title">Growth</h3>
         <ul class="mes-items">
-          <li>3 novos UGCs no portfólio</li>
-          <li>Campanha de lançamento do e-book</li>
-          <li>Primeiros 2 clientes de mentoria</li>
-          <li>Colaboração com 2 criadores</li>
-          <li>Media kit profissional em PDF</li>
-          <li>Teste Meta Ads (R$ 300)</li>
+          <li data-i18n="m2_1">3 new UGCs in portfolio</li>
+          <li data-i18n="m2_2">E-book launch campaign</li>
+          <li data-i18n="m2_3">First 2 mentorship clients</li>
+          <li data-i18n="m2_4">Collaboration with 2 creators</li>
+          <li data-i18n="m2_5">Professional media kit in PDF</li>
+          <li data-i18n="m2_6">Meta Ads test (R$ 300)</li>
         </ul>
-        <p class="mes-meta">Meta: 2k seguidores · 3 contratos · 35 vendas</p>
+        <p class="mes-meta" data-i18n="m2_meta">Goal: 2k followers · 3 contracts · 35 sales</p>
       </div>
       <div class="mes-card reveal">
-        <p class="mes-label">Mês 03</p>
-        <h3 class="mes-title">Escala</h3>
+        <p class="mes-label" data-i18n="m3_label">Month 03</p>
+        <h3 class="mes-title" data-i18n="m3_title">Scale</h3>
         <ul class="mes-items">
-          <li>Lançamento canal YouTube</li>
-          <li>Pacote UGC mensal (retainer)</li>
-          <li>Grupo fechado de criadores UGC</li>
-          <li>Campanha com marca de beleza</li>
-          <li>Segundo produto digital ou bundle</li>
-          <li>Expansão TikTok com conteúdo adaptado</li>
+          <li data-i18n="m3_1">YouTube channel launch</li>
+          <li data-i18n="m3_2">Monthly UGC retainer package</li>
+          <li data-i18n="m3_3">Closed UGC creator community</li>
+          <li data-i18n="m3_4">Beauty brand campaign</li>
+          <li data-i18n="m3_5">Second digital product or bundle</li>
+          <li data-i18n="m3_6">TikTok expansion with adapted content</li>
         </ul>
-        <p class="mes-meta">Meta: 5k seguidores · R$ 4.000+/mês · Canal ativo</p>
+        <p class="mes-meta" data-i18n="m3_meta">Goal: 5k followers · R$4,000+/month · Channel live</p>
       </div>
     </div>
   </div>
@@ -1342,39 +1607,42 @@
 <!-- CONTATO -->
 <section id="contato">
   <div class="section-header reveal">
-    <p class="section-eyebrow">Parcerias</p>
-    <h1 class="contato-title">Sua marca merece<br><span>conteúdo real</span></h1>
-    <p class="contato-sub">Se você chegou até aqui, já entendeu que a 4tom3ve não é uma criadora qualquer. Preencha abaixo e vamos conversar sobre como criar conteúdo que a sua audiência vai confiar.</p>
+    <p class="section-eyebrow" data-i18n="contact_eyebrow">Partnerships</p>
+    <h1 class="contato-title" data-i18n="contact_title">Your brand deserves<br><span>real content</span></h1>
+    <p class="contato-sub" data-i18n="contact_sub">If you got this far, you already understand that 4tom3ve isn't just another creator. Fill in below and let's talk about creating content your audience will trust.</p>
   </div>
   <form class="contato-form reveal" onsubmit="handleSubmit(event)">
     <div class="form-row">
       <div class="form-group">
-        <label>Nome da Marca</label>
-        <input type="text" placeholder="Ex: Vult Cosméticos" required>
+        <label data-i18n="form_brand">Brand Name</label>
+        <input type="text" data-i18n-placeholder="form_brand_ph" placeholder="Ex: Vult Cosmetics" required>
       </div>
       <div class="form-group">
-        <label>E-mail</label>
-        <input type="email" placeholder="contato@marca.com.br" required>
+        <label data-i18n="form_email">Email</label>
+        <input type="email" placeholder="contact@brand.com" required>
       </div>
     </div>
     <div class="form-group">
-      <label>Tipo de Conteúdo</label>
-      <select>
-        <option value="">Selecione o formato</option>
-        <option>UGC Vídeo (Reels / TikTok)</option>
-        <option>UGC Foto (Feed / E-commerce)</option>
-        <option>UGC Stories</option>
-        <option>Pack Mensal</option>
-        <option>Outro / Quero conversar</option>
+      <label data-i18n="form_service">Service Type</label>
+      <select id="form-service-select">
+        <option value="" data-i18n="form_svc_ph">Select the format</option>
+        <option data-i18n="form_svc1">UGC Video (Reels / TikTok)</option>
+        <option data-i18n="form_svc2">UGC Photo (Feed / E-commerce)</option>
+        <option data-i18n="form_svc3">UGC Stories</option>
+        <option data-i18n="form_svc4">Monthly Pack</option>
+        <option data-i18n="form_svc5">Social Media Management</option>
+        <option data-i18n="form_svc6">Scheduling Agent</option>
+        <option data-i18n="form_svc7">AI Attendant</option>
+        <option data-i18n="form_svc8">Other / I want to talk</option>
       </select>
     </div>
     <div class="form-group">
-      <label>Mensagem</label>
-      <textarea placeholder="Conte um pouco sobre a marca, o produto e o que imagina para o conteúdo..."></textarea>
+      <label data-i18n="form_msg">Message</label>
+      <textarea data-i18n-placeholder="form_msg_ph" placeholder="Tell me a bit about your brand, the product, and what you have in mind for the content..."></textarea>
     </div>
-    <button type="submit" class="btn-submit">Enviar Proposta →</button>
-    <div id="form-success" style="display:none; margin-top:1rem; color:var(--red); font-size:0.85rem; letter-spacing:0.1em;">
-      ♥ Mensagem enviada! Eve entrará em contato em breve.
+    <button type="submit" class="btn-submit" data-i18n="form_submit">Send Proposal →</button>
+    <div id="form-success" style="display:none; margin-top:1rem; color:var(--red); font-size:0.85rem; letter-spacing:0.1em;" data-i18n="form_success">
+      ♥ Message sent! Eve will get back to you soon.
     </div>
   </form>
 </section>
@@ -1383,136 +1651,285 @@
 <footer>
   <div class="footer-brand">
     <div class="logo"><span>4</span>tom<span>3</span>ve</div>
-    <p>"Beleza sem falsidade.<br>Conteúdo que marcas querem usar porque parece real — porque é."</p>
+    <p data-i18n="footer_tagline">"Beauty without fakeness.<br>Content brands want to use because it feels real — because it is."</p>
   </div>
   <div class="footer-links">
-    <h4>Navegação</h4>
+    <h4 data-i18n="footer_nav">Navigation</h4>
     <ul>
-      <li><a href="#sobre">Sobre Eve</a></li>
-      <li><a href="#servicos">Serviços UGC</a></li>
-      <li><a href="#produtos">E-book</a></li>
-      <li><a href="#produtos">Mentoria</a></li>
-      <li><a href="#contato">Para Marcas</a></li>
+      <li><a href="#sobre" data-i18n="nav_about">About Eve</a></li>
+      <li><a href="#servicos" data-i18n="nav_ugc">UGC Services</a></li>
+      <li><a href="#social-media" data-i18n="nav_social">Social Media</a></li>
+      <li><a href="#produtos" data-i18n="nav_products">Digital Products</a></li>
+      <li><a href="#contato" data-i18n="footer_brands">For Brands</a></li>
     </ul>
   </div>
   <div class="footer-links">
-    <h4>Redes</h4>
+    <h4 data-i18n="footer_connect">Connect</h4>
     <ul>
       <li><a href="https://instagram.com/4tom3ve" target="_blank">Instagram @4tom3ve</a></li>
       <li><a href="https://tiktok.com/@4tom3ve" target="_blank">TikTok @4tom3ve</a></li>
       <li><a href="https://youtube.com/@4tom3ve" target="_blank">YouTube @4tom3ve</a></li>
+      <li><a href="https://creatify.com.br/" target="_blank">Creatify ↗</a></li>
       <li><a href="mailto:parcerias@4tom3ve.com">parcerias@4tom3ve.com</a></li>
     </ul>
   </div>
   <div class="footer-bottom">
-    <p>© 2024 4tom3ve · Evelyn Oliveira · Todos os direitos reservados · Akasha Hub</p>
+    <p data-i18n="footer_copy">© 2024 4tom3ve · Evelyn Oliveira · All rights reserved · Akasha Hub</p>
     <div class="footer-social">
       <a href="https://instagram.com/4tom3ve" target="_blank">Instagram</a>
       <a href="https://tiktok.com/@4tom3ve" target="_blank">TikTok</a>
-      <a href="mailto:parcerias@4tom3ve.com">Email</a>
+      <a href="mailto:parcerias@4tom3ve.com" data-i18n="footer_email">Email</a>
     </div>
   </div>
 </footer>
 
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
 <script>
-// CURSOR
-const cursor = document.getElementById('cursor');
-const trail = document.getElementById('cursor-trail');
-let mx = 0, my = 0, tx = 0, ty = 0;
-
-document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
-  cursor.style.left = mx + 'px';
-  cursor.style.top = my + 'px';
-  setTimeout(() => {
-    trail.style.left = e.clientX + 'px';
-    trail.style.top = e.clientY + 'px';
-  }, 80);
-});
-
-document.querySelectorAll('a, button, .servico-card, .produto-card').forEach(el => {
-  el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-  el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-});
-
-// PARTICLES CANVAS
-const canvas = document.getElementById('bg-canvas');
-const ctx = canvas.getContext('2d');
-let particles = [];
-
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-
-function createParticles() {
-  particles = [];
-  const count = Math.min(100, Math.floor(window.innerWidth / 15));
-  for (let i = 0; i < count; i++) {
-    particles.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 1.5 + 0.3,
-      vx: (Math.random() - 0.5) * 0.3,
-      vy: -(Math.random() * 0.4 + 0.1),
-      opacity: Math.random() * 0.5 + 0.1
-    });
+// ── TRANSLATIONS ──────────────────────────────────────
+const i18n = {
+  en: {
+    nav_about:"About", nav_ugc:"UGC Services", nav_social:"Social Media",
+    nav_products:"Products", nav_plan:"90-Day Plan", nav_cta:"Hire UGC",
+    hero_eyebrow:"UGC Creator · Beauty & Lifestyle · Brazil",
+    hero_tagline:'"Beauty without fakeness."',
+    hero_btn1:"View Portfolio", hero_btn2:"For Brands", scroll:"scroll",
+    manifesto_text:'"I don\'t create content to <em>seem</em>. I create to <em>be</em>. Since cosplay, I learned that identity isn\'t performed — it\'s embodied. My brand isn\'t a strategy. It\'s who I am. And brands that understand this are the only ones that deserve my content."',
+    mq1:"Beauty with Soul", mq2:"Authenticity", mq3:"Real Identity", mq4:"Content Brands Want",
+    sobre_badge:"UGC Creator\nsince cosplay",
+    sobre_title:'Identity that<br><span>can\'t be copied</span>',
+    sobre_p1:"4tom3ve wasn't born from a marketing strategy. It was born from cosplay — a genuine identity built over years. That's uncopyable.",
+    sobre_p2:"Eve sees people. Captures real beauty. Creates content brands want to use because it feels real — because it is.",
+    sobre_p3:"Not an influencer with AI. Not generic beauty without soul. A creator with history, her own aesthetic, irreplaceable presence.",
+    tag1:"Authenticity", tag2:"Creativity", tag3:"Editorial Beauty", tag5:"Professional UGC", tag6:"Cosplay Roots",
+    stat1:"Years of identity", stat2:"Avg. per contract", stat3:"Original content", stat4:"Content pillars",
+    ugc_eyebrow:"For Brands", ugc_title:'UGC <span>Services</span>',
+    ugc1_title:"UGC Video", ugc1_desc:"Authentic product, skincare, fashion, or lifestyle videos in the 4tom3ve editorial style. Delivered in formats optimized for Reels, TikTok, and Ads.", ugc1_price:"From R$ 500",
+    ugc2_title:"UGC Photo", ugc2_desc:"Editorial product photos with a strong visual identity. 4tom3ve lighting, composition, and aesthetic — content that converts because it feels real.", ugc2_price:"From R$ 350",
+    ugc3_title:"Monthly Pack", ugc3_desc:"Fixed monthly retainer with recurring deliveries. Ideal for brands that want consistency and identity. Includes videos, photos, and Stories.", ugc3_price:"From R$ 1,800/month",
+    ugc4_title:"UGC Stories", ugc4_desc:"Story sequences with natural storytelling, no rigid script. Direct tone, real personality, results that audiences trust.", ugc4_price:"From R$ 280",
+    sm_eyebrow:"Full Digital Presence", sm_title:'Social Media <span>Management</span>',
+    sm_intro:"Beyond UGC creation, Evelyn offers complete social media management — from strategy and content production to automated scheduling and AI-powered customer service. Everything so your brand never goes silent.",
+    sm1_title:"Profile Management", sm1_sub:"Instagram · TikTok · YouTube", sm1_desc:"Complete management of your social profiles: content strategy, caption writing, hashtag research, engagement, DM replies, and performance reporting every month.",
+    sm2_title:"Scheduling Agent", sm2_sub:"Automated · Smart · Consistent", sm2_desc:"AI-powered post scheduling at the best times for your audience. Never miss a posting day. Includes a 30-day content calendar, auto-posting, and analytics to optimize reach.",
+    sm3_title:"AI Attendant", sm3_sub:"WhatsApp · DMs · Comments", sm3_desc:"Intelligent AI agent that responds to customers 24/7 on WhatsApp and social DMs, qualifies leads, answers FAQs, handles objections, and routes hot leads to you.",
+    plans_title:'Choose Your <span>Social Media Plan</span>', plans_sub:"All plans include onboarding · monthly report · dedicated WhatsApp support",
+    plan1_name:"Starter", plan1_title:"Presence", per_month:"/month",
+    p1f1:"12 posts/month (feed + stories)", p1f2:"Content strategy + calendar", p1f3:"Caption writing + hashtags", p1f4:"1 platform (Instagram or TikTok)", p1f5:"Monthly performance report", p1f6:"Scheduling agent", p1f7:"AI attendant (WhatsApp)", p1f8:"Paid ads management",
+    plan2_name:"Growth", plan2_title:"Authority", most_popular:"Most Popular",
+    p2f1:"24 posts/month (feed + stories + reels)", p2f2:"Full strategy + 30-day calendar", p2f3:"2 platforms (Instagram + TikTok)", p2f4:"Smart scheduling agent", p2f5:"Engagement + community management", p2f6:"Bi-weekly performance report", p2f7:"Basic AI attendant (WhatsApp)", p2f8:"Paid ads management",
+    plan3_name:"Premium", plan3_title:"Domination",
+    p3f1:"36+ posts/month (all formats)", p3f2:"3 platforms + YouTube Shorts", p3f3:"Full scheduling automation", p3f4:"Advanced AI attendant 24/7", p3f5:"Lead qualification + CRM", p3f6:"Meta Ads management (up to R$2k budget)", p3f7:"Weekly performance report + strategy call", p3f8:"Priority access to UGC content",
+    btn_hire_wpp:"Hire via WhatsApp",
+    agent_title:'Standalone <span>AI Agent Add-ons</span>', agent_sub:"Buy separately or add to any plan",
+    agent1_label:"AI Scheduling", agent1_title:"Scheduling Agent", agent1_desc:"Automatic scheduling on Instagram, TikTok, and YouTube at the highest-engagement times. Integrates with your existing content calendar. Set it once — it posts for you every day.", agent1_price:"From R$ 397/month",
+    agent2_label:"AI Customer Service", agent2_title:"AI Attendant", agent2_desc:"AI agent trained on your brand's voice that handles DMs and WhatsApp messages 24/7. Answers FAQs, handles objections, qualifies leads, and alerts you when a deal is ready to close.", agent2_price:"From R$ 597/month",
+    creatify_text:"Evelyn is also a certified creator on Brazil's largest UGC platform",
+    prod_eyebrow:"For Creators", prod_title:'Digital <span>Products</span>',
+    prod1_badge:"Launch", prod1_title:"UGC E-book", prod1_sub:"How to Create Beauty Content Brands Want to Pay For",
+    prod1_f1:"What UGC is and why brands pay for it", prod1_f2:"Minimum equipment that actually works", prod1_f3:"How to build your portfolio from zero", prod1_f4:"How to approach brands and close contracts", prod1_f5:"Pricing and negotiation", prod1_f6:"+ Bonus: email template for brands",
+    launch:"launch", prod1_btn:"Get the E-book",
+    prod2_badge:"1:1 Mentorship", prod2_title:"4tom3ve Method", prod2_sub:"Creator identity + first UGC contracts",
+    prod2_f1:"4 sessions of 60 min via video call", prod2_f2:"Week 1: Identity — what makes you different", prod2_f3:"Week 2: Portfolio and brand aesthetic", prod2_f4:"Week 3: Brand pitch and pricing", prod2_f5:"Week 4: First contract and expansion", prod2_f6:"+ E-book + creators community access",
+    early_bird:"early bird", prod2_btn:"Get the Mentorship",
+    proc_eyebrow:"How It Works", proc_title:'From brief to <span>delivery</span>',
+    step1_title:"Proposal & Alignment", step1_desc:"Brand reaches out via email or DM. Eve evaluates the brief, understands the brand's identity, and presents a proposal with rates and formats.",
+    step2_title:"Receive & Concept", step2_desc:"Product sent by the brand. Eve creates the visual concept — what will be created, how it will be filmed, what the narrative is. Everything planned before shooting.",
+    step3_title:"Creation & Editing", step3_desc:"Recording and editing with 4tom3ve aesthetic. Unique lighting, composition, and voice. Every detail designed to convert without feeling forced.",
+    step4_title:"Delivery & Approval", step4_desc:"Delivered before deadline, ready for Reels, Ads, and Stories. Revision included. Monthly partnership available.",
+    plan90_eyebrow:"Growth", plan90_title:'<span>90-Day</span> Plan',
+    m1_label:"Month 01", m1_title:"Foundation", m1_1:"Complete visual identity finalized", m1_2:"Online portfolio with 6–9 UGCs", m1_3:"E-book published on Hotmart", m1_4:"Email outreach to 20 BR brands", m1_5:"3 Reels/week with the 3 pillars", m1_6:"BIO configured and Linktree active", m1_meta:"Goal: 500 followers · 10 e-book sales · 1 contract",
+    m2_label:"Month 02", m2_title:"Growth", m2_1:"3 new UGCs in portfolio", m2_2:"E-book launch campaign", m2_3:"First 2 mentorship clients", m2_4:"Collaboration with 2 creators", m2_5:"Professional media kit in PDF", m2_6:"Meta Ads test (R$ 300)", m2_meta:"Goal: 2k followers · 3 contracts · 35 sales",
+    m3_label:"Month 03", m3_title:"Scale", m3_1:"YouTube channel launch", m3_2:"Monthly UGC retainer package", m3_3:"Closed UGC creator community", m3_4:"Beauty brand campaign", m3_5:"Second digital product or bundle", m3_6:"TikTok expansion with adapted content", m3_meta:"Goal: 5k followers · R$4,000+/month · Channel live",
+    contact_eyebrow:"Partnerships", contact_title:'Your brand deserves<br><span>real content</span>',
+    contact_sub:"If you got this far, you already understand that 4tom3ve isn't just another creator. Fill in below and let's talk about creating content your audience will trust.",
+    form_brand:"Brand Name", form_brand_ph:"Ex: Vult Cosmetics", form_email:"Email", form_service:"Service Type",
+    form_svc_ph:"Select the format", form_svc1:"UGC Video (Reels / TikTok)", form_svc2:"UGC Photo (Feed / E-commerce)", form_svc3:"UGC Stories", form_svc4:"Monthly Pack", form_svc5:"Social Media Management", form_svc6:"Scheduling Agent", form_svc7:"AI Attendant", form_svc8:"Other / I want to talk",
+    form_msg:"Message", form_msg_ph:"Tell me a bit about your brand, the product, and what you have in mind for the content...",
+    form_submit:"Send Proposal →", form_success:"♥ Message sent! Eve will get back to you soon.",
+    footer_tagline:'"Beauty without fakeness.<br>Content brands want to use because it feels real — because it is."',
+    footer_nav:"Navigation", footer_brands:"For Brands", footer_connect:"Connect",
+    footer_copy:"© 2024 4tom3ve · Evelyn Oliveira · All rights reserved · Akasha Hub",
+    footer_email:"Email",
+    tl_text:"Translating the site", tl_lang:"English"
+  },
+  pt: {
+    nav_about:"Sobre", nav_ugc:"Serviços UGC", nav_social:"Social Media",
+    nav_products:"Produtos", nav_plan:"Plano 90 Dias", nav_cta:"Contratar UGC",
+    hero_eyebrow:"UGC Creator · Beleza & Lifestyle · Brasil",
+    hero_tagline:'"Beleza sem falsidade."',
+    hero_btn1:"Ver Portfólio", hero_btn2:"Para Marcas", scroll:"rolar",
+    manifesto_text:'"Eu não crio conteúdo para <em>parecer</em>. Crio para <em>ser</em>. Desde o cosplay aprendi que identidade não se performa — se encarna. Minha marca não é uma estratégia. É quem eu sou. E marcas que entendem isso são as únicas que merecem o meu conteúdo."',
+    mq1:"Beleza com Alma", mq2:"Autenticidade", mq3:"Identidade Real", mq4:"Conteúdo que Marcas Querem",
+    sobre_badge:"UGC Creator\ndesde o cosplay",
+    sobre_title:'Identidade que<br><span>não se copia</span>',
+    sobre_p1:"4tom3ve não nasceu de estratégia de marketing. Nasceu do cosplay — de uma identidade genuína construída ao longo de anos. Isso é incopiável.",
+    sobre_p2:"Eve enxerga pessoas. Captura beleza real. Cria conteúdo que marcas querem usar porque parece real — porque é.",
+    sobre_p3:"Não é influencer com IA. Não é beleza genérica sem alma. É uma criadora com história, com estética própria, com presença insubstituível.",
+    tag1:"Autenticidade", tag2:"Criatividade", tag3:"Beleza Editorial", tag5:"UGC Profissional", tag6:"Raízes Cosplay",
+    stat1:"Anos de identidade", stat2:"Médio por contrato", stat3:"Conteúdo autoral", stat4:"Pilares de conteúdo",
+    ugc_eyebrow:"Para Marcas", ugc_title:'Serviços <span>UGC</span>',
+    ugc1_title:"UGC Vídeo", ugc1_desc:"Vídeos autênticos de produto, skincare, moda ou lifestyle no estilo editorial 4tom3ve. Entregue em formato otimizado para Reels, TikTok e Ads.", ugc1_price:"A partir de R$ 500",
+    ugc2_title:"UGC Foto", ugc2_desc:"Fotos editoriais de produto com identidade visual forte. Iluminação, composição e estética 4tom3ve — conteúdo que converte porque parece real.", ugc2_price:"A partir de R$ 350",
+    ugc3_title:"Pack Mensal", ugc3_desc:"Retainer fixo mensal com entregas recorrentes. Ideal para marcas que querem consistência e identidade. Inclui vídeos, fotos e Stories.", ugc3_price:"A partir de R$ 1.800/mês",
+    ugc4_title:"UGC Stories", ugc4_desc:"Sequências de Stories com storytelling natural, sem roteiro engessado. Tom direto, personalidade real, resultado que a audiência confia.", ugc4_price:"A partir de R$ 280",
+    sm_eyebrow:"Presença Digital Completa", sm_title:'Gestão de <span>Redes Sociais</span>',
+    sm_intro:"Além de criação de UGC, Evelyn oferece gestão completa de redes sociais — da estratégia e produção de conteúdo ao agendamento automatizado e atendimento com IA. Tudo para sua marca nunca ficar em silêncio.",
+    sm1_title:"Gestão de Perfil", sm1_sub:"Instagram · TikTok · YouTube", sm1_desc:"Gestão completa dos seus perfis: estratégia de conteúdo, redação de legendas, pesquisa de hashtags, engajamento, respostas de DMs e relatório de performance mensal.",
+    sm2_title:"Agente de Agendamento", sm2_sub:"Automatizado · Inteligente · Consistente", sm2_desc:"Agendamento de posts com IA nos melhores horários para o seu público. Nunca perca um dia de publicação. Inclui calendário de 30 dias, postagem automática e analytics.",
+    sm3_title:"Atendente com IA", sm3_sub:"WhatsApp · DMs · Comentários", sm3_desc:"Agente de IA que responde clientes 24/7 no WhatsApp e DMs, qualifica leads, responde dúvidas frequentes, lida com objeções e direciona leads quentes para você.",
+    plans_title:'Escolha Seu <span>Plano de Social Media</span>', plans_sub:"Todos os planos incluem onboarding · relatório mensal · suporte dedicado no WhatsApp",
+    plan1_name:"Starter", plan1_title:"Presença", per_month:"/mês",
+    p1f1:"12 posts/mês (feed + stories)", p1f2:"Estratégia de conteúdo + calendário", p1f3:"Redação de legendas + hashtags", p1f4:"1 plataforma (Instagram ou TikTok)", p1f5:"Relatório mensal de performance", p1f6:"Agente de agendamento", p1f7:"Atendente com IA (WhatsApp)", p1f8:"Gestão de anúncios pagos",
+    plan2_name:"Growth", plan2_title:"Autoridade", most_popular:"Mais Popular",
+    p2f1:"24 posts/mês (feed + stories + reels)", p2f2:"Estratégia completa + calendário 30 dias", p2f3:"2 plataformas (Instagram + TikTok)", p2f4:"Agente de agendamento inteligente", p2f5:"Engajamento + gestão de comunidade", p2f6:"Relatório quinzenal de performance", p2f7:"Atendente com IA básico (WhatsApp)", p2f8:"Gestão de anúncios pagos",
+    plan3_name:"Premium", plan3_title:"Dominação",
+    p3f1:"36+ posts/mês (todos os formatos)", p3f2:"3 plataformas + YouTube Shorts", p3f3:"Automação de agendamento completa", p3f4:"Atendente com IA avançado 24/7", p3f5:"Qualificação de leads + CRM", p3f6:"Gestão Meta Ads (até R$2k de verba)", p3f7:"Relatório semanal + call estratégico", p3f8:"Acesso prioritário a conteúdo UGC",
+    btn_hire_wpp:"Contratar pelo WhatsApp",
+    agent_title:'<span>Agentes de IA</span> Avulsos', agent_sub:"Compre separado ou adicione a qualquer plano",
+    agent1_label:"Agendamento com IA", agent1_title:"Agente de Agendamento", agent1_desc:"Agendamento automático no Instagram, TikTok e YouTube nos horários de maior engajamento. Integra com seu calendário de conteúdo. Configure uma vez — ele posta por você todos os dias.", agent1_price:"A partir de R$ 397/mês",
+    agent2_label:"Atendimento com IA", agent2_title:"Atendente com IA", agent2_desc:"Agente de IA treinado com a voz da sua marca, atendendo DMs e WhatsApp 24/7. Responde dúvidas, lida com objeções, qualifica leads e avisa quando um negócio está pronto para fechar.", agent2_price:"A partir de R$ 597/mês",
+    creatify_text:"Evelyn também é criadora certificada na maior plataforma de UGC do Brasil",
+    prod_eyebrow:"Para Criadores", prod_title:'Produtos <span>Digitais</span>',
+    prod1_badge:"Lançamento", prod1_title:"E-book UGC", prod1_sub:"Como Criar Conteúdo de Beleza que Marcas Querem Pagar",
+    prod1_f1:"O que é UGC e por que marcas pagam", prod1_f2:"Equipamento mínimo que funciona", prod1_f3:"Como montar seu portfólio do zero", prod1_f4:"Como abordar marcas e fechar contrato", prod1_f5:"Precificação e negociação", prod1_f6:"+ Bonus: template de email para marcas",
+    launch:"lançamento", prod1_btn:"Quero o E-book",
+    prod2_badge:"Mentoria 1:1", prod2_title:"4tom3ve Method", prod2_sub:"Identidade de criadora + primeiros contratos UGC",
+    prod2_f1:"4 encontros de 60 min via videochamada", prod2_f2:"Semana 1: Identidade — o que te diferencia", prod2_f3:"Semana 2: Portfólio e estética de marca", prod2_f4:"Semana 3: Pitch para marcas e precificação", prod2_f5:"Semana 4: Primeiro contrato e expansão", prod2_f6:"+ E-book + acesso ao grupo de criadores",
+    early_bird:"early bird", prod2_btn:"Quero a Mentoria",
+    proc_eyebrow:"Como Funciona", proc_title:'Do brief à <span>entrega</span>',
+    step1_title:"Proposta & Alinhamento", step1_desc:"Marca entra em contato via email ou DM. Eve avalia o briefing, entende a identidade da marca e apresenta proposta com valores e formatos.",
+    step2_title:"Recebimento & Conceito", step2_desc:"Produto enviado pela marca. Eve cria o conceito visual — o que será criado, como será filmado, qual a narrativa. Tudo planejado antes de gravar.",
+    step3_title:"Criação & Edição", step3_desc:"Gravação e edição com estética 4tom3ve. Iluminação, composição e tom de voz únicos. Cada detalhe pensado para converter sem parecer forçado.",
+    step4_title:"Entrega & Aprovação", step4_desc:"Entrega antes do prazo, em formato pronto para uso em Reels, Ads e Stories. Revisão inclusa. Parceria mensal disponível.",
+    plan90_eyebrow:"Crescimento", plan90_title:'Plano <span>90 Dias</span>',
+    m1_label:"Mês 01", m1_title:"Fundação", m1_1:"Identidade visual completa finalizada", m1_2:"Portfólio online com 6–9 UGCs", m1_3:"E-book publicado na Hotmart", m1_4:"Email para 20 marcas BR", m1_5:"3 Reels/semana com os 3 pilares", m1_6:"BIO configurada e Linktree ativo", m1_meta:"Meta: 500 seguidores · 10 vendas e-book · 1 contrato",
+    m2_label:"Mês 02", m2_title:"Crescimento", m2_1:"3 novos UGCs no portfólio", m2_2:"Campanha de lançamento do e-book", m2_3:"Primeiros 2 clientes de mentoria", m2_4:"Colaboração com 2 criadores", m2_5:"Media kit profissional em PDF", m2_6:"Teste Meta Ads (R$ 300)", m2_meta:"Meta: 2k seguidores · 3 contratos · 35 vendas",
+    m3_label:"Mês 03", m3_title:"Escala", m3_1:"Lançamento canal YouTube", m3_2:"Pacote UGC mensal (retainer)", m3_3:"Grupo fechado de criadores UGC", m3_4:"Campanha com marca de beleza", m3_5:"Segundo produto digital ou bundle", m3_6:"Expansão TikTok com conteúdo adaptado", m3_meta:"Meta: 5k seguidores · R$ 4.000+/mês · Canal ativo",
+    contact_eyebrow:"Parcerias", contact_title:'Sua marca merece<br><span>conteúdo real</span>',
+    contact_sub:"Se você chegou até aqui, já entendeu que a 4tom3ve não é uma criadora qualquer. Preencha abaixo e vamos conversar sobre como criar conteúdo que a sua audiência vai confiar.",
+    form_brand:"Nome da Marca", form_brand_ph:"Ex: Vult Cosméticos", form_email:"E-mail", form_service:"Tipo de Serviço",
+    form_svc_ph:"Selecione o formato", form_svc1:"UGC Vídeo (Reels / TikTok)", form_svc2:"UGC Foto (Feed / E-commerce)", form_svc3:"UGC Stories", form_svc4:"Pack Mensal", form_svc5:"Gestão de Social Media", form_svc6:"Agente de Agendamento", form_svc7:"Atendente com IA", form_svc8:"Outro / Quero conversar",
+    form_msg:"Mensagem", form_msg_ph:"Conte um pouco sobre a marca, o produto e o que imagina para o conteúdo...",
+    form_submit:"Enviar Proposta →", form_success:"♥ Mensagem enviada! Eve entrará em contato em breve.",
+    footer_tagline:'"Beleza sem falsidade.<br>Conteúdo que marcas querem usar porque parece real — porque é."',
+    footer_nav:"Navegação", footer_brands:"Para Marcas", footer_connect:"Redes",
+    footer_copy:"© 2024 4tom3ve · Evelyn Oliveira · Todos os direitos reservados · Akasha Hub",
+    footer_email:"Email",
+    tl_text:"Traduzindo o site", tl_lang:"Português · BR"
+  },
+  es: {
+    nav_about:"Sobre", nav_ugc:"Servicios UGC", nav_social:"Redes Sociales",
+    nav_products:"Productos", nav_plan:"Plan 90 Días", nav_cta:"Contratar UGC",
+    hero_eyebrow:"UGC Creator · Belleza & Lifestyle · Brasil",
+    hero_tagline:'"Belleza sin falsedad."',
+    hero_btn1:"Ver Portafolio", hero_btn2:"Para Marcas", scroll:"bajar",
+    manifesto_text:'"No creo contenido para <em>parecer</em>. Lo creo para <em>ser</em>. Desde el cosplay aprendí que la identidad no se actúa — se encarna. Mi marca no es una estrategia. Es quien soy. Y las marcas que entienden eso son las únicas que merecen mi contenido."',
+    mq1:"Belleza con Alma", mq2:"Autenticidad", mq3:"Identidad Real", mq4:"Contenido que las Marcas Quieren",
+    sobre_badge:"UGC Creator\ndesde el cosplay",
+    sobre_title:'Identidad que<br><span>no se copia</span>',
+    sobre_p1:"4tom3ve no nació de una estrategia de marketing. Nació del cosplay — una identidad genuina construida a lo largo de años. Eso es inimitable.",
+    sobre_p2:"Eve ve a las personas. Captura la belleza real. Crea contenido que las marcas quieren usar porque se siente real — porque lo es.",
+    sobre_p3:"No es una influencer con IA. No es belleza genérica sin alma. Es una creadora con historia, estética propia, presencia insustituible.",
+    tag1:"Autenticidad", tag2:"Creatividad", tag3:"Belleza Editorial", tag5:"UGC Profesional", tag6:"Raíces Cosplay",
+    stat1:"Años de identidad", stat2:"Promedio por contrato", stat3:"Contenido original", stat4:"Pilares de contenido",
+    ugc_eyebrow:"Para Marcas", ugc_title:'Servicios <span>UGC</span>',
+    ugc1_title:"UGC Video", ugc1_desc:"Videos auténticos de producto, skincare, moda o lifestyle en el estilo editorial 4tom3ve. Entregados en formatos optimizados para Reels, TikTok y Ads.", ugc1_price:"Desde R$ 500",
+    ugc2_title:"UGC Foto", ugc2_desc:"Fotos editoriales de producto con identidad visual fuerte. Iluminación, composición y estética 4tom3ve — contenido que convierte porque se siente real.", ugc2_price:"Desde R$ 350",
+    ugc3_title:"Pack Mensual", ugc3_desc:"Retainer fijo mensual con entregas recurrentes. Ideal para marcas que quieren consistencia e identidad. Incluye videos, fotos y Stories.", ugc3_price:"Desde R$ 1.800/mes",
+    ugc4_title:"UGC Stories", ugc4_desc:"Secuencias de Stories con storytelling natural, sin guión rígido. Tono directo, personalidad real, resultados en los que la audiencia confía.", ugc4_price:"Desde R$ 280",
+    sm_eyebrow:"Presencia Digital Completa", sm_title:'Gestión de <span>Redes Sociales</span>',
+    sm_intro:"Además de crear UGC, Evelyn ofrece gestión completa de redes sociales — desde estrategia y producción de contenido hasta programación automatizada y atención con IA. Todo para que tu marca nunca quede en silencio.",
+    sm1_title:"Gestión de Perfil", sm1_sub:"Instagram · TikTok · YouTube", sm1_desc:"Gestión completa de tus perfiles: estrategia de contenido, redacción de captions, búsqueda de hashtags, engagement, respuesta a DMs y reporte mensual.",
+    sm2_title:"Agente de Programación", sm2_sub:"Automatizado · Inteligente · Consistente", sm2_desc:"Programación de publicaciones con IA en los mejores horarios para tu audiencia. Nunca te pierdas un día de publicación. Incluye calendario de 30 días y analytics.",
+    sm3_title:"Asistente IA", sm3_sub:"WhatsApp · DMs · Comentarios", sm3_desc:"Agente de IA que responde a clientes 24/7 en WhatsApp y DMs, califica leads, responde preguntas frecuentes, maneja objeciones y te avisa cuando un lead está listo.",
+    plans_title:'Elige Tu <span>Plan de Redes Sociales</span>', plans_sub:"Todos los planes incluyen onboarding · reporte mensual · soporte dedicado por WhatsApp",
+    plan1_name:"Starter", plan1_title:"Presencia", per_month:"/mes",
+    p1f1:"12 publicaciones/mes (feed + stories)", p1f2:"Estrategia de contenido + calendario", p1f3:"Redacción de captions + hashtags", p1f4:"1 plataforma (Instagram o TikTok)", p1f5:"Reporte mensual de rendimiento", p1f6:"Agente de programación", p1f7:"Asistente IA (WhatsApp)", p1f8:"Gestión de anuncios pagados",
+    plan2_name:"Growth", plan2_title:"Autoridad", most_popular:"Más Popular",
+    p2f1:"24 publicaciones/mes (feed + stories + reels)", p2f2:"Estrategia completa + calendario 30 días", p2f3:"2 plataformas (Instagram + TikTok)", p2f4:"Agente de programación inteligente", p2f5:"Engagement + gestión de comunidad", p2f6:"Reporte quincenal de rendimiento", p2f7:"Asistente IA básico (WhatsApp)", p2f8:"Gestión de anuncios pagados",
+    plan3_name:"Premium", plan3_title:"Dominación",
+    p3f1:"36+ publicaciones/mes (todos los formatos)", p3f2:"3 plataformas + YouTube Shorts", p3f3:"Automatización completa de programación", p3f4:"Asistente IA avanzado 24/7", p3f5:"Calificación de leads + CRM", p3f6:"Gestión Meta Ads (hasta R$2k de presupuesto)", p3f7:"Reporte semanal + llamada estratégica", p3f8:"Acceso prioritario a contenido UGC",
+    btn_hire_wpp:"Contratar por WhatsApp",
+    agent_title:'<span>Agentes IA</span> Individuales', agent_sub:"Compra por separado o agrega a cualquier plan",
+    agent1_label:"Programación con IA", agent1_title:"Agente de Programación", agent1_desc:"Programación automática en Instagram, TikTok y YouTube en los horarios de mayor engagement. Se integra con tu calendario de contenido. Configúralo una vez — publica por ti todos los días.", agent1_price:"Desde R$ 397/mes",
+    agent2_label:"Atención con IA", agent2_title:"Asistente IA", agent2_desc:"Agente de IA entrenado con la voz de tu marca, atendiendo DMs y WhatsApp 24/7. Responde preguntas, maneja objeciones, califica leads y te avisa cuando hay una venta lista.", agent2_price:"Desde R$ 597/mes",
+    creatify_text:"Evelyn también es creadora certificada en la plataforma de UGC más grande de Brasil",
+    prod_eyebrow:"Para Creadores", prod_title:'Productos <span>Digitales</span>',
+    prod1_badge:"Lanzamiento", prod1_title:"E-book UGC", prod1_sub:"Cómo Crear Contenido de Belleza que las Marcas Quieran Pagar",
+    prod1_f1:"Qué es UGC y por qué las marcas pagan", prod1_f2:"Equipamiento mínimo que funciona", prod1_f3:"Cómo construir tu portafolio desde cero", prod1_f4:"Cómo contactar marcas y cerrar contratos", prod1_f5:"Precios y negociación", prod1_f6:"+ Bonus: plantilla de email para marcas",
+    launch:"lanzamiento", prod1_btn:"Quiero el E-book",
+    prod2_badge:"Mentoría 1:1", prod2_title:"4tom3ve Method", prod2_sub:"Identidad de creadora + primeros contratos UGC",
+    prod2_f1:"4 sesiones de 60 min por videollamada", prod2_f2:"Semana 1: Identidad — lo que te diferencia", prod2_f3:"Semana 2: Portafolio y estética de marca", prod2_f4:"Semana 3: Pitch para marcas y precios", prod2_f5:"Semana 4: Primer contrato y expansión", prod2_f6:"+ E-book + acceso a comunidad de creadores",
+    early_bird:"early bird", prod2_btn:"Quiero la Mentoría",
+    proc_eyebrow:"Cómo Funciona", proc_title:'Del brief a la <span>entrega</span>',
+    step1_title:"Propuesta & Alineación", step1_desc:"La marca contacta por email o DM. Eve evalúa el brief, entiende la identidad de la marca y presenta una propuesta con tarifas y formatos.",
+    step2_title:"Recepción & Concepto", step2_desc:"Producto enviado por la marca. Eve crea el concepto visual — qué se creará, cómo se filmará, cuál es la narrativa. Todo planificado antes de grabar.",
+    step3_title:"Creación & Edición", step3_desc:"Grabación y edición con la estética 4tom3ve. Iluminación, composición y tono de voz únicos. Cada detalle pensado para convertir sin parecer forzado.",
+    step4_title:"Entrega & Aprobación", step4_desc:"Entregado antes del plazo, listo para Reels, Ads y Stories. Revisión incluida. Asociación mensual disponible.",
+    plan90_eyebrow:"Crecimiento", plan90_title:'Plan <span>90 Días</span>',
+    m1_label:"Mes 01", m1_title:"Fundación", m1_1:"Identidad visual completa finalizada", m1_2:"Portafolio online con 6–9 UGCs", m1_3:"E-book publicado en Hotmart", m1_4:"Email a 20 marcas BR", m1_5:"3 Reels/semana con los 3 pilares", m1_6:"BIO configurada y Linktree activo", m1_meta:"Meta: 500 seguidores · 10 ventas e-book · 1 contrato",
+    m2_label:"Mes 02", m2_title:"Crecimiento", m2_1:"3 nuevos UGCs en portafolio", m2_2:"Campaña de lanzamiento del e-book", m2_3:"Primeros 2 clientes de mentoría", m2_4:"Colaboración con 2 creadores", m2_5:"Media kit profesional en PDF", m2_6:"Prueba Meta Ads (R$ 300)", m2_meta:"Meta: 2k seguidores · 3 contratos · 35 ventas",
+    m3_label:"Mes 03", m3_title:"Escala", m3_1:"Lanzamiento canal YouTube", m3_2:"Paquete UGC mensual (retainer)", m3_3:"Comunidad cerrada de creadores UGC", m3_4:"Campaña con marca de belleza", m3_5:"Segundo producto digital o bundle", m3_6:"Expansión TikTok con contenido adaptado", m3_meta:"Meta: 5k seguidores · R$4.000+/mes · Canal activo",
+    contact_eyebrow:"Alianzas", contact_title:'Tu marca merece<br><span>contenido real</span>',
+    contact_sub:"Si llegaste hasta aquí, ya entendiste que 4tom3ve no es una creadora cualquiera. Completa el formulario y hablemos sobre cómo crear contenido en el que tu audiencia confíe.",
+    form_brand:"Nombre de la Marca", form_brand_ph:"Ej: Vult Cosméticos", form_email:"Email", form_service:"Tipo de Servicio",
+    form_svc_ph:"Selecciona el formato", form_svc1:"UGC Video (Reels / TikTok)", form_svc2:"UGC Foto (Feed / E-commerce)", form_svc3:"UGC Stories", form_svc4:"Pack Mensual", form_svc5:"Gestión de Redes Sociales", form_svc6:"Agente de Programación", form_svc7:"Asistente IA", form_svc8:"Otro / Quiero conversar",
+    form_msg:"Mensaje", form_msg_ph:"Cuéntame un poco sobre la marca, el producto y lo que imaginas para el contenido...",
+    form_submit:"Enviar Propuesta →", form_success:"♥ ¡Mensaje enviado! Eve se pondrá en contacto pronto.",
+    footer_tagline:'"Belleza sin falsedad.<br>Contenido que las marcas quieren usar porque se siente real — porque lo es."',
+    footer_nav:"Navegación", footer_brands:"Para Marcas", footer_connect:"Redes",
+    footer_copy:"© 2024 4tom3ve · Evelyn Oliveira · Todos los derechos reservados · Akasha Hub",
+    footer_email:"Email",
+    tl_text:"Traduciendo el sitio", tl_lang:"Español"
   }
-}
+};
 
-function animateParticles() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particles.forEach((p, i) => {
-    p.x += p.vx;
-    p.y += p.vy;
-    if (p.y < -10) { p.y = canvas.height + 10; p.x = Math.random() * canvas.width; }
-    if (p.x < -10) p.x = canvas.width + 10;
-    if (p.x > canvas.width + 10) p.x = -10;
+let currentLang = 'en';
 
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(192,57,43,${p.opacity})`;
-    ctx.fill();
-
-    // Connection lines
-    particles.slice(i + 1).forEach(p2 => {
-      const dx = p.x - p2.x, dy = p.y - p2.y;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      if (dist < 100) {
-        ctx.beginPath();
-        ctx.moveTo(p.x, p.y);
-        ctx.lineTo(p2.x, p2.y);
-        ctx.strokeStyle = `rgba(192,57,43,${(1 - dist/100) * 0.08})`;
-        ctx.lineWidth = 0.5;
-        ctx.stroke();
-      }
-    });
-  });
-  requestAnimationFrame(animateParticles);
-}
-
-resizeCanvas();
-createParticles();
-animateParticles();
-window.addEventListener('resize', () => { resizeCanvas(); createParticles(); });
-
-// SCROLL REVEAL
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
+function applyTranslations(lang) {
+  const t = i18n[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) {
+      el.innerHTML = t[key];
     }
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-reveals.forEach(el => observer.observe(el));
-
-// FORM
-function handleSubmit(e) {
-  e.preventDefault();
-  document.getElementById('form-success').style.display = 'block';
-  e.target.reset();
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (t[key] !== undefined) el.placeholder = t[key];
+  });
+  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang === 'es' ? 'es' : 'en';
 }
-</script>
-</body>
-</html>
+
+function switchLang(lang) {
+  if (lang === currentLang) return;
+  const t = i18n[lang];
+  const overlay = document.getElementById('translate-overlay');
+  const countEl = document.getElementById('tl-count');
+  const textEl = document.getElementById('tl-text');
+  const langEl = document.getElementById('tl-lang-name');
+  const barFill = document.getElementById('tl-bar-fill');
+
+  textEl.textContent = t.tl_text;
+  langEl.textContent = t.tl_lang;
+  barFill.classList.remove('go');
+  countEl.textContent = '3';
+
+  overlay.classList.add('show');
+
+  // start progress bar
+  setTimeout(() => barFill.classList.add('go'), 50);
+
+  let count = 3;
+  const tick = setInterval(() => {
+    count--;
+    countEl.style.opacity = '0';
+    setTimeout(() => {
+      countEl.textContent = count > 0 ? count : '✓';
+      countEl.style.opacity = '1';
+    }, 160);
+    if (count <= 0) clearInterval(tick);
+  }, 1000);
+
+  setTimeout(() => {
+    app
