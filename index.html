@@ -3,41 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="4tom3ve — UGC Creator de Beleza & Lifestyle. Conteúdo autêntico para marcas. UGC Video, Foto, Social Media Management e Produtos Digitais.">
-<title>4tom3ve — Beauty Without Fakeness</title>
+<meta name="description" content="4tom3ve • UGC Creator de Beleza & Lifestyle. Conteúdo autêntico para marcas. UGC Video, Foto, Social Media Management e Produtos Digitais.">
+<title>4tom3ve • Beauty Without Fakeness</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
 <style>
-/* ── RESET ── */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 img,svg{display:block;max-width:100%}
 button,input,select,textarea{font:inherit}
 a{text-decoration:none;color:inherit}
-
-/* ── TOKENS ── */
 :root{
-  --red:#C0392B;
-  --red-dark:#8B1A1A;
-  --red-soft:rgba(192,57,43,0.10);
-  --red-border:rgba(192,57,43,0.22);
-  --rose:#F5E1DC;
-  --rose-deep:#EECDC6;
-  --bg:#FDF9F7;
-  --bg-alt:#F7EFE9;
-  --bg-card:#FFFFFF;
-  --text:#1C0808;
-  --text-muted:rgba(28,8,8,0.55);
-  --text-faint:rgba(28,8,8,0.32);
-  --border:rgba(192,57,43,0.18);
-  --border-light:rgba(28,8,8,0.07);
-  --shadow:0 4px 24px rgba(192,57,43,0.08);
-  --shadow-lg:0 12px 48px rgba(192,57,43,0.14);
-  --radius:2px;
-  --font-display:'Cormorant Garamond',Georgia,serif;
-  --font-body:'DM Sans',system-ui,sans-serif;
-  --nav-h:56px;
-  --lang-h:34px;
+  --red:#C0392B;--red-dark:#8B1A1A;--red-soft:rgba(192,57,43,0.10);--red-border:rgba(192,57,43,0.22);
+  --rose:#F5E1DC;--rose-deep:#EECDC6;--bg:#FDF9F7;--bg-alt:#F7EFE9;--bg-card:#FFFFFF;
+  --text:#1C0808;--text-muted:rgba(28,8,8,0.55);--text-faint:rgba(28,8,8,0.32);
+  --border:rgba(192,57,43,0.18);--border-light:rgba(28,8,8,0.07);
+  --shadow:0 4px 24px rgba(192,57,43,0.08);--shadow-lg:0 12px 48px rgba(192,57,43,0.14);
+  --radius:2px;--font-display:'Cormorant Garamond',Georgia,serif;--font-body:'DM Sans',system-ui,sans-serif;
+  --nav-h:56px;--lang-h:34px;
 }
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-weight:300;font-size:16px;line-height:1.6;overflow-x:hidden;}
@@ -57,8 +40,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-we
 .tl-bar-fill{height:100%;background:var(--red);width:0%;transition:width 3s linear}
 .tl-bar-fill.go{width:100%}
 nav{position:fixed;top:var(--lang-h);left:0;right:0;z-index:200;height:var(--nav-h);background:rgba(253,249,247,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;}
-.nav-logo{font-family:var(--font-display);font-size:1.35rem;font-weight:300;letter-spacing:.15em;}
-.nav-logo .r{color:var(--red)}
+.nav-logo img{height:36px;width:auto;display:block;}
 .nav-links{display:flex;gap:1.8rem;list-style:none}
 .nav-links a{color:var(--text-muted);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;transition:color .25s;position:relative;}
 .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:100%;height:1px;background:var(--red);transition:right .3s ease;}
@@ -82,8 +64,8 @@ nav{position:fixed;top:var(--lang-h);left:0;right:0;z-index:200;height:var(--nav
 #hero::after{content:'';position:absolute;bottom:-5%;left:-5%;width:clamp(200px,35vw,400px);height:clamp(200px,35vw,400px);background:radial-gradient(circle,rgba(192,57,43,.08) 0%,transparent 70%);border-radius:50%;pointer-events:none;}
 .hero-inner{position:relative;z-index:1}
 .hero-eyebrow{font-size:.68rem;letter-spacing:.4em;text-transform:uppercase;color:var(--red);margin-bottom:1.2rem;opacity:0;animation:fadeUp .7s ease forwards .2s;}
-.hero-title{font-family:var(--font-display);font-size:clamp(4.5rem,14vw,10rem);font-weight:300;line-height:.9;letter-spacing:-.02em;margin-bottom:1.2rem;color:var(--text);opacity:0;animation:fadeUp .9s ease forwards .4s;}
-.hero-title .r{color:var(--red)}
+/* HERO LOGO */
+.hero-logo{display:block;margin:0 auto 1.2rem;height:clamp(120px,20vw,200px);width:auto;opacity:0;animation:fadeUp .9s ease forwards .4s;}
 .hero-tagline{font-family:var(--font-display);font-size:clamp(1rem,2.5vw,1.5rem);font-weight:300;font-style:italic;color:var(--text-muted);margin-bottom:2.5rem;opacity:0;animation:fadeUp .7s ease forwards .65s;}
 .hero-ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp .7s ease forwards .85s;}
 .hero-scroll{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;opacity:0;animation:fadeUp .7s ease forwards 1.1s;}
@@ -113,13 +95,10 @@ nav{position:fixed;top:var(--lang-h);left:0;right:0;z-index:200;height:var(--nav
 .section-header{text-align:center;margin-bottom:3.5rem}
 #sobre{padding:5rem 1.5rem;background:var(--bg-alt);border-top:1px solid var(--border-light);}
 .sobre-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:center}
-.sobre-visual{position:relative}
-.sobre-avatar{aspect-ratio:3/4;background:linear-gradient(145deg,var(--rose) 0%,var(--rose-deep) 60%,var(--bg) 100%);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
-.sobre-avatar-inner{text-align:center;padding:2rem}
-.sobre-logo{width:160px;height:160px;margin:0 auto 1.2rem;object-fit:contain}
-.sobre-avatar-name{font-family:var(--font-display);font-size:2.2rem;font-weight:300;color:var(--text)}
-.sobre-avatar-sub{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--red);margin-top:.3rem}
-.sobre-badge{position:absolute;bottom:-1rem;right:-1rem;background:var(--red);color:#fff;padding:.8rem 1.2rem;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;text-align:center;line-height:1.6;white-space:pre-line;}
+/* SOBRE VISUAL: sem quadrado, só texto centralizado */
+.sobre-visual{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem 2rem;text-align:center;}
+.sobre-avatar-name{font-family:var(--font-display);font-size:2.8rem;font-weight:300;color:var(--text);margin-bottom:.3rem}
+.sobre-avatar-sub{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--red)}
 .sobre-content h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.05;margin-bottom:1.4rem;}
 .sobre-content h2 span{color:var(--red);font-style:italic}
 .sobre-content p{color:var(--text-muted);line-height:1.75;margin-bottom:1rem;font-size:.92rem}
@@ -235,8 +214,8 @@ nav{position:fixed;top:var(--lang-h);left:0;right:0;z-index:200;height:var(--nav
 .form-success{display:none;margin-top:.8rem;color:var(--red);font-size:.82rem;letter-spacing:.08em}
 footer{background:var(--text);color:rgba(255,255,255,.75);padding:4rem 1.5rem 2rem;border-top:1px solid rgba(192,57,43,.3);}
 .footer-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:3rem}
-.footer-logo{font-family:var(--font-display);font-size:1.7rem;font-weight:300;letter-spacing:.1em;color:#fff;margin-bottom:.7rem}
-.footer-logo .r{color:#F4A59B}
+.footer-logo{margin-bottom:.7rem}
+.footer-logo img{height:40px;width:auto;filter:brightness(0) invert(1) opacity(.85);}
 .footer-brand p{font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.65;font-style:italic;font-family:var(--font-display)}
 .footer-col h4{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:#F4A59B;margin-bottom:1rem}
 .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
@@ -249,9 +228,9 @@ footer{background:var(--text);color:rgba(255,255,255,.75);padding:4rem 1.5rem 2r
 .footer-social a:hover{color:#F4A59B}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
-@media(max-width:1024px){.social-services-grid{grid-template-columns:1fr 1fr}.plans-grid{grid-template-columns:1fr}.agent-row{grid-template-columns:1fr}.sobre-inner{grid-template-columns:1fr;gap:3rem}.sobre-badge{right:0;bottom:0}.stats-bar{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:none}.stat:nth-child(3){border-right:1px solid var(--border-light)}.stat:nth-child(3),.stat:nth-child(4){border-top:1px solid var(--border-light)}}
-@media(max-width:768px){:root{--nav-h:52px;--lang-h:32px}.nav-links,.nav-cta{display:none}#nav-toggle{display:flex}#mobile-nav{display:flex}.lang-label{display:none}.servicos-grid{grid-template-columns:1fr}.produtos-grid{grid-template-columns:1fr}.plano-meses{grid-template-columns:1fr}.social-services-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}.hero-ctas{flex-direction:column;align-items:center}.btn-primary,.btn-outline,.btn-wpp{width:100%;max-width:300px;text-align:center;justify-content:center}#manifesto{padding:3.5rem 1.5rem}#sobre,#servicos,#social-media,#produtos,#processo,#plano,#contato{padding:3.5rem 1.2rem}.stats-wrap{padding:0 1.2rem 3rem}.stats-bar{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:none}.stat:nth-child(3){border-right:1px solid var(--border-light);border-top:1px solid var(--border-light)}.stat:nth-child(4){border-top:1px solid var(--border-light)}.processo-line{display:none}.processo-step{padding-left:0}.footer-bottom{flex-direction:column;align-items:flex-start}.sobre-avatar{aspect-ratio:4/3}}
-@media(max-width:480px){.hero-title{font-size:clamp(3.5rem,18vw,5.5rem)}.hero-tagline{font-size:1rem}.stat-num{font-size:2.2rem}.servico-card,.social-card,.plan-card,.agent-card,.produto-card,.mes-card{padding:1.6rem}nav{padding:0 1rem}.nav-logo{font-size:1.2rem}.agent-row{gap:0;background:transparent;border:none}.agent-card{border:1px solid var(--border);margin-bottom:1px}}
+@media(max-width:1024px){.social-services-grid{grid-template-columns:1fr 1fr}.plans-grid{grid-template-columns:1fr}.agent-row{grid-template-columns:1fr}.sobre-inner{grid-template-columns:1fr;gap:3rem}.stats-bar{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:none}.stat:nth-child(3){border-right:1px solid var(--border-light)}.stat:nth-child(3),.stat:nth-child(4){border-top:1px solid var(--border-light)}}
+@media(max-width:768px){:root{--nav-h:52px;--lang-h:32px}.nav-links,.nav-cta{display:none}#nav-toggle{display:flex}#mobile-nav{display:flex}.lang-label{display:none}.servicos-grid{grid-template-columns:1fr}.produtos-grid{grid-template-columns:1fr}.plano-meses{grid-template-columns:1fr}.social-services-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}.hero-ctas{flex-direction:column;align-items:center}.btn-primary,.btn-outline,.btn-wpp{width:100%;max-width:300px;text-align:center;justify-content:center}#manifesto{padding:3.5rem 1.5rem}#sobre,#servicos,#social-media,#produtos,#processo,#plano,#contato{padding:3.5rem 1.2rem}.stats-wrap{padding:0 1.2rem 3rem}.stats-bar{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:none}.stat:nth-child(3){border-right:1px solid var(--border-light);border-top:1px solid var(--border-light)}.stat:nth-child(4){border-top:1px solid var(--border-light)}.processo-line{display:none}.processo-step{padding-left:0}.footer-bottom{flex-direction:column;align-items:flex-start}}
+@media(max-width:480px){.hero-logo{height:clamp(90px,22vw,140px)}.hero-tagline{font-size:1rem}.stat-num{font-size:2.2rem}.servico-card,.social-card,.plan-card,.agent-card,.produto-card,.mes-card{padding:1.6rem}nav{padding:0 1rem}.agent-row{gap:0;background:transparent;border:none}.agent-card{border:1px solid var(--border);margin-bottom:1px}}
 </style>
 </head>
 <body>
@@ -272,8 +251,11 @@ footer{background:var(--text);color:rgba(255,255,255,.75);padding:4rem 1.5rem 2r
   <button class="lang-btn" onclick="switchLang('es')" id="btn-es" aria-pressed="false">ES</button>
 </div>
 
+<!-- NAV: logo substituído por imagem -->
 <nav role="navigation" aria-label="Main">
-  <a href="#hero" class="nav-logo"><span class="r">4</span>tom<span class="r">3</span>ve</a>
+  <a href="#hero" class="nav-logo">
+    <img src="https://res.cloudinary.com/dcbarseus/image/upload/v1779139594/90d6deb7-1ca8-40af-8f33-fc969d501843_a4j5bg.png" alt="4tom3ve">
+  </a>
   <ul class="nav-links">
     <li><a href="#sobre" data-i18n="nav_about">About</a></li>
     <li><a href="#servicos" data-i18n="nav_ugc">UGC Services</a></li>
@@ -296,10 +278,15 @@ footer{background:var(--text);color:rgba(255,255,255,.75);padding:4rem 1.5rem 2r
   <a href="#contato" class="nav-cta-mob" data-i18n="nav_cta" onclick="closeMobileNav()">Hire UGC</a>
 </nav>
 
+<!-- HERO: título substituído por logo grande -->
 <section id="hero">
   <div class="hero-inner">
     <p class="hero-eyebrow" data-i18n="hero_eyebrow">UGC Creator · Beauty &amp; Lifestyle · Brazil</p>
-    <h1 class="hero-title"><span class="r">4</span>tom<span class="r">3</span>ve</h1>
+    <img
+      src="https://res.cloudinary.com/dcbarseus/image/upload/v1779139594/90d6deb7-1ca8-40af-8f33-fc969d501843_a4j5bg.png"
+      alt="4tom3ve"
+      class="hero-logo"
+    >
     <p class="hero-tagline" data-i18n="hero_tagline">"Beauty without fakeness."</p>
     <div class="hero-ctas">
       <a href="#servicos" class="btn-primary" data-i18n="hero_btn1">View Portfolio</a>
@@ -315,9 +302,9 @@ footer{background:var(--text);color:rgba(255,255,255,.75);padding:4rem 1.5rem 2r
 <section id="manifesto">
   <div class="manifesto-inner reveal">
     <p class="manifesto-text" data-i18n="manifesto_text">
-      "I don't create content to <em>seem</em>. I create to <em>be</em>. Since cosplay, I learned that identity isn't performed — it's embodied. My brand isn't a strategy. It's who I am. And brands that understand this are the only ones that deserve my content."
+      "I don't create content to <em>seem</em>. I create to <em>be</em>. Since cosplay, I learned that identity isn't performed, it's embodied. My brand isn't a strategy. It's who I am. And brands that understand this are the only ones that deserve my content."
     </p>
-    <p class="manifesto-sig">— Evelyn Oliveira · @4tom3ve</p>
+    <p class="manifesto-sig"> • Evelyn Oliveira · @4tom3ve</p>
   </div>
 </section>
 
@@ -338,22 +325,18 @@ footer{background:var(--text);color:rgba(255,255,255,.75);padding:4rem 1.5rem 2r
   </div>
 </div>
 
+<!-- SOBRE: sem quadrado, sem imagem, só Eve + Evelyn Oliveira + UGC Creator -->
 <section id="sobre">
   <div class="sobre-inner">
     <div class="sobre-visual reveal">
-      <div class="sobre-avatar">
-        <div class="sobre-avatar-inner">
-          <img src="logo.png" alt="4tom3ve logo" class="sobre-logo">
-          <p class="sobre-avatar-name">Eve</p>
-          <p class="sobre-avatar-sub">Evelyn Oliveira</p>
-        </div>
-      </div>
-      <div class="sobre-badge" data-i18n="sobre_badge">UGC Creator&#10;since cosplay</div>
+      <p class="sobre-avatar-name">Eve</p>
+      <p class="sobre-avatar-sub">Evelyn Oliveira</p>
+      <p class="sobre-avatar-sub" style="margin-top:.6rem;letter-spacing:.2em">UGC Creator</p>
     </div>
     <div class="sobre-content reveal">
       <h2 data-i18n="sobre_title">Identity that<br><span>can't be copied</span></h2>
-      <p data-i18n="sobre_p1">4tom3ve wasn't born from a marketing strategy. It was born from cosplay — a genuine identity built over years. That's uncopyable.</p>
-      <p data-i18n="sobre_p2">Eve sees people. Captures real beauty. Creates content brands want to use because it feels real — because it is.</p>
+      <p data-i18n="sobre_p1">4tom3ve wasn't born from a marketing strategy. It was born from cosplay • a genuine identity built over years. That's uncopyable.</p>
+      <p data-i18n="sobre_p2">Eve sees people. Captures real beauty. Creates content brands want to use because it feels real, because it is.</p>
       <p data-i18n="sobre_p3">Not an influencer with AI. Not generic beauty without soul. A creator with history, her own aesthetic, irreplaceable presence.</p>
       <div class="sobre-tags">
         <span class="tag" data-i18n="tag1">Authenticity</span>
@@ -391,7 +374,7 @@ footer{background:var(--text);color:rgba(255,255,255,.75);padding:4rem 1.5rem 2r
     <div class="servico-card">
       <div class="servico-num">02</div>
       <h3 class="servico-title" data-i18n="ugc2_title">UGC Photo</h3>
-      <p class="servico-desc" data-i18n="ugc2_desc">Editorial product photos with a strong visual identity. 4tom3ve lighting, composition, and aesthetic — content that converts because it feels real.</p>
+      <p class="servico-desc" data-i18n="ugc2_desc">Editorial product photos with a strong visual identity. 4tom3ve lighting, composition, and aesthetic • content that converts because it feels real.</p>
       <a href="#contato" class="servico-cta" data-i18n="ugc_cta">Request a quote →</a>
     </div>
     <div class="servico-card">
@@ -415,8 +398,7 @@ footer{background:var(--text);color:rgba(255,255,255,.75);padding:4rem 1.5rem 2r
       <p class="section-eyebrow" data-i18n="sm_eyebrow">Full Digital Presence</p>
       <h2 class="section-title" data-i18n="sm_title">Social Media <span>Management</span></h2>
     </div>
-    <p class="social-intro reveal" data-i18n="sm_intro">Beyond UGC creation, Evelyn offers complete social media management — from strategy and content production to automated scheduling and AI-powered customer service. Everything so your brand never goes silent.</p>
-
+    <p class="social-intro reveal" data-i18n="sm_intro">Beyond UGC creation, Evelyn offers complete social media management • from strategy and content production to automated scheduling and AI-powered customer service. Everything so your brand never goes silent.</p>
     <div class="social-services-grid reveal">
       <div class="social-card">
         <svg class="social-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="4" y="4" width="36" height="36" rx="4"/><circle cx="22" cy="18" r="5"/><path d="M10 36c0-6.627 5.373-12 12-12s12 5.373 12 12"/></svg>
@@ -437,10 +419,8 @@ footer{background:var(--text);color:rgba(255,255,255,.75);padding:4rem 1.5rem 2r
         <p class="social-card-desc" data-i18n="sm3_desc">Intelligent AI agent that responds to customers 24/7 on WhatsApp and social DMs, qualifies leads, answers FAQs, handles objections, and routes hot leads to you.</p>
       </div>
     </div>
-
     <h3 class="plans-title reveal" data-i18n="plans_title">Choose Your <span>Social Media Plan</span></h3>
     <p class="plans-sub reveal" data-i18n="plans_sub">All plans include onboarding · monthly report · dedicated WhatsApp support</p>
-
     <div class="plans-grid reveal">
       <div class="plan-card">
         <p class="plan-name" data-i18n="plan1_name">Starter</p>
@@ -460,7 +440,6 @@ footer{background:var(--text);color:rgba(255,255,255,.75);padding:4rem 1.5rem 2r
           <span data-i18n="btn_hire_wpp">Hire via WhatsApp</span>
         </a>
       </div>
-
       <div class="plan-card featured">
         <div class="plan-badge" data-i18n="most_popular">Most Popular</div>
         <p class="plan-name" data-i18n="plan2_name">Growth</p>
@@ -480,7 +459,6 @@ footer{background:var(--text);color:rgba(255,255,255,.75);padding:4rem 1.5rem 2r
           <span data-i18n="btn_hire_wpp">Hire via WhatsApp</span>
         </a>
       </div>
-
       <div class="plan-card">
         <p class="plan-name" data-i18n="plan3_name">Premium</p>
         <h4 class="plan-title" data-i18n="plan3_title">Domination</h4>
@@ -500,34 +478,32 @@ footer{background:var(--text);color:rgba(255,255,255,.75);padding:4rem 1.5rem 2r
         </a>
       </div>
     </div>
-
     <h3 class="plans-title reveal" style="margin-top:4rem" data-i18n="agent_title">Standalone <span>AI Agent Add-ons</span></h3>
     <p class="plans-sub reveal" data-i18n="agent_sub">Buy separately or add to any plan</p>
     <div class="agent-row reveal">
       <div class="agent-card">
         <div class="agent-header">
-          <div class="agent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="4" x2="9" y2="9"/><line x1="15" y1="4" x2="15" y2="9"/><rect x="7" y="13" width="4" height="4" rx=".5"/></svg></div>
+          <div class="agent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="4" x2="9" y2="9"/><line x1="15" y1="4" x2="15" y2="9"/><rect x="7" y="13" width="4" height="4" rx=".5"/></svg></div>
           <div><p class="agent-label" data-i18n="agent1_label">AI Scheduling</p><h4 class="agent-title" data-i18n="agent1_title">Scheduling Agent</h4></div>
         </div>
-        <p class="agent-desc" data-i18n="agent1_desc">Automatic scheduling on Instagram, TikTok, and YouTube at the highest-engagement times. Integrates with your existing content calendar. Set it once — it posts for you every day.</p>
+        <p class="agent-desc" data-i18n="agent1_desc">Automatic scheduling on Instagram, TikTok, and YouTube at the highest-engagement times. Integrates with your existing content calendar. Set it once • it posts for you every day.</p>
         <a href="https://wa.me/5583996483930?text=Quero+o+Agente+de+Agendamento!" target="_blank" rel="noopener" class="btn-plan-wpp" style="display:inline-flex;width:auto;padding:.7rem 1.4rem">
-          <svg class="wpp-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <svg class="wpp-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           <span data-i18n="btn_hire_wpp">Hire via WhatsApp</span>
         </a>
       </div>
       <div class="agent-card">
         <div class="agent-header">
-          <div class="agent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><circle cx="9" cy="10" r="1" fill="currentColor"/><circle cx="12" cy="10" r="1" fill="currentColor"/><circle cx="15" cy="10" r="1" fill="currentColor"/></svg></div>
+          <div class="agent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><circle cx="9" cy="10" r="1" fill="currentColor"/><circle cx="12" cy="10" r="1" fill="currentColor"/><circle cx="15" cy="10" r="1" fill="currentColor"/></svg></div>
           <div><p class="agent-label" data-i18n="agent2_label">AI Customer Service</p><h4 class="agent-title" data-i18n="agent2_title">AI Attendant</h4></div>
         </div>
         <p class="agent-desc" data-i18n="agent2_desc">AI agent trained on your brand's voice that handles DMs and WhatsApp messages 24/7. Answers FAQs, handles objections, qualifies leads, and alerts you when a deal is ready to close.</p>
         <a href="https://wa.me/5583996483930?text=Quero+o+Atendente+com+IA!" target="_blank" rel="noopener" class="btn-plan-wpp" style="display:inline-flex;width:auto;padding:.7rem 1.4rem">
-          <svg class="wpp-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <svg class="wpp-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           <span data-i18n="btn_hire_wpp">Hire via WhatsApp</span>
         </a>
       </div>
     </div>
-
     <div class="creatify-ref reveal">
       <p data-i18n="creatify_text">Evelyn is also a certified creator on Brazil's largest UGC platform</p>
       <a href="https://creatify.com.br/" target="_blank" rel="noopener">creatify.com.br ↗</a>
@@ -544,7 +520,7 @@ footer{background:var(--text);color:rgba(255,255,255,.75);padding:4rem 1.5rem 2r
     <div class="produtos-grid">
       <div class="produto-card reveal">
         <span class="produto-badge" data-i18n="prod1_badge">Launch</span>
-        <svg class="produto-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="8" y="4" width="32" height="40" rx="2"/><line x1="16" y1="16" x2="32" y2="16"/><line x1="16" y1="24" x2="32" y2="24"/><line x1="16" y1="32" x2="24" y2="32"/></svg>
+        <svg class="produto-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="8" y="4" width="32" height="40" rx="2"/><line x1="16" y1="16" x2="32" y2="16"/><line x1="16" y1="24" x2="32" y2="24"/><line x1="16" y1="32" x2="24" y2="32"/></svg>
         <h3 class="produto-title" data-i18n="prod1_title">UGC E-book</h3>
         <p class="produto-sub" data-i18n="prod1_sub">How to Create Beauty Content Brands Want to Pay For</p>
         <ul class="produto-features">
@@ -559,12 +535,12 @@ footer{background:var(--text);color:rgba(255,255,255,.75);padding:4rem 1.5rem 2r
       </div>
       <div class="produto-card reveal">
         <span class="produto-badge" data-i18n="prod2_badge">1:1 Mentorship</span>
-        <svg class="produto-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="24" cy="16" r="8"/><path d="M8 40c0-8.837 7.163-16 16-16s16 7.163 16 16"/><path d="M32 8 l4 4 -8 8"/></svg>
+        <svg class="produto-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="24" cy="16" r="8"/><path d="M8 40c0-8.837 7.163-16 16-16s16 7.163 16 16"/><path d="M32 8 l4 4 -8 8"/></svg>
         <h3 class="produto-title" data-i18n="prod2_title">4tom3ve Method</h3>
         <p class="produto-sub" data-i18n="prod2_sub">Creator identity + first UGC contracts</p>
         <ul class="produto-features">
           <li data-i18n="prod2_f1">4 sessions of 60 min via video call</li>
-          <li data-i18n="prod2_f2">Week 1: Identity — what makes you different</li>
+          <li data-i18n="prod2_f2">Week 1: Identity what makes you different</li>
           <li data-i18n="prod2_f3">Week 2: Portfolio and brand aesthetic</li>
           <li data-i18n="prod2_f4">Week 3: Brand pitch and pricing</li>
           <li data-i18n="prod2_f5">Week 4: First contract and expansion</li>
@@ -584,22 +560,10 @@ footer{background:var(--text);color:rgba(255,255,255,.75);padding:4rem 1.5rem 2r
     </div>
     <div class="processo-steps reveal">
       <div class="processo-line"></div>
-      <div class="processo-step">
-        <div class="step-num">01</div>
-        <div class="step-content"><h3 data-i18n="step1_title">Proposal &amp; Alignment</h3><p data-i18n="step1_desc">Brand reaches out via email or DM. Eve evaluates the brief, understands the brand's identity, and presents a proposal with rates and formats.</p></div>
-      </div>
-      <div class="processo-step">
-        <div class="step-num">02</div>
-        <div class="step-content"><h3 data-i18n="step2_title">Receive &amp; Concept</h3><p data-i18n="step2_desc">Product sent by the brand. Eve creates the visual concept — what will be created, how it will be filmed, what the narrative is. Everything planned before shooting.</p></div>
-      </div>
-      <div class="processo-step">
-        <div class="step-num">03</div>
-        <div class="step-content"><h3 data-i18n="step3_title">Creation &amp; Editing</h3><p data-i18n="step3_desc">Recording and editing with 4tom3ve aesthetic. Unique lighting, composition, and voice. Every detail designed to convert without feeling forced.</p></div>
-      </div>
-      <div class="processo-step">
-        <div class="step-num">04</div>
-        <div class="step-content"><h3 data-i18n="step4_title">Delivery &amp; Approval</h3><p data-i18n="step4_desc">Delivered before deadline, ready for Reels, Ads, and Stories. Revision included. Monthly partnership available.</p></div>
-      </div>
+      <div class="processo-step"><div class="step-num">01</div><div class="step-content"><h3 data-i18n="step1_title">Proposal &amp; Alignment</h3><p data-i18n="step1_desc">Brand reaches out via email or DM. Eve evaluates the brief, understands the brand's identity, and presents a proposal with rates and formats.</p></div></div>
+      <div class="processo-step"><div class="step-num">02</div><div class="step-content"><h3 data-i18n="step2_title">Receive &amp; Concept</h3><p data-i18n="step2_desc">Product sent by the brand. Eve creates the visual concept — what will be created, how it will be filmed, what the narrative is. Everything planned before shooting.</p></div></div>
+      <div class="processo-step"><div class="step-num">03</div><div class="step-content"><h3 data-i18n="step3_title">Creation &amp; Editing</h3><p data-i18n="step3_desc">Recording and editing with 4tom3ve aesthetic. Unique lighting, composition, and voice. Every detail designed to convert without feeling forced.</p></div></div>
+      <div class="processo-step"><div class="step-num">04</div><div class="step-content"><h3 data-i18n="step4_title">Delivery &amp; Approval</h3><p data-i18n="step4_desc">Delivered before deadline, ready for Reels, Ads, and Stories. Revision included. Monthly partnership available.</p></div></div>
     </div>
   </div>
 </section>
@@ -665,7 +629,7 @@ footer{background:var(--text);color:rgba(255,255,255,.75);padding:4rem 1.5rem 2r
       <div class="form-row">
         <div class="form-group">
           <label for="f-brand" data-i18n="form_brand">Brand Name</label>
-          <input id="f-brand" type="text" placeholder="Ex: Vult Cosmetics" data-i18n-placeholder="form_brand_ph" required>
+          <input id="f-brand" type="text" placeholder="Ex: Vult Cosmetics" required>
         </div>
         <div class="form-group">
           <label for="f-email" data-i18n="form_email">Email</label>
@@ -685,23 +649,23 @@ footer{background:var(--text);color:rgba(255,255,255,.75);padding:4rem 1.5rem 2r
       <div class="form-group">
         <label for="f-service" data-i18n="form_service">Service Type</label>
         <select id="f-service">
-          <option value="" data-i18n="form_svc_ph">Select the format</option>
-          <option data-i18n="form_svc1">UGC Video (Reels / TikTok)</option>
-          <option data-i18n="form_svc2">UGC Photo (Feed / E-commerce)</option>
-          <option data-i18n="form_svc3">UGC Stories</option>
-          <option data-i18n="form_svc4">Monthly Pack</option>
-          <option data-i18n="form_svc5">Social Media Management</option>
-          <option data-i18n="form_svc6">Scheduling Agent</option>
-          <option data-i18n="form_svc7">AI Attendant</option>
-          <option data-i18n="form_svc8">Other / I want to talk</option>
+          <option value="">Select the format</option>
+          <option>UGC Video (Reels / TikTok)</option>
+          <option>UGC Photo (Feed / E-commerce)</option>
+          <option>UGC Stories</option>
+          <option>Monthly Pack</option>
+          <option>Social Media Management</option>
+          <option>Scheduling Agent</option>
+          <option>AI Attendant</option>
+          <option>Other / I want to talk</option>
         </select>
       </div>
       <div class="form-group">
         <label for="f-msg" data-i18n="form_msg">Message</label>
-        <textarea id="f-msg" placeholder="Tell me a bit about your brand, the product, and what you have in mind..." data-i18n-placeholder="form_msg_ph"></textarea>
+        <textarea id="f-msg" placeholder="Tell me a bit about your brand, the product, and what you have in mind..."></textarea>
       </div>
       <button type="submit" class="btn-submit" data-i18n="form_submit">Send Proposal →</button>
-      <p class="form-success" id="form-success" data-i18n="form_success">♥ Redirecting to WhatsApp...</p>
+      <p class="form-success" id="form-success">♥ Redirecting to WhatsApp...</p>
     </form>
   </div>
 </section>
@@ -709,7 +673,9 @@ footer{background:var(--text);color:rgba(255,255,255,.75);padding:4rem 1.5rem 2r
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <div class="footer-logo"><span class="r">4</span>tom<span class="r">3</span>ve</div>
+      <div class="footer-logo">
+        <img src="https://res.cloudinary.com/dcbarseus/image/upload/v1779139594/90d6deb7-1ca8-40af-8f33-fc969d501843_a4j5bg.png" alt="4tom3ve">
+      </div>
       <p data-i18n="footer_tagline">"Beauty without fakeness.<br>Content brands want to use because it feels real — because it is."</p>
     </div>
     <div class="footer-col">
@@ -744,476 +710,71 @@ footer{background:var(--text);color:rgba(255,255,255,.75);padding:4rem 1.5rem 2r
 </footer>
 
 <script>
-/* ── CURSOR ── */
 const cur = document.getElementById('cursor');
 if(cur){
-  document.addEventListener('mousemove', e => {
-    cur.style.left = e.clientX + 'px';
-    cur.style.top  = e.clientY + 'px';
-  });
+  document.addEventListener('mousemove', e => { cur.style.left=e.clientX+'px'; cur.style.top=e.clientY+'px'; });
   document.querySelectorAll('a,button,[role="button"]').forEach(el => {
-    el.addEventListener('mouseenter', () => cur.classList.add('hov'));
-    el.addEventListener('mouseleave', () => cur.classList.remove('hov'));
+    el.addEventListener('mouseenter',()=>cur.classList.add('hov'));
+    el.addEventListener('mouseleave',()=>cur.classList.remove('hov'));
   });
 }
-
-/* ── MOBILE NAV ── */
-const navToggle = document.getElementById('nav-toggle');
-const mobileNav = document.getElementById('mobile-nav');
-navToggle.addEventListener('click', () => {
-  const open = mobileNav.classList.toggle('open');
-  navToggle.classList.toggle('open', open);
-  navToggle.setAttribute('aria-expanded', open);
+const navToggle=document.getElementById('nav-toggle');
+const mobileNav=document.getElementById('mobile-nav');
+navToggle.addEventListener('click',()=>{
+  const open=mobileNav.classList.toggle('open');
+  navToggle.classList.toggle('open',open);
+  navToggle.setAttribute('aria-expanded',open);
 });
-function closeMobileNav(){
-  mobileNav.classList.remove('open');
-  navToggle.classList.remove('open');
-  navToggle.setAttribute('aria-expanded', false);
-}
-document.addEventListener('click', e => {
-  if(!mobileNav.contains(e.target) && !navToggle.contains(e.target)){
-    closeMobileNav();
-  }
-});
-
-/* ── SCROLL REVEAL ── */
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-/* ── CONTACT FORM → WHATSAPP ── */
-document.getElementById('contact-form').addEventListener('submit', function(e) {
+function closeMobileNav(){mobileNav.classList.remove('open');navToggle.classList.remove('open');navToggle.setAttribute('aria-expanded',false);}
+document.addEventListener('click',e=>{if(!mobileNav.contains(e.target)&&!navToggle.contains(e.target))closeMobileNav();});
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+document.getElementById('contact-form').addEventListener('submit',function(e){
   e.preventDefault();
-  const brand    = document.getElementById('f-brand').value.trim();
-  const email    = document.getElementById('f-email').value.trim();
-  const phone    = document.getElementById('f-phone').value.trim();
-  const insta    = document.getElementById('f-instagram').value.trim();
-  const service  = document.getElementById('f-service').value.trim();
-  const msg      = document.getElementById('f-msg').value.trim();
-
-  if (!brand || !email) {
-    alert('Por favor, preencha o nome da marca e o email.');
-    return;
-  }
-
-  let text = '🌹 *Nova Proposta — 4tom3ve*\n\n';
-  text += `*Marca:* ${brand}\n`;
-  text += `*Email:* ${email}\n`;
-  if (phone)   text += `*WhatsApp/Tel:* ${phone}\n`;
-  if (insta)   text += `*Instagram:* ${insta}\n`;
-  if (service) text += `*Serviço:* ${service}\n`;
-  if (msg)     text += `\n*Mensagem:*\n${msg}`;
-
-  const encoded = encodeURIComponent(text);
-  const url = `https://wa.me/5583996483930?text=${encoded}`;
-
-  const successEl = document.getElementById('form-success');
-  successEl.style.display = 'block';
-
-  setTimeout(() => {
-    window.open(url, '_blank');
-    successEl.style.display = 'none';
-    document.getElementById('contact-form').reset();
-  }, 800);
+  const brand=document.getElementById('f-brand').value.trim();
+  const email=document.getElementById('f-email').value.trim();
+  const phone=document.getElementById('f-phone').value.trim();
+  const insta=document.getElementById('f-instagram').value.trim();
+  const service=document.getElementById('f-service').value.trim();
+  const msg=document.getElementById('f-msg').value.trim();
+  if(!brand||!email){alert('Por favor, preencha o nome da marca e o email.');return;}
+  let text='🌹 *Nova Proposta — 4tom3ve*\n\n';
+  text+=`*Marca:* ${brand}\n`;
+  text+=`*Email:* ${email}\n`;
+  if(phone)text+=`*WhatsApp/Tel:* ${phone}\n`;
+  if(insta)text+=`*Instagram:* ${insta}\n`;
+  if(service)text+=`*Serviço:* ${service}\n`;
+  if(msg)text+=`\n*Mensagem:*\n${msg}`;
+  const successEl=document.getElementById('form-success');
+  successEl.style.display='block';
+  setTimeout(()=>{window.open(`https://wa.me/5583996483930?text=${encodeURIComponent(text)}`,'_blank');successEl.style.display='none';document.getElementById('contact-form').reset();},800);
 });
-
-/* ── I18N ── */
-const translations = {
-  en: {
-    nav_about:'About', nav_ugc:'UGC Services', nav_social:'Social Media',
-    nav_products:'Products', nav_plan:'90-Day Plan', nav_cta:'Hire UGC',
-    hero_eyebrow:'UGC Creator · Beauty & Lifestyle · Brazil',
-    hero_tagline:'"Beauty without fakeness."',
-    hero_btn1:'View Portfolio', hero_btn2:'For Brands', scroll:'scroll',
-    manifesto_text:'"I don\'t create content to <em>seem</em>. I create to <em>be</em>. Since cosplay, I learned that identity isn\'t performed — it\'s embodied. My brand isn\'t a strategy. It\'s who I am. And brands that understand this are the only ones that deserve my content."',
-    mq1:'Beauty with Soul', mq2:'Authenticity', mq3:'Real Identity', mq4:'Content Brands Want',
-    sobre_badge:'UGC Creator\nsince cosplay',
-    sobre_title:'Identity that<br><span>can\'t be copied</span>',
-    sobre_p1:'4tom3ve wasn\'t born from a marketing strategy. It was born from cosplay — a genuine identity built over years. That\'s uncopyable.',
-    sobre_p2:'Eve sees people. Captures real beauty. Creates content brands want to use because it feels real — because it is.',
-    sobre_p3:'Not an influencer with AI. Not generic beauty without soul. A creator with history, her own aesthetic, irreplaceable presence.',
-    tag1:'Authenticity', tag2:'Creativity', tag3:'Editorial Beauty', tag5:'Professional UGC', tag6:'Cosplay Roots',
-    stat1:'Years of identity', stat2:'Avg. per contract', stat3:'Original content', stat4:'Content pillars',
-    ugc_eyebrow:'For Brands', ugc_title:'UGC <span>Services</span>',
-    ugc1_title:'UGC Video', ugc1_desc:'Authentic product, skincare, fashion, or lifestyle videos in the 4tom3ve editorial style. Delivered in formats optimized for Reels, TikTok, and Ads.',
-    ugc2_title:'UGC Photo', ugc2_desc:'Editorial product photos with a strong visual identity. 4tom3ve lighting, composition, and aesthetic — content that converts because it feels real.',
-    ugc3_title:'Monthly Pack', ugc3_desc:'Fixed monthly retainer with recurring deliveries. Ideal for brands that want consistency and identity. Includes videos, photos, and Stories.',
-    ugc4_title:'UGC Stories', ugc4_desc:'Story sequences with natural storytelling, no rigid script. Direct tone, real personality, results that audiences trust.',
-    ugc_cta:'Request a quote →',
-    sm_eyebrow:'Full Digital Presence', sm_title:'Social Media <span>Management</span>',
-    sm_intro:'Beyond UGC creation, Evelyn offers complete social media management — from strategy and content production to automated scheduling and AI-powered customer service.',
-    sm1_title:'Profile Management', sm1_sub:'Instagram · TikTok · YouTube',
-    sm1_desc:'Complete management of your social profiles: content strategy, caption writing, hashtag research, engagement, DM replies, and performance reporting every month.',
-    sm2_title:'Scheduling Agent', sm2_sub:'Automated · Smart · Consistent',
-    sm2_desc:'AI-powered post scheduling at the best times for your audience. Never miss a posting day. Includes a 30-day content calendar, auto-posting, and analytics.',
-    sm3_title:'AI Attendant', sm3_sub:'WhatsApp · DMs · Comments',
-    sm3_desc:'Intelligent AI agent that responds to customers 24/7 on WhatsApp and social DMs, qualifies leads, answers FAQs, handles objections, and routes hot leads to you.',
-    plans_title:'Choose Your <span>Social Media Plan</span>',
-    plans_sub:'All plans include onboarding · monthly report · dedicated WhatsApp support',
-    plan1_name:'Starter', plan1_title:'Presence',
-    p1f1:'12 posts/month (feed + stories)', p1f2:'Content strategy + calendar',
-    p1f3:'Caption writing + hashtags', p1f4:'1 platform (Instagram or TikTok)',
-    p1f5:'Monthly performance report', p1f6:'Scheduling agent',
-    p1f7:'AI attendant (WhatsApp)', p1f8:'Paid ads management',
-    plan2_name:'Growth', plan2_title:'Authority', most_popular:'Most Popular',
-    p2f1:'24 posts/month (feed + stories + reels)', p2f2:'Full strategy + 30-day calendar',
-    p2f3:'2 platforms (Instagram + TikTok)', p2f4:'Smart scheduling agent',
-    p2f5:'Engagement + community management', p2f6:'Bi-weekly performance report',
-    p2f7:'Basic AI attendant (WhatsApp)', p2f8:'Paid ads management',
-    plan3_name:'Premium', plan3_title:'Domination',
-    p3f1:'36+ posts/month (all formats)', p3f2:'3 platforms + YouTube Shorts',
-    p3f3:'Full scheduling automation', p3f4:'Advanced AI attendant 24/7',
-    p3f5:'Lead qualification + CRM', p3f6:'Meta Ads management (up to R$2k)',
-    p3f7:'Weekly report + strategy call', p3f8:'Priority access to UGC content',
-    btn_hire_wpp:'Hire via WhatsApp',
-    agent_title:'Standalone <span>AI Agent Add-ons</span>',
-    agent_sub:'Buy separately or add to any plan',
-    agent1_label:'AI Scheduling', agent1_title:'Scheduling Agent',
-    agent1_desc:'Automatic scheduling on Instagram, TikTok, and YouTube at the highest-engagement times. Integrates with your existing content calendar. Set it once — it posts for you every day.',
-    agent2_label:'AI Customer Service', agent2_title:'AI Attendant',
-    agent2_desc:'AI agent trained on your brand\'s voice that handles DMs and WhatsApp messages 24/7. Answers FAQs, handles objections, qualifies leads, and alerts you when a deal is ready to close.',
-    creatify_text:'Evelyn is also a certified creator on Brazil\'s largest UGC platform',
-    prod_eyebrow:'For Creators', prod_title:'Digital <span>Products</span>',
-    prod1_badge:'Launch', prod1_title:'UGC E-book',
-    prod1_sub:'How to Create Beauty Content Brands Want to Pay For',
-    prod1_f1:'What UGC is and why brands pay for it',
-    prod1_f2:'Minimum equipment that actually works',
-    prod1_f3:'How to build your portfolio from zero',
-    prod1_f4:'How to approach brands and close contracts',
-    prod1_f5:'Pricing and negotiation',
-    prod1_f6:'+ Bonus: email template for brands', prod1_btn:'Get the E-book',
-    prod2_badge:'1:1 Mentorship', prod2_title:'4tom3ve Method',
-    prod2_sub:'Creator identity + first UGC contracts',
-    prod2_f1:'4 sessions of 60 min via video call',
-    prod2_f2:'Week 1: Identity — what makes you different',
-    prod2_f3:'Week 2: Portfolio and brand aesthetic',
-    prod2_f4:'Week 3: Brand pitch and pricing',
-    prod2_f5:'Week 4: First contract and expansion',
-    prod2_f6:'+ E-book + creators community access', prod2_btn:'Get the Mentorship',
-    proc_eyebrow:'How It Works', proc_title:'From brief to <span>delivery</span>',
-    step1_title:'Proposal & Alignment',
-    step1_desc:'Brand reaches out via email or DM. Eve evaluates the brief, understands the brand\'s identity, and presents a proposal.',
-    step2_title:'Receive & Concept',
-    step2_desc:'Product sent by the brand. Eve creates the visual concept — what will be created, how it will be filmed, what the narrative is.',
-    step3_title:'Creation & Editing',
-    step3_desc:'Recording and editing with 4tom3ve aesthetic. Unique lighting, composition, and voice. Every detail designed to convert.',
-    step4_title:'Delivery & Approval',
-    step4_desc:'Delivered before deadline, ready for Reels, Ads, and Stories. Revision included. Monthly partnership available.',
-    plan90_eyebrow:'Growth', plan90_title:'<span>90-Day</span> Plan',
-    m1_label:'Month 01', m1_title:'Foundation',
-    m1_1:'Complete visual identity finalized', m1_2:'Online portfolio with 6–9 UGCs',
-    m1_3:'E-book published on Hotmart', m1_4:'Email outreach to 20 BR brands',
-    m1_5:'3 Reels/week with the 3 pillars', m1_6:'BIO configured and Linktree active',
-    m1_meta:'Goal: 500 followers · 10 e-book sales · 1 contract',
-    m2_label:'Month 02', m2_title:'Growth',
-    m2_1:'3 new UGCs in portfolio', m2_2:'E-book launch campaign',
-    m2_3:'First 2 mentorship clients', m2_4:'Collaboration with 2 creators',
-    m2_5:'Professional media kit in PDF', m2_6:'Meta Ads test (R$ 300)',
-    m2_meta:'Goal: 2k followers · 3 contracts · 35 sales',
-    m3_label:'Month 03', m3_title:'Scale',
-    m3_1:'YouTube channel launch', m3_2:'Monthly UGC retainer package',
-    m3_3:'Closed UGC creator community', m3_4:'Beauty brand campaign',
-    m3_5:'Second digital product or bundle', m3_6:'TikTok expansion with adapted content',
-    m3_meta:'Goal: 5k followers · R$4,000+/month · Channel live',
-    contact_eyebrow:'Partnerships',
-    contact_title:'Your brand deserves<br><span>real content</span>',
-    contact_sub:'If you got this far, you already understand that 4tom3ve isn\'t just another creator. Fill in below and let\'s talk.',
-    form_brand:'Brand Name', form_brand_ph:'Ex: Vult Cosmetics',
-    form_email:'Email', form_phone:'WhatsApp / Phone', form_instagram:'Instagram / Social',
-    form_service:'Service Type', form_svc_ph:'Select the format',
-    form_svc1:'UGC Video (Reels / TikTok)', form_svc2:'UGC Photo (Feed / E-commerce)',
-    form_svc3:'UGC Stories', form_svc4:'Monthly Pack',
-    form_svc5:'Social Media Management', form_svc6:'Scheduling Agent',
-    form_svc7:'AI Attendant', form_svc8:'Other / I want to talk',
-    form_msg:'Message', form_msg_ph:'Tell me a bit about your brand...',
-    form_submit:'Send Proposal →', form_success:'♥ Redirecting to WhatsApp...',
-    footer_tagline:'"Beauty without fakeness.\nContent brands want to use because it feels real — because it is."',
-    footer_nav:'Navigation', footer_connect:'Connect',
-    footer_brands:'For Brands', footer_email:'Email',
-    footer_copy:'© 2025 4tom3ve · Evelyn Oliveira · All rights reserved'
-  },
-  pt: {
-    nav_about:'Sobre', nav_ugc:'Serviços UGC', nav_social:'Social Media',
-    nav_products:'Produtos', nav_plan:'Plano 90 Dias', nav_cta:'Contratar UGC',
-    hero_eyebrow:'UGC Creator · Beleza & Lifestyle · Brasil',
-    hero_tagline:'"Beleza sem falsidade."',
-    hero_btn1:'Ver Portfólio', hero_btn2:'Para Marcas', scroll:'rolar',
-    manifesto_text:'"Eu não crio conteúdo para <em>parecer</em>. Crio para <em>ser</em>. Desde o cosplay, aprendi que identidade não se performa — se encarna. Minha marca não é uma estratégia. É quem eu sou. E as marcas que entendem isso são as únicas que merecem meu conteúdo."',
-    mq1:'Beleza com Alma', mq2:'Autenticidade', mq3:'Identidade Real', mq4:'Conteúdo que Marcas Querem',
-    sobre_badge:'UGC Creator\ndesde o cosplay',
-    sobre_title:'Identidade que<br><span>não se copia</span>',
-    sobre_p1:'A 4tom3ve não nasceu de uma estratégia de marketing. Nasceu do cosplay — uma identidade genuína construída ao longo de anos. Isso não se copia.',
-    sobre_p2:'Eve enxerga pessoas. Captura beleza real. Cria conteúdo que marcas querem usar porque parece real — porque é.',
-    sobre_p3:'Não é influencer com IA. Não é beleza genérica sem alma. É uma criadora com história, estética própria, presença insubstituível.',
-    tag1:'Autenticidade', tag2:'Criatividade', tag3:'Beleza Editorial', tag5:'UGC Profissional', tag6:'Raízes Cosplay',
-    stat1:'Anos de identidade', stat2:'Média por contrato', stat3:'Conteúdo original', stat4:'Pilares de conteúdo',
-    ugc_eyebrow:'Para Marcas', ugc_title:'Serviços <span>UGC</span>',
-    ugc1_title:'UGC Vídeo', ugc1_desc:'Vídeos autênticos de produto, skincare, moda ou lifestyle no estilo editorial 4tom3ve. Entregues em formatos otimizados para Reels, TikTok e Ads.',
-    ugc2_title:'UGC Foto', ugc2_desc:'Fotos editoriais de produto com forte identidade visual. Iluminação, composição e estética 4tom3ve — conteúdo que converte porque parece real.',
-    ugc3_title:'Pack Mensal', ugc3_desc:'Retainer mensal fixo com entregas recorrentes. Ideal para marcas que querem consistência e identidade. Inclui vídeos, fotos e Stories.',
-    ugc4_title:'UGC Stories', ugc4_desc:'Sequências de Stories com storytelling natural, sem roteiro engessado. Tom direto, personalidade real, resultados em que o público confia.',
-    ugc_cta:'Solicitar orçamento →',
-    sm_eyebrow:'Presença Digital Completa', sm_title:'Gestão de <span>Social Media</span>',
-    sm_intro:'Além da criação de UGC, Evelyn oferece gestão completa de redes sociais — da estratégia e produção de conteúdo ao agendamento automatizado e atendimento com IA.',
-    sm1_title:'Gestão de Perfil', sm1_sub:'Instagram · TikTok · YouTube',
-    sm1_desc:'Gestão completa dos seus perfis sociais: estratégia de conteúdo, redação de legendas, pesquisa de hashtags, engajamento, respostas a DMs e relatório mensal.',
-    sm2_title:'Agente de Agendamento', sm2_sub:'Automatizado · Inteligente · Consistente',
-    sm2_desc:'Agendamento automático de posts nos melhores horários para o seu público. Nunca perca um dia de postagem. Inclui calendário de 30 dias, auto-postagem e analytics.',
-    sm3_title:'Atendente com IA', sm3_sub:'WhatsApp · DMs · Comentários',
-    sm3_desc:'Agente de IA que responde clientes 24/7 no WhatsApp e DMs, qualifica leads, responde dúvidas, contorna objeções e te avisa quando um negócio está pronto para fechar.',
-    plans_title:'Escolha Seu <span>Plano de Social Media</span>',
-    plans_sub:'Todos os planos incluem onboarding · relatório mensal · suporte via WhatsApp',
-    plan1_name:'Starter', plan1_title:'Presença',
-    p1f1:'12 posts/mês (feed + stories)', p1f2:'Estratégia de conteúdo + calendário',
-    p1f3:'Redação de legendas + hashtags', p1f4:'1 plataforma (Instagram ou TikTok)',
-    p1f5:'Relatório mensal de desempenho', p1f6:'Agente de agendamento',
-    p1f7:'Atendente IA (WhatsApp)', p1f8:'Gestão de anúncios pagos',
-    plan2_name:'Growth', plan2_title:'Autoridade', most_popular:'Mais Popular',
-    p2f1:'24 posts/mês (feed + stories + reels)', p2f2:'Estratégia completa + calendário 30 dias',
-    p2f3:'2 plataformas (Instagram + TikTok)', p2f4:'Agente de agendamento inteligente',
-    p2f5:'Engajamento + gestão de comunidade', p2f6:'Relatório quinzenal',
-    p2f7:'Atendente IA básico (WhatsApp)', p2f8:'Gestão de anúncios pagos',
-    plan3_name:'Premium', plan3_title:'Dominação',
-    p3f1:'36+ posts/mês (todos os formatos)', p3f2:'3 plataformas + YouTube Shorts',
-    p3f3:'Automação completa de agendamento', p3f4:'Atendente IA avançado 24/7',
-    p3f5:'Qualificação de leads + CRM', p3f6:'Gestão Meta Ads (até R$2k)',
-    p3f7:'Relatório semanal + call de estratégia', p3f8:'Acesso prioritário a conteúdo UGC',
-    btn_hire_wpp:'Contratar via WhatsApp',
-    agent_title:'<span>Agentes de IA</span> Avulsos',
-    agent_sub:'Compre separado ou adicione a qualquer plano',
-    agent1_label:'IA de Agendamento', agent1_title:'Agente de Agendamento',
-    agent1_desc:'Agendamento automático no Instagram, TikTok e YouTube nos horários de maior engajamento. Integra com seu calendário de conteúdo. Configure uma vez — ele posta para você todos os dias.',
-    agent2_label:'Atendimento com IA', agent2_title:'Atendente com IA',
-    agent2_desc:'Agente de IA treinado na voz da sua marca que responde DMs e WhatsApp 24/7. Responde dúvidas, contorna objeções, qualifica leads e te avisa quando um negócio está pronto para fechar.',
-    creatify_text:'Evelyn também é criadora certificada na maior plataforma de UGC do Brasil',
-    prod_eyebrow:'Para Criadores', prod_title:'Produtos <span>Digitais</span>',
-    prod1_badge:'Lançamento', prod1_title:'E-book de UGC',
-    prod1_sub:'Como Criar Conteúdo de Beleza que Marcas Querem Pagar',
-    prod1_f1:'O que é UGC e por que marcas pagam por isso',
-    prod1_f2:'Equipamento mínimo que realmente funciona',
-    prod1_f3:'Como montar seu portfólio do zero',
-    prod1_f4:'Como abordar marcas e fechar contratos',
-    prod1_f5:'Precificação e negociação',
-    prod1_f6:'+ Bônus: template de email para marcas', prod1_btn:'Quero o E-book',
-    prod2_badge:'Mentoria 1:1', prod2_title:'Método 4tom3ve',
-    prod2_sub:'Identidade de criadora + primeiros contratos UGC',
-    prod2_f1:'4 sessões de 60 min por videochamada',
-    prod2_f2:'Semana 1: Identidade — o que te diferencia',
-    prod2_f3:'Semana 2: Portfólio e estética de marca',
-    prod2_f4:'Semana 3: Pitch para marcas e precificação',
-    prod2_f5:'Semana 4: Primeiro contrato e expansão',
-    prod2_f6:'+ E-book + acesso à comunidade de criadores', prod2_btn:'Quero a Mentoria',
-    proc_eyebrow:'Como Funciona', proc_title:'Do briefing à <span>entrega</span>',
-    step1_title:'Proposta & Alinhamento',
-    step1_desc:'A marca entra em contato por email ou DM. Eve avalia o briefing, entende a identidade da marca e apresenta uma proposta.',
-    step2_title:'Recebimento & Conceito',
-    step2_desc:'Produto enviado pela marca. Eve cria o conceito visual — o que será criado, como será filmado, qual será a narrativa.',
-    step3_title:'Criação & Edição',
-    step3_desc:'Gravação e edição com a estética 4tom3ve. Iluminação, composição e voz únicos. Cada detalhe pensado para converter.',
-    step4_title:'Entrega & Aprovação',
-    step4_desc:'Entregue antes do prazo, pronto para Reels, Ads e Stories. Revisão incluída. Parceria mensal disponível.',
-    plan90_eyebrow:'Crescimento', plan90_title:'Plano <span>90 Dias</span>',
-    m1_label:'Mês 01', m1_title:'Fundação',
-    m1_1:'Identidade visual completa finalizada', m1_2:'Portfólio online com 6–9 UGCs',
-    m1_3:'E-book publicado no Hotmart', m1_4:'Prospecção por email para 20 marcas BR',
-    m1_5:'3 Reels/semana com os 3 pilares', m1_6:'BIO configurada e Linktree ativo',
-    m1_meta:'Meta: 500 seguidores · 10 vendas e-book · 1 contrato',
-    m2_label:'Mês 02', m2_title:'Crescimento',
-    m2_1:'3 novos UGCs no portfólio', m2_2:'Campanha de lançamento do e-book',
-    m2_3:'Primeiros 2 clientes de mentoria', m2_4:'Collab com 2 criadores',
-    m2_5:'Media kit profissional em PDF', m2_6:'Teste Meta Ads (R$ 300)',
-    m2_meta:'Meta: 2k seguidores · 3 contratos · 35 vendas',
-    m3_label:'Mês 03', m3_title:'Escala',
-    m3_1:'Lançamento canal YouTube', m3_2:'Pacote de retainer mensal UGC',
-    m3_3:'Comunidade fechada de criadores UGC', m3_4:'Campanha com marca de beleza',
-    m3_5:'Segundo produto digital ou bundle', m3_6:'Expansão TikTok com conteúdo adaptado',
-    m3_meta:'Meta: 5k seguidores · R$4.000+/mês · Canal no ar',
-    contact_eyebrow:'Parcerias',
-    contact_title:'Sua marca merece<br><span>conteúdo real</span>',
-    contact_sub:'Se você chegou até aqui, já entendeu que a 4tom3ve não é mais uma criadora. Preencha abaixo e vamos conversar.',
-    form_brand:'Nome da Marca', form_brand_ph:'Ex: Vult Cosméticos',
-    form_email:'Email', form_phone:'WhatsApp / Telefone', form_instagram:'Instagram / Rede Social',
-    form_service:'Tipo de Serviço', form_svc_ph:'Selecione o formato',
-    form_svc1:'UGC Vídeo (Reels / TikTok)', form_svc2:'UGC Foto (Feed / E-commerce)',
-    form_svc3:'UGC Stories', form_svc4:'Pack Mensal',
-    form_svc5:'Gestão de Social Media', form_svc6:'Agente de Agendamento',
-    form_svc7:'Atendente com IA', form_svc8:'Outro / Quero conversar',
-    form_msg:'Mensagem', form_msg_ph:'Me conta um pouco sobre a sua marca...',
-    form_submit:'Enviar Proposta →', form_success:'♥ Redirecionando para o WhatsApp...',
-    footer_tagline:'"Beleza sem falsidade.\nConteúdo que marcas querem usar porque parece real — porque é."',
-    footer_nav:'Navegação', footer_connect:'Conecte-se',
-    footer_brands:'Para Marcas', footer_email:'Email',
-    footer_copy:'© 2025 4tom3ve · Evelyn Oliveira · Todos os direitos reservados'
-  },
-  es: {
-    nav_about:'Sobre', nav_ugc:'Servicios UGC', nav_social:'Social Media',
-    nav_products:'Productos', nav_plan:'Plan 90 Días', nav_cta:'Contratar UGC',
-    hero_eyebrow:'UGC Creator · Belleza & Lifestyle · Brasil',
-    hero_tagline:'"Belleza sin falsedad."',
-    hero_btn1:'Ver Portafolio', hero_btn2:'Para Marcas', scroll:'bajar',
-    manifesto_text:'"No creo contenido para <em>parecer</em>. Creo para <em>ser</em>. Desde el cosplay, aprendí que la identidad no se actúa — se encarna. Mi marca no es una estrategia. Es quien soy."',
-    mq1:'Belleza con Alma', mq2:'Autenticidad', mq3:'Identidad Real', mq4:'Contenido que las Marcas Quieren',
-    sobre_badge:'UGC Creator\ndesde el cosplay',
-    sobre_title:'Identidad que<br><span>no se copia</span>',
-    sobre_p1:'4tom3ve no nació de una estrategia de marketing. Nació del cosplay — una identidad genuina construida durante años. Eso no se copia.',
-    sobre_p2:'Eve ve a las personas. Captura la belleza real. Crea contenido que las marcas quieren usar porque se siente real — porque lo es.',
-    sobre_p3:'No es una influencer con IA. No es belleza genérica sin alma. Es una creadora con historia, estética propia y presencia insustituible.',
-    tag1:'Autenticidad', tag2:'Creatividad', tag3:'Belleza Editorial', tag5:'UGC Profesional', tag6:'Raíces Cosplay',
-    stat1:'Años de identidad', stat2:'Prom. por contrato', stat3:'Contenido original', stat4:'Pilares de contenido',
-    ugc_eyebrow:'Para Marcas', ugc_title:'Servicios <span>UGC</span>',
-    ugc1_title:'UGC Video', ugc1_desc:'Videos auténticos de producto, skincare, moda o lifestyle en el estilo editorial 4tom3ve. Entregados en formatos optimizados para Reels, TikTok y Ads.',
-    ugc2_title:'UGC Foto', ugc2_desc:'Fotos editoriales de producto con fuerte identidad visual. Iluminación, composición y estética 4tom3ve — contenido que convierte porque se siente real.',
-    ugc3_title:'Pack Mensual', ugc3_desc:'Retainer mensual fijo con entregas recurrentes. Ideal para marcas que quieren consistencia e identidad. Incluye videos, fotos y Stories.',
-    ugc4_title:'UGC Stories', ugc4_desc:'Secuencias de Stories con storytelling natural, sin guión rígido. Tono directo, personalidad real, resultados en los que el público confía.',
-    ugc_cta:'Solicitar cotización →',
-    sm_eyebrow:'Presencia Digital Completa', sm_title:'Gestión de <span>Social Media</span>',
-    sm_intro:'Además de la creación de UGC, Evelyn ofrece gestión completa de redes sociales — desde estrategia y producción hasta programación automatizada y atención con IA.',
-    sm1_title:'Gestión de Perfil', sm1_sub:'Instagram · TikTok · YouTube',
-    sm1_desc:'Gestión completa de tus perfiles sociales: estrategia de contenido, redacción de pies de foto, investigación de hashtags, engagement, respuestas a DMs e informe mensual.',
-    sm2_title:'Agente de Programación', sm2_sub:'Automatizado · Inteligente · Consistente',
-    sm2_desc:'Programación automática de publicaciones en los mejores horarios. Nunca pierdas un día de publicación. Incluye calendario de 30 días, auto-publicación y analíticas.',
-    sm3_title:'Asistente con IA', sm3_sub:'WhatsApp · DMs · Comentarios',
-    sm3_desc:'Agente de IA que responde clientes 24/7 en WhatsApp y DMs, califica leads, responde FAQs, maneja objeciones y te avisa cuando un negocio está listo para cerrar.',
-    plans_title:'Elige Tu <span>Plan de Social Media</span>',
-    plans_sub:'Todos los planes incluyen onboarding · informe mensual · soporte por WhatsApp',
-    plan1_name:'Starter', plan1_title:'Presencia',
-    p1f1:'12 posts/mes (feed + stories)', p1f2:'Estrategia de contenido + calendario',
-    p1f3:'Redacción de captions + hashtags', p1f4:'1 plataforma (Instagram o TikTok)',
-    p1f5:'Informe mensual de desempeño', p1f6:'Agente de programación',
-    p1f7:'Asistente IA (WhatsApp)', p1f8:'Gestión de anuncios pagados',
-    plan2_name:'Growth', plan2_title:'Autoridad', most_popular:'Más Popular',
-    p2f1:'24 posts/mes (feed + stories + reels)', p2f2:'Estrategia completa + calendario 30 días',
-    p2f3:'2 plataformas (Instagram + TikTok)', p2f4:'Agente de programación inteligente',
-    p2f5:'Engagement + gestión de comunidad', p2f6:'Informe quincenal',
-    p2f7:'Asistente IA básico (WhatsApp)', p2f8:'Gestión de anuncios pagados',
-    plan3_name:'Premium', plan3_title:'Dominación',
-    p3f1:'36+ posts/mes (todos los formatos)', p3f2:'3 plataformas + YouTube Shorts',
-    p3f3:'Automatización completa de programación', p3f4:'Asistente IA avanzado 24/7',
-    p3f5:'Calificación de leads + CRM', p3f6:'Gestión Meta Ads (hasta R$2k)',
-    p3f7:'Informe semanal + llamada de estrategia', p3f8:'Acceso prioritario a contenido UGC',
-    btn_hire_wpp:'Contratar por WhatsApp',
-    agent_title:'<span>Agentes IA</span> por Separado',
-    agent_sub:'Compra por separado o añade a cualquier plan',
-    agent1_label:'IA de Programación', agent1_title:'Agente de Programación',
-    agent1_desc:'Programación automática en Instagram, TikTok y YouTube en los horarios de mayor engagement. Configúralo una vez — publica por ti cada día.',
-    agent2_label:'Atención con IA', agent2_title:'Asistente con IA',
-    agent2_desc:'Agente de IA entrenado en la voz de tu marca que maneja DMs y WhatsApp 24/7. Responde FAQs, maneja objeciones, califica leads y te avisa cuando un trato está listo.',
-    creatify_text:'Evelyn también es creadora certificada en la mayor plataforma de UGC de Brasil',
-    prod_eyebrow:'Para Creadores', prod_title:'Productos <span>Digitales</span>',
-    prod1_badge:'Lanzamiento', prod1_title:'E-book de UGC',
-    prod1_sub:'Cómo Crear Contenido de Belleza que las Marcas Quieren Pagar',
-    prod1_f1:'Qué es UGC y por qué las marcas lo pagan',
-    prod1_f2:'Equipo mínimo que realmente funciona',
-    prod1_f3:'Cómo construir tu portafolio desde cero',
-    prod1_f4:'Cómo acercarte a marcas y cerrar contratos',
-    prod1_f5:'Precios y negociación',
-    prod1_f6:'+ Bonus: plantilla de email para marcas', prod1_btn:'Quiero el E-book',
-    prod2_badge:'Mentoría 1:1', prod2_title:'Método 4tom3ve',
-    prod2_sub:'Identidad de creador + primeros contratos UGC',
-    prod2_f1:'4 sesiones de 60 min por videollamada',
-    prod2_f2:'Semana 1: Identidad — qué te diferencia',
-    prod2_f3:'Semana 2: Portafolio y estética de marca',
-    prod2_f4:'Semana 3: Pitch para marcas y precios',
-    prod2_f5:'Semana 4: Primer contrato y expansión',
-    prod2_f6:'+ E-book + acceso a comunidad de creadores', prod2_btn:'Quiero la Mentoría',
-    proc_eyebrow:'Cómo Funciona', proc_title:'Del briefing a la <span>entrega</span>',
-    step1_title:'Propuesta & Alineación',
-    step1_desc:'La marca contacta por email o DM. Eve evalúa el briefing y presenta una propuesta.',
-    step2_title:'Recepción & Concepto',
-    step2_desc:'Producto enviado por la marca. Eve crea el concepto visual — qué se creará, cómo se filmará, cuál es la narrativa.',
-    step3_title:'Creación & Edición',
-    step3_desc:'Grabación y edición con la estética 4tom3ve. Iluminación, composición y voz únicos.',
-    step4_title:'Entrega & Aprobación',
-    step4_desc:'Entregado antes del plazo, listo para Reels, Ads y Stories. Revisión incluida.',
-    plan90_eyebrow:'Crecimiento', plan90_title:'Plan <span>90 Días</span>',
-    m1_label:'Mes 01', m1_title:'Fundación',
-    m1_1:'Identidad visual completa finalizada', m1_2:'Portafolio online con 6–9 UGCs',
-    m1_3:'E-book publicado en Hotmart', m1_4:'Prospección por email a 20 marcas BR',
-    m1_5:'3 Reels/semana con los 3 pilares', m1_6:'BIO configurada y Linktree activo',
-    m1_meta:'Meta: 500 seguidores · 10 ventas e-book · 1 contrato',
-    m2_label:'Mes 02', m2_title:'Crecimiento',
-    m2_1:'3 nuevos UGCs en portafolio', m2_2:'Campaña de lanzamiento del e-book',
-    m2_3:'Primeros 2 clientes de mentoría', m2_4:'Colaboración con 2 creadores',
-    m2_5:'Media kit profesional en PDF', m2_6:'Prueba Meta Ads (R$ 300)',
-    m2_meta:'Meta: 2k seguidores · 3 contratos · 35 ventas',
-    m3_label:'Mes 03', m3_title:'Escala',
-    m3_1:'Lanzamiento canal YouTube', m3_2:'Paquete retainer mensual UGC',
-    m3_3:'Comunidad cerrada de creadores UGC', m3_4:'Campaña con marca de belleza',
-    m3_5:'Segundo producto digital o bundle', m3_6:'Expansión TikTok con contenido adaptado',
-    m3_meta:'Meta: 5k seguidores · R$4.000+/mes · Canal en vivo',
-    contact_eyebrow:'Alianzas',
-    contact_title:'Tu marca merece<br><span>contenido real</span>',
-    contact_sub:'Si llegaste hasta aquí, ya entendiste que 4tom3ve no es una creadora más. Completa el formulario y hablemos.',
-    form_brand:'Nombre de Marca', form_brand_ph:'Ej: Vult Cosméticos',
-    form_email:'Email', form_phone:'WhatsApp / Teléfono', form_instagram:'Instagram / Red Social',
-    form_service:'Tipo de Servicio', form_svc_ph:'Selecciona el formato',
-    form_svc1:'UGC Video (Reels / TikTok)', form_svc2:'UGC Foto (Feed / E-commerce)',
-    form_svc3:'UGC Stories', form_svc4:'Pack Mensual',
-    form_svc5:'Gestión de Social Media', form_svc6:'Agente de Programación',
-    form_svc7:'Asistente con IA', form_svc8:'Otro / Quiero conversar',
-    form_msg:'Mensaje', form_msg_ph:'Cuéntame un poco sobre tu marca...',
-    form_submit:'Enviar Propuesta →', form_success:'♥ Redirigiendo a WhatsApp...',
-    footer_tagline:'"Belleza sin falsedad.\nContenido que las marcas quieren usar porque se siente real — porque lo es."',
-    footer_nav:'Navegación', footer_connect:'Conectar',
-    footer_brands:'Para Marcas', footer_email:'Email',
-    footer_copy:'© 2025 4tom3ve · Evelyn Oliveira · Todos los derechos reservados'
-  }
+const translations={
+  en:{nav_about:'About',nav_ugc:'UGC Services',nav_social:'Social Media',nav_products:'Products',nav_plan:'90-Day Plan',nav_cta:'Hire UGC',hero_eyebrow:'UGC Creator · Beauty & Lifestyle · Brazil',hero_tagline:'"Beauty without fakeness."',hero_btn1:'View Portfolio',hero_btn2:'For Brands',scroll:'scroll',manifesto_text:'"I don\'t create content to <em>seem</em>. I create to <em>be</em>. Since cosplay, I learned that identity isn\'t performed — it\'s embodied. My brand isn\'t a strategy. It\'s who I am."',mq1:'Beauty with Soul',mq2:'Authenticity',mq3:'Real Identity',mq4:'Content Brands Want',sobre_title:'Identity that<br><span>can\'t be copied</span>',sobre_p1:'4tom3ve wasn\'t born from a marketing strategy. It was born from cosplay — a genuine identity built over years. That\'s uncopyable.',sobre_p2:'Eve sees people. Captures real beauty. Creates content brands want to use because it feels real — because it is.',sobre_p3:'Not an influencer with AI. Not generic beauty without soul. A creator with history, her own aesthetic, irreplaceable presence.',tag1:'Authenticity',tag2:'Creativity',tag3:'Editorial Beauty',tag5:'Professional UGC',tag6:'Cosplay Roots',stat1:'Years of identity',stat2:'Avg. per contract',stat3:'Original content',stat4:'Content pillars',ugc_eyebrow:'For Brands',ugc_title:'UGC <span>Services</span>',ugc1_title:'UGC Video',ugc1_desc:'Authentic product, skincare, fashion, or lifestyle videos in the 4tom3ve editorial style.',ugc2_title:'UGC Photo',ugc2_desc:'Editorial product photos with a strong visual identity. Content that converts because it feels real.',ugc3_title:'Monthly Pack',ugc3_desc:'Fixed monthly retainer with recurring deliveries. Includes videos, photos, and Stories.',ugc4_title:'UGC Stories',ugc4_desc:'Story sequences with natural storytelling, no rigid script. Direct tone, real personality.',ugc_cta:'Request a quote →',sm_eyebrow:'Full Digital Presence',sm_title:'Social Media <span>Management</span>',sm_intro:'Beyond UGC, Evelyn offers complete social media management — from strategy to automated scheduling and AI-powered customer service.',sm1_title:'Profile Management',sm1_sub:'Instagram · TikTok · YouTube',sm1_desc:'Complete management: content strategy, caption writing, hashtag research, engagement, DM replies, and monthly reporting.',sm2_title:'Scheduling Agent',sm2_sub:'Automated · Smart · Consistent',sm2_desc:'AI-powered post scheduling at the best times. 30-day calendar, auto-posting, and analytics.',sm3_title:'AI Attendant',sm3_sub:'WhatsApp · DMs · Comments',sm3_desc:'AI agent responding 24/7 on WhatsApp and DMs, qualifies leads, answers FAQs, handles objections.',plans_title:'Choose Your <span>Social Media Plan</span>',plans_sub:'All plans include onboarding · monthly report · dedicated WhatsApp support',plan1_name:'Starter',plan1_title:'Presence',p1f1:'12 posts/month (feed + stories)',p1f2:'Content strategy + calendar',p1f3:'Caption writing + hashtags',p1f4:'1 platform (Instagram or TikTok)',p1f5:'Monthly performance report',p1f6:'Scheduling agent',p1f7:'AI attendant (WhatsApp)',p1f8:'Paid ads management',plan2_name:'Growth',plan2_title:'Authority',most_popular:'Most Popular',p2f1:'24 posts/month (feed + stories + reels)',p2f2:'Full strategy + 30-day calendar',p2f3:'2 platforms (Instagram + TikTok)',p2f4:'Smart scheduling agent',p2f5:'Engagement + community management',p2f6:'Bi-weekly performance report',p2f7:'Basic AI attendant (WhatsApp)',p2f8:'Paid ads management',plan3_name:'Premium',plan3_title:'Domination',p3f1:'36+ posts/month (all formats)',p3f2:'3 platforms + YouTube Shorts',p3f3:'Full scheduling automation',p3f4:'Advanced AI attendant 24/7',p3f5:'Lead qualification + CRM',p3f6:'Meta Ads management (up to R$2k)',p3f7:'Weekly report + strategy call',p3f8:'Priority access to UGC content',btn_hire_wpp:'Hire via WhatsApp',agent_title:'Standalone <span>AI Agent Add-ons</span>',agent_sub:'Buy separately or add to any plan',agent1_label:'AI Scheduling',agent1_title:'Scheduling Agent',agent1_desc:'Automatic scheduling on Instagram, TikTok, and YouTube at the highest-engagement times.',agent2_label:'AI Customer Service',agent2_title:'AI Attendant',agent2_desc:'AI agent trained on your brand\'s voice handling DMs and WhatsApp 24/7.',creatify_text:'Evelyn is also a certified creator on Brazil\'s largest UGC platform',prod_eyebrow:'For Creators',prod_title:'Digital <span>Products</span>',prod1_badge:'Launch',prod1_title:'UGC E-book',prod1_sub:'How to Create Beauty Content Brands Want to Pay For',prod1_f1:'What UGC is and why brands pay for it',prod1_f2:'Minimum equipment that actually works',prod1_f3:'How to build your portfolio from zero',prod1_f4:'How to approach brands and close contracts',prod1_f5:'Pricing and negotiation',prod1_f6:'+ Bonus: email template for brands',prod1_btn:'Get the E-book',prod2_badge:'1:1 Mentorship',prod2_title:'4tom3ve Method',prod2_sub:'Creator identity + first UGC contracts',prod2_f1:'4 sessions of 60 min via video call',prod2_f2:'Week 1: Identity — what makes you different',prod2_f3:'Week 2: Portfolio and brand aesthetic',prod2_f4:'Week 3: Brand pitch and pricing',prod2_f5:'Week 4: First contract and expansion',prod2_f6:'+ E-book + creators community access',prod2_btn:'Get the Mentorship',proc_eyebrow:'How It Works',proc_title:'From brief to <span>delivery</span>',step1_title:'Proposal & Alignment',step1_desc:'Brand reaches out via email or DM. Eve evaluates the brief and presents a proposal.',step2_title:'Receive & Concept',step2_desc:'Product sent by the brand. Eve creates the visual concept — what will be created, how filmed.',step3_title:'Creation & Editing',step3_desc:'Recording and editing with 4tom3ve aesthetic. Every detail designed to convert.',step4_title:'Delivery & Approval',step4_desc:'Delivered before deadline, ready for Reels, Ads, and Stories. Revision included.',plan90_eyebrow:'Growth',plan90_title:'<span>90-Day</span> Plan',m1_label:'Month 01',m1_title:'Foundation',m1_1:'Complete visual identity finalized',m1_2:'Online portfolio with 6–9 UGCs',m1_3:'E-book published on Hotmart',m1_4:'Email outreach to 20 BR brands',m1_5:'3 Reels/week with the 3 pillars',m1_6:'BIO configured and Linktree active',m1_meta:'Goal: 500 followers · 10 e-book sales · 1 contract',m2_label:'Month 02',m2_title:'Growth',m2_1:'3 new UGCs in portfolio',m2_2:'E-book launch campaign',m2_3:'First 2 mentorship clients',m2_4:'Collaboration with 2 creators',m2_5:'Professional media kit in PDF',m2_6:'Meta Ads test (R$ 300)',m2_meta:'Goal: 2k followers · 3 contracts · 35 sales',m3_label:'Month 03',m3_title:'Scale',m3_1:'YouTube channel launch',m3_2:'Monthly UGC retainer package',m3_3:'Closed UGC creator community',m3_4:'Beauty brand campaign',m3_5:'Second digital product or bundle',m3_6:'TikTok expansion with adapted content',m3_meta:'Goal: 5k followers · R$4,000+/month · Channel live',contact_eyebrow:'Partnerships',contact_title:'Your brand deserves<br><span>real content</span>',contact_sub:'If you got this far, you already understand that 4tom3ve isn\'t just another creator. Fill in below and let\'s talk.',form_brand:'Brand Name',form_email:'Email',form_phone:'WhatsApp / Phone',form_instagram:'Instagram / Social',form_service:'Service Type',form_msg:'Message',form_submit:'Send Proposal →',form_success:'♥ Redirecting to WhatsApp...',footer_tagline:'"Beauty without fakeness.\nContent brands want to use because it feels real — because it is."',footer_nav:'Navigation',footer_connect:'Connect',footer_brands:'For Brands',footer_email:'Email',footer_copy:'© 2025 4tom3ve · Evelyn Oliveira · All rights reserved'},
+  pt:{nav_about:'Sobre',nav_ugc:'Serviços UGC',nav_social:'Social Media',nav_products:'Produtos',nav_plan:'Plano 90 Dias',nav_cta:'Contratar UGC',hero_eyebrow:'UGC Creator · Beleza & Lifestyle · Brasil',hero_tagline:'"Beleza sem falsidade."',hero_btn1:'Ver Portfólio',hero_btn2:'Para Marcas',scroll:'rolar',manifesto_text:'"Eu não crio conteúdo para <em>parecer</em>. Crio para <em>ser</em>. Desde o cosplay, aprendi que identidade não se performa — se encarna. Minha marca não é uma estratégia. É quem eu sou."',mq1:'Beleza com Alma',mq2:'Autenticidade',mq3:'Identidade Real',mq4:'Conteúdo que Marcas Querem',sobre_title:'Identidade que<br><span>não se copia</span>',sobre_p1:'A 4tom3ve não nasceu de uma estratégia de marketing. Nasceu do cosplay — uma identidade genuína construída ao longo de anos.',sobre_p2:'Eve enxerga pessoas. Captura beleza real. Cria conteúdo que marcas querem usar porque parece real — porque é.',sobre_p3:'Não é influencer com IA. Não é beleza genérica sem alma. É uma criadora com história, estética própria, presença insubstituível.',tag1:'Autenticidade',tag2:'Criatividade',tag3:'Beleza Editorial',tag5:'UGC Profissional',tag6:'Raízes Cosplay',stat1:'Anos de identidade',stat2:'Média por contrato',stat3:'Conteúdo original',stat4:'Pilares de conteúdo',ugc_eyebrow:'Para Marcas',ugc_title:'Serviços <span>UGC</span>',ugc1_title:'UGC Vídeo',ugc1_desc:'Vídeos autênticos de produto, skincare, moda ou lifestyle no estilo editorial 4tom3ve.',ugc2_title:'UGC Foto',ugc2_desc:'Fotos editoriais de produto com forte identidade visual. Conteúdo que converte porque parece real.',ugc3_title:'Pack Mensal',ugc3_desc:'Retainer mensal fixo com entregas recorrentes. Inclui vídeos, fotos e Stories.',ugc4_title:'UGC Stories',ugc4_desc:'Sequências de Stories com storytelling natural, sem roteiro engessado.',ugc_cta:'Solicitar orçamento →',sm_eyebrow:'Presença Digital Completa',sm_title:'Gestão de <span>Social Media</span>',sm_intro:'Além da criação de UGC, Evelyn oferece gestão completa de redes sociais — da estratégia ao agendamento automatizado e atendimento com IA.',sm1_title:'Gestão de Perfil',sm1_sub:'Instagram · TikTok · YouTube',sm1_desc:'Gestão completa: estratégia de conteúdo, legendas, hashtags, engajamento, DMs e relatório mensal.',sm2_title:'Agente de Agendamento',sm2_sub:'Automatizado · Inteligente · Consistente',sm2_desc:'Agendamento automático nos melhores horários. Calendário de 30 dias e analytics.',sm3_title:'Atendente com IA',sm3_sub:'WhatsApp · DMs · Comentários',sm3_desc:'Agente de IA respondendo 24/7 no WhatsApp e DMs, qualifica leads e contorna objeções.',plans_title:'Escolha Seu <span>Plano de Social Media</span>',plans_sub:'Todos os planos incluem onboarding · relatório mensal · suporte via WhatsApp',plan1_name:'Starter',plan1_title:'Presença',p1f1:'12 posts/mês (feed + stories)',p1f2:'Estratégia de conteúdo + calendário',p1f3:'Redação de legendas + hashtags',p1f4:'1 plataforma (Instagram ou TikTok)',p1f5:'Relatório mensal de desempenho',p1f6:'Agente de agendamento',p1f7:'Atendente IA (WhatsApp)',p1f8:'Gestão de anúncios pagos',plan2_name:'Growth',plan2_title:'Autoridade',most_popular:'Mais Popular',p2f1:'24 posts/mês (feed + stories + reels)',p2f2:'Estratégia completa + calendário 30 dias',p2f3:'2 plataformas (Instagram + TikTok)',p2f4:'Agente de agendamento inteligente',p2f5:'Engajamento + gestão de comunidade',p2f6:'Relatório quinzenal',p2f7:'Atendente IA básico (WhatsApp)',p2f8:'Gestão de anúncios pagos',plan3_name:'Premium',plan3_title:'Dominação',p3f1:'36+ posts/mês (todos os formatos)',p3f2:'3 plataformas + YouTube Shorts',p3f3:'Automação completa de agendamento',p3f4:'Atendente IA avançado 24/7',p3f5:'Qualificação de leads + CRM',p3f6:'Gestão Meta Ads (até R$2k)',p3f7:'Relatório semanal + call de estratégia',p3f8:'Acesso prioritário a conteúdo UGC',btn_hire_wpp:'Contratar via WhatsApp',agent_title:'<span>Agentes de IA</span> Avulsos',agent_sub:'Compre separado ou adicione a qualquer plano',agent1_label:'IA de Agendamento',agent1_title:'Agente de Agendamento',agent1_desc:'Agendamento automático no Instagram, TikTok e YouTube nos horários de maior engajamento.',agent2_label:'Atendimento com IA',agent2_title:'Atendente com IA',agent2_desc:'Agente de IA treinado na voz da sua marca respondendo DMs e WhatsApp 24/7.',creatify_text:'Evelyn também é criadora certificada na maior plataforma de UGC do Brasil',prod_eyebrow:'Para Criadores',prod_title:'Produtos <span>Digitais</span>',prod1_badge:'Lançamento',prod1_title:'E-book de UGC',prod1_sub:'Como Criar Conteúdo de Beleza que Marcas Querem Pagar',prod1_f1:'O que é UGC e por que marcas pagam',prod1_f2:'Equipamento mínimo que funciona',prod1_f3:'Como montar seu portfólio do zero',prod1_f4:'Como abordar marcas e fechar contratos',prod1_f5:'Precificação e negociação',prod1_f6:'+ Bônus: template de email para marcas',prod1_btn:'Quero o E-book',prod2_badge:'Mentoria 1:1',prod2_title:'Método 4tom3ve',prod2_sub:'Identidade de criadora + primeiros contratos UGC',prod2_f1:'4 sessões de 60 min por videochamada',prod2_f2:'Semana 1: Identidade — o que te diferencia',prod2_f3:'Semana 2: Portfólio e estética de marca',prod2_f4:'Semana 3: Pitch para marcas e precificação',prod2_f5:'Semana 4: Primeiro contrato e expansão',prod2_f6:'+ E-book + acesso à comunidade',prod2_btn:'Quero a Mentoria',proc_eyebrow:'Como Funciona',proc_title:'Do briefing à <span>entrega</span>',step1_title:'Proposta & Alinhamento',step1_desc:'A marca entra em contato por email ou DM. Eve avalia e apresenta uma proposta.',step2_title:'Recebimento & Conceito',step2_desc:'Produto enviado. Eve cria o conceito visual — o que será criado e como filmado.',step3_title:'Criação & Edição',step3_desc:'Gravação e edição com a estética 4tom3ve. Cada detalhe pensado para converter.',step4_title:'Entrega & Aprovação',step4_desc:'Entregue antes do prazo, pronto para Reels, Ads e Stories. Revisão incluída.',plan90_eyebrow:'Crescimento',plan90_title:'Plano <span>90 Dias</span>',m1_label:'Mês 01',m1_title:'Fundação',m1_1:'Identidade visual completa finalizada',m1_2:'Portfólio online com 6–9 UGCs',m1_3:'E-book publicado no Hotmart',m1_4:'Prospecção por email para 20 marcas BR',m1_5:'3 Reels/semana com os 3 pilares',m1_6:'BIO configurada e Linktree ativo',m1_meta:'Meta: 500 seguidores · 10 vendas · 1 contrato',m2_label:'Mês 02',m2_title:'Crescimento',m2_1:'3 novos UGCs no portfólio',m2_2:'Campanha de lançamento do e-book',m2_3:'Primeiros 2 clientes de mentoria',m2_4:'Collab com 2 criadores',m2_5:'Media kit profissional em PDF',m2_6:'Teste Meta Ads (R$ 300)',m2_meta:'Meta: 2k seguidores · 3 contratos · 35 vendas',m3_label:'Mês 03',m3_title:'Escala',m3_1:'Lançamento canal YouTube',m3_2:'Pacote de retainer mensal UGC',m3_3:'Comunidade fechada de criadores UGC',m3_4:'Campanha com marca de beleza',m3_5:'Segundo produto digital ou bundle',m3_6:'Expansão TikTok com conteúdo adaptado',m3_meta:'Meta: 5k seguidores · R$4.000+/mês · Canal no ar',contact_eyebrow:'Parcerias',contact_title:'Sua marca merece<br><span>conteúdo real</span>',contact_sub:'Se você chegou até aqui, já entendeu que a 4tom3ve não é mais uma criadora. Preencha abaixo e vamos conversar.',form_brand:'Nome da Marca',form_email:'Email',form_phone:'WhatsApp / Telefone',form_instagram:'Instagram / Rede Social',form_service:'Tipo de Serviço',form_msg:'Mensagem',form_submit:'Enviar Proposta →',form_success:'♥ Redirecionando para o WhatsApp...',footer_tagline:'"Beleza sem falsidade.\nConteúdo que marcas querem usar porque parece real — porque é."',footer_nav:'Navegação',footer_connect:'Conecte-se',footer_brands:'Para Marcas',footer_email:'Email',footer_copy:'© 2025 4tom3ve · Evelyn Oliveira · Todos os direitos reservados'},
+  es:{nav_about:'Sobre',nav_ugc:'Servicios UGC',nav_social:'Social Media',nav_products:'Productos',nav_plan:'Plan 90 Días',nav_cta:'Contratar UGC',hero_eyebrow:'UGC Creator · Belleza & Lifestyle · Brasil',hero_tagline:'"Belleza sin falsedad."',hero_btn1:'Ver Portafolio',hero_btn2:'Para Marcas',scroll:'bajar',manifesto_text:'"No creo contenido para <em>parecer</em>. Creo para <em>ser</em>. Desde el cosplay, aprendí que la identidad no se actúa — se encarna. Mi marca no es una estrategia. Es quien soy."',mq1:'Belleza con Alma',mq2:'Autenticidad',mq3:'Identidad Real',mq4:'Contenido que las Marcas Quieren',sobre_title:'Identidad que<br><span>no se copia</span>',sobre_p1:'4tom3ve no nació de una estrategia de marketing. Nació del cosplay — una identidad genuina construida durante años.',sobre_p2:'Eve ve a las personas. Captura la belleza real. Crea contenido que las marcas quieren usar porque se siente real.',sobre_p3:'No es una influencer con IA. No es belleza genérica sin alma. Es una creadora con historia y estética propia.',tag1:'Autenticidad',tag2:'Creatividad',tag3:'Belleza Editorial',tag5:'UGC Profesional',tag6:'Raíces Cosplay',stat1:'Años de identidad',stat2:'Prom. por contrato',stat3:'Contenido original',stat4:'Pilares de contenido',ugc_eyebrow:'Para Marcas',ugc_title:'Servicios <span>UGC</span>',ugc1_title:'UGC Video',ugc1_desc:'Videos auténticos de producto, skincare, moda o lifestyle en el estilo editorial 4tom3ve.',ugc2_title:'UGC Foto',ugc2_desc:'Fotos editoriales de producto con fuerte identidad visual. Contenido que convierte.',ugc3_title:'Pack Mensual',ugc3_desc:'Retainer mensual fijo con entregas recurrentes. Incluye videos, fotos y Stories.',ugc4_title:'UGC Stories',ugc4_desc:'Secuencias de Stories con storytelling natural, sin guión rígido.',ugc_cta:'Solicitar cotización →',sm_eyebrow:'Presencia Digital Completa',sm_title:'Gestión de <span>Social Media</span>',sm_intro:'Además de UGC, Evelyn ofrece gestión completa de redes sociales — de estrategia a programación automatizada y atención con IA.',sm1_title:'Gestión de Perfil',sm1_sub:'Instagram · TikTok · YouTube',sm1_desc:'Gestión completa: estrategia, captions, hashtags, engagement, DMs e informe mensual.',sm2_title:'Agente de Programación',sm2_sub:'Automatizado · Inteligente · Consistente',sm2_desc:'Programación automática en los mejores horarios. Calendario de 30 días y analíticas.',sm3_title:'Asistente con IA',sm3_sub:'WhatsApp · DMs · Comentarios',sm3_desc:'Agente de IA respondiendo 24/7 en WhatsApp y DMs, califica leads y maneja objeciones.',plans_title:'Elige Tu <span>Plan de Social Media</span>',plans_sub:'Todos los planes incluyen onboarding · informe mensual · soporte por WhatsApp',plan1_name:'Starter',plan1_title:'Presencia',p1f1:'12 posts/mes (feed + stories)',p1f2:'Estrategia de contenido + calendario',p1f3:'Redacción de captions + hashtags',p1f4:'1 plataforma (Instagram o TikTok)',p1f5:'Informe mensual de desempeño',p1f6:'Agente de programación',p1f7:'Asistente IA (WhatsApp)',p1f8:'Gestión de anuncios pagados',plan2_name:'Growth',plan2_title:'Autoridad',most_popular:'Más Popular',p2f1:'24 posts/mes (feed + stories + reels)',p2f2:'Estrategia completa + calendario 30 días',p2f3:'2 plataformas (Instagram + TikTok)',p2f4:'Agente de programación inteligente',p2f5:'Engagement + gestión de comunidad',p2f6:'Informe quincenal',p2f7:'Asistente IA básico (WhatsApp)',p2f8:'Gestión de anuncios pagados',plan3_name:'Premium',plan3_title:'Dominación',p3f1:'36+ posts/mes (todos los formatos)',p3f2:'3 plataformas + YouTube Shorts',p3f3:'Automatización completa',p3f4:'Asistente IA avanzado 24/7',p3f5:'Calificación de leads + CRM',p3f6:'Gestión Meta Ads (hasta R$2k)',p3f7:'Informe semanal + llamada de estrategia',p3f8:'Acceso prioritario a contenido UGC',btn_hire_wpp:'Contratar por WhatsApp',agent_title:'<span>Agentes IA</span> por Separado',agent_sub:'Compra por separado o añade a cualquier plan',agent1_label:'IA de Programación',agent1_title:'Agente de Programación',agent1_desc:'Programación automática en los horarios de mayor engagement.',agent2_label:'Atención con IA',agent2_title:'Asistente con IA',agent2_desc:'Agente de IA entrenado en la voz de tu marca manejando DMs y WhatsApp 24/7.',creatify_text:'Evelyn también es creadora certificada en la mayor plataforma de UGC de Brasil',prod_eyebrow:'Para Creadores',prod_title:'Productos <span>Digitales</span>',prod1_badge:'Lanzamiento',prod1_title:'E-book de UGC',prod1_sub:'Cómo Crear Contenido de Belleza que las Marcas Quieren Pagar',prod1_f1:'Qué es UGC y por qué las marcas pagan',prod1_f2:'Equipo mínimo que funciona',prod1_f3:'Cómo construir tu portafolio desde cero',prod1_f4:'Cómo acercarte a marcas y cerrar contratos',prod1_f5:'Precios y negociación',prod1_f6:'+ Bonus: plantilla de email',prod1_btn:'Quiero el E-book',prod2_badge:'Mentoría 1:1',prod2_title:'Método 4tom3ve',prod2_sub:'Identidad de creador + primeros contratos UGC',prod2_f1:'4 sesiones de 60 min por videollamada',prod2_f2:'Semana 1: Identidad — qué te diferencia',prod2_f3:'Semana 2: Portafolio y estética',prod2_f4:'Semana 3: Pitch y precios',prod2_f5:'Semana 4: Primer contrato y expansión',prod2_f6:'+ E-book + acceso a comunidad',prod2_btn:'Quiero la Mentoría',proc_eyebrow:'Cómo Funciona',proc_title:'Del briefing a la <span>entrega</span>',step1_title:'Propuesta & Alineación',step1_desc:'La marca contacta por email o DM. Eve evalúa y presenta una propuesta.',step2_title:'Recepción & Concepto',step2_desc:'Producto enviado. Eve crea el concepto visual.',step3_title:'Creación & Edición',step3_desc:'Grabación y edición con la estética 4tom3ve.',step4_title:'Entrega & Aprobación',step4_desc:'Entregado antes del plazo, listo para Reels, Ads y Stories.',plan90_eyebrow:'Crecimiento',plan90_title:'Plan <span>90 Días</span>',m1_label:'Mes 01',m1_title:'Fundación',m1_1:'Identidad visual completa',m1_2:'Portafolio online con 6–9 UGCs',m1_3:'E-book publicado en Hotmart',m1_4:'Prospección a 20 marcas BR',m1_5:'3 Reels/semana con los 3 pilares',m1_6:'BIO configurada y Linktree activo',m1_meta:'Meta: 500 seguidores · 10 ventas · 1 contrato',m2_label:'Mes 02',m2_title:'Crecimiento',m2_1:'3 nuevos UGCs en portafolio',m2_2:'Campaña de lanzamiento del e-book',m2_3:'Primeros 2 clientes de mentoría',m2_4:'Colaboración con 2 creadores',m2_5:'Media kit profesional en PDF',m2_6:'Prueba Meta Ads (R$ 300)',m2_meta:'Meta: 2k seguidores · 3 contratos · 35 ventas',m3_label:'Mes 03',m3_title:'Escala',m3_1:'Lanzamiento canal YouTube',m3_2:'Paquete retainer mensual UGC',m3_3:'Comunidad cerrada de creadores',m3_4:'Campaña con marca de belleza',m3_5:'Segundo producto digital',m3_6:'Expansión TikTok con contenido adaptado',m3_meta:'Meta: 5k seguidores · R$4.000+/mes · Canal en vivo',contact_eyebrow:'Alianzas',contact_title:'Tu marca merece<br><span>contenido real</span>',contact_sub:'Si llegaste hasta aquí, ya entendiste que 4tom3ve no es una creadora más.',form_brand:'Nombre de Marca',form_email:'Email',form_phone:'WhatsApp / Teléfono',form_instagram:'Instagram / Red Social',form_service:'Tipo de Servicio',form_msg:'Mensaje',form_submit:'Enviar Propuesta →',form_success:'♥ Redirigiendo a WhatsApp...',footer_tagline:'"Belleza sin falsedad.\nContenido que las marcas quieren usar porque se siente real."',footer_nav:'Navegación',footer_connect:'Conectar',footer_brands:'Para Marcas',footer_email:'Email',footer_copy:'© 2025 4tom3ve · Evelyn Oliveira · Todos los derechos reservados'}
 };
-
-let currentLang = 'en';
-
-function switchLang(lang) {
-  if (lang === currentLang) return;
-  const overlay = document.getElementById('translate-overlay');
-  const countEl = document.getElementById('tl-count');
-  const nameEl  = document.getElementById('tl-lang-name');
-  const barFill = document.getElementById('tl-bar-fill');
-  const textEl  = document.getElementById('tl-text');
-  const names = { en:'English', pt:'Português', es:'Español' };
-  const loading = { en:'Translating', pt:'Traduzindo', es:'Traduciendo' };
-
-  textEl.textContent  = loading[lang];
-  nameEl.textContent  = names[lang];
-  barFill.classList.remove('go');
-  overlay.classList.add('show');
-
-  let c = 3;
-  countEl.textContent = c;
-  const timer = setInterval(() => {
-    c--;
-    countEl.textContent = c > 0 ? c : '✓';
-    if (c <= 0) clearInterval(timer);
-  }, 1000);
-
-  requestAnimationFrame(() => { requestAnimationFrame(() => { barFill.classList.add('go'); }); });
-
-  setTimeout(() => {
-    applyTranslation(lang);
-    currentLang = lang;
-    document.querySelectorAll('.lang-btn').forEach(b => {
-      b.classList.toggle('active', b.id === 'btn-' + lang);
-      b.setAttribute('aria-pressed', b.id === 'btn-' + lang);
-    });
-    overlay.classList.remove('show');
-    barFill.classList.remove('go');
-  }, 3200);
+let currentLang='en';
+function switchLang(lang){
+  if(lang===currentLang)return;
+  const overlay=document.getElementById('translate-overlay');
+  const countEl=document.getElementById('tl-count');
+  const nameEl=document.getElementById('tl-lang-name');
+  const barFill=document.getElementById('tl-bar-fill');
+  const textEl=document.getElementById('tl-text');
+  const names={en:'English',pt:'Português',es:'Español'};
+  const loading={en:'Translating',pt:'Traduzindo',es:'Traduciendo'};
+  textEl.textContent=loading[lang];nameEl.textContent=names[lang];
+  barFill.classList.remove('go');overlay.classList.add('show');
+  let c=3;countEl.textContent=c;
+  const timer=setInterval(()=>{c--;countEl.textContent=c>0?c:'✓';if(c<=0)clearInterval(timer);},1000);
+  requestAnimationFrame(()=>{requestAnimationFrame(()=>{barFill.classList.add('go');});});
+  setTimeout(()=>{applyTranslation(lang);currentLang=lang;document.querySelectorAll('.lang-btn').forEach(b=>{b.classList.toggle('active',b.id==='btn-'+lang);b.setAttribute('aria-pressed',b.id==='btn-'+lang);});overlay.classList.remove('show');barFill.classList.remove('go');},3200);
 }
-
-function applyTranslation(lang) {
-  const t = translations[lang];
-  if (!t) return;
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (t[key] !== undefined) {
-      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') return;
-      el.innerHTML = t[key];
-    }
-  });
-  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-    const key = el.getAttribute('data-i18n-placeholder');
-    if (t[key] !== undefined) el.placeholder = t[key];
-  });
+function applyTranslation(lang){
+  const t=translations[lang];if(!t)return;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const key=el.getAttribute('data-i18n');if(t[key]!==undefined){if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')return;el.innerHTML=t[key];}});
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{const key=el.getAttribute('data-i18n-placeholder');if(t[key]!==undefined)el.placeholder=t[key];});
 }
 </script>
 </body>
